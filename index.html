@@ -92,7 +92,6 @@
       transition: color 0.26s, filter 0.22s;
       color: #b0a4f6;
     }
-
     /* Node positions: set with --angle */
     .node-email        { --angle: 0deg; }
     .node-linkedin     { --angle: 40deg; }
@@ -110,7 +109,6 @@
         translateY(-165px)
         rotate(calc(var(--angle, 0) * -1));
     }
-    /* When centered (see .active), disable rotate/translate */
     .reachout-node.active {
       z-index: 999;
       transform: translate(-50%, -50%) scale(1.29) !important;
@@ -120,7 +118,6 @@
       box-shadow: 0 16px 32px 5px #7672d339;
       filter: none;
     }
-
     /* Centered message styling */
     .center-message {
       pointer-events: none;
@@ -128,59 +125,71 @@
       left: 50%; top: 50%;
       transform: translate(-50%, -50%);
       opacity: 0;
-      width: 265px; max-width: 75vw;
+      width: 275px; max-width: 75vw;
       z-index: 1000;
       text-align: center;
       font-family: 'Roboto Mono', monospace;
-      transition: opacity 0.5s, visibility 0.5s;
+      transition: opacity 0.25s, visibility 0.5s;
       white-space: pre-line;
       visibility: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0.2em;
     }
-    .center-message.show { opacity: 1; visibility: visible; transition: opacity 2s;}
+    .center-message.show { opacity: 1; visibility: visible; transition: opacity 1.4s;}
     .center-header {
       background: linear-gradient(90deg, #5e5add 70%, #766afd 100%);
       padding: 0.31em 1em 0.19em 1em;
       color: #fff;
-      font-size: 1.62em;
+      font-size: 1.47em;
       font-weight: 700;
       border-radius: 11px;
-      margin-bottom: 7px;
+      margin-bottom: 12px;
       font-family: 'EB Garamond', serif;
       display: inline-block;
       box-shadow: 0 3px 19px #5e5add55;
       letter-spacing: .03em;
-      transition: background 0.42s;
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 0.5s cubic-bezier(.6,0.6,.2,1.25),
+        transform 1s cubic-bezier(.25,.85,.38,1.1);
+    }
+    .center-message.show .center-header {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.1s;
     }
     .center-desc {
-      font-size: 0.99em;
+      font-size: 0.96em;
       background: #fff;
       color: #222;
       border-radius: 6px;
-      padding: 0.67em 1.1em;
-      margin-top: 2px;
+      padding: 0.60em 1em;
       box-shadow: 0 2px 7px #2d2d2d12;
       font-family: 'Roboto Mono', monospace;
       font-weight: 500;
-      opacity: 0.95;
-      transition: background 0.36s, color 0.19s;
-      animation: fadeinDesc 1.8s;
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 1.7s 0.23s,
+        transform 1.7s cubic-bezier(.25,.90,0,.96) 0.29s;
     }
-    @keyframes fadeinDesc {
-      from { opacity:0; }
-      to { opacity:0.95;}
+    .center-message.show .center-desc {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.34s;
     }
     @media (max-width: 600px) {
-      .reachout-graph { width: 94vw; height:94vw; min-width:220px; min-height:220px;}
+      .reachout-graph { width: 94vw; height:94vw; min-width:220px !important; min-height:220px;}
       .reachout-node { width:38px; height:38px;}
       .reachout-icon { width: 24px; height: 24px; font-size: 1.13rem;}
       .huggingface-emoji { font-size: 1.1rem;}
       .center-message  {width:98vw;font-size:.93em;}
-      .center-header {font-size: 1.05em;}
-      .center-desc {font-size:.88em;}
+      .center-header {font-size: 1em;}
+      .center-desc {font-size:.83em;}
     }
   </style>
 </head>
@@ -225,9 +234,7 @@
         <button class="reachout-node node-huggingface" data-platform="huggingface" title="Hugging Face" tabindex="0" style="background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%); border-color: #5e5add;">
           <span class="reachout-icon huggingface-emoji" aria-hidden="true">🤗</span>
         </button>
-        <div class="center-message" id="center-message">
-          <!-- Dynamic message inserted here -->
-        </div>
+        <div class="center-message" id="center-message"></div>
       </div>
     </div>
     <script>
@@ -243,14 +250,12 @@
         substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
         huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
       };
-      // Place all .reachout-node into a list, and handle hover/click
       var nodes = Array.from(document.querySelectorAll('.reachout-node'));
       var msg = document.getElementById('center-message');
       var clearTimeoutId = null;
       nodes.forEach(node=>{
         node.addEventListener('mouseenter', function() {
           let plat = node.getAttribute('data-platform');
-          // Show header and desc in the center, nicely faded in
           msg.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
           msg.classList.add('show');
           // Remove active state everywhere else on hover
@@ -286,4 +291,5 @@
   </section>
 </body>
 </html>
+
 

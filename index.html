@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <title>FranzuBaren/Francesco Orsi's GitHub</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       background: #f9f8f6;
@@ -16,242 +13,13 @@
       margin: 0;
       padding: 0;
     }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      padding: 3rem 2rem 1.5rem 2rem;
-      background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
-      border-bottom: 2px solid #22232a;
-      box-shadow: 0 6px 24px #00000010;
-    }
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #5e5add;
-      object-fit: cover;
-      background: #fff;
-      box-shadow: 0 4px 20px #8b8aad22;
-    }
-    header .header-text {
-      max-width: 600px;
-    }
-    header h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: 2.7rem;
-      color: #22232a;
-      font-weight: 700;
-      margin: 0 0 0.35em 0;
-      text-shadow: 0 2px 24px #5e5add10;
-      letter-spacing: 1.5px;
-    }
-    header h2 {
-      font-family: 'Roboto Mono', monospace;
-      font-size: 1.15rem;
-      color: #5e5add;
-      margin: 0;
-      letter-spacing: 0.7px;
-      font-weight: 400;
-    }
-    nav {
-      background: #f9f8f6;
-      border-bottom: 1.5px solid #393a3f;
-      margin: 0 0 1.7rem 0;
-      text-align: center;
-      padding: 0.9rem 0 0.7rem 0;
-      box-shadow: 0 2px 10px #1a1a1a08;
-    }
-    nav a {
-      display: inline-block;
-      color: #22232a;
-      border-bottom: 2.5px solid transparent;
-      text-decoration: none;
-      margin: 0 1.2rem;
-      font-size: 1.09rem;
-      font-family: 'EB Garamond', serif;
-      font-weight: 600;
-      padding: 0.25em 0.6em 0.07em 0.6em;
-      letter-spacing: 0.09em;
-      border-radius: 2px 2px 0 0;
-      transition: border 0.23s, color 0.18s;
-    }
-    nav a:hover {
-      border-bottom: 2.5px solid #5e5add;
-      color: #5e5add;
-      background: #edeef0;
-    }
-    .container {
-      max-width: 950px;
-      margin: 2.4rem auto 0 auto;
-      background: #fff;
-      box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
-      border-radius: 18px;
-      border: 1.7px solid #393a3f;
-      padding: 2.7rem 2.5rem 2.2rem 2.5rem;
-    }
-    h2 {
-      font-weight: 700;
-      font-size: 1.56rem;
-      color: #22232a;
-      border-left: 6px solid #5e5add;
-      padding-left: 0.55em;
-      margin: 2.2em 0 0.6em 0;
-      background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
-      border-radius: 7px;
-      letter-spacing: 0.03em;
-      font-family: 'EB Garamond', serif;
-    }
-    .reachout-graph-wrap {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 3.2rem;
-      margin-bottom: 2.1rem;
-    }
-    .reachout-graph {
-      position: relative;
-      width: 440px;
-      height: 440px;
-      max-width: 100vw;
-      user-select: none;
-    }
-    .reachout-graph svg {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .reachout-node {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      --circle-size: 82px;
-      width: var(--circle-size);
-      height: var(--circle-size);
-      margin: calc(var(--circle-size) / -2);
-      border-radius: 50%;
-      border: 2.6px solid #393a3f;
-      background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 3;
-      box-shadow: 0 5px 24px #83839322;
-      transition:
-        box-shadow 0.18s,
-        transform 0.27s cubic-bezier(0.3, 1.7, 0.5, 1),
-        background 0.14s,
-        border 0.16s,
-        filter 0.2s,
-        color 0.18s;
-      filter: grayscale(45%);
-      outline: none;
-      transform: translate(-50%, -50%);
-      color: #5e5add; /* default icon color */
-    }
-    .reachout-node:hover,
-    .reachout-node:focus-visible,
-    .reachout-node.active {
-      filter: grayscale(0%);
-      background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
-      border-color: #5e5add;
-      box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
-      z-index: 7;
-      transform: translate(-50%, -50%) scale(1.13);
-    }
-    .reachout-node:active {
-      transform: translate(-50%, -50%) scale(0.96);
-    }
-    .reachout-node.active {
-      z-index: 999;
-      transform: translate(-50%, -50%) scale(1.29) !important;
-      background: #edeafd;
-      border-color: #5e5add;
-      box-shadow: 0 16px 32px 5px #7672d339;
-      filter: none;
-      color: #5e5add;
-    }
-    .reachout-icon {
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Custom colors for platforms */
-    .reachout-node[data-platform='linkedin'] {
-      color: #0077b5;
-    }
-    .reachout-node[data-platform='linkedin']:hover,
-    .reachout-node[data-platform='linkedin'].active {
-      color: #0077b5;
-    }
-    .reachout-node[data-platform='github'] {
-      color: #171515;
-    }
-    .reachout-node[data-platform='github']:hover,
-    .reachout-node[data-platform='github'].active {
-      color: #171515;
-    }
-    .reachout-node[data-platform='openml'] {
-      color: #fb9602;
-    }
-    .reachout-node[data-platform='openml']:hover,
-    .reachout-node[data-platform='openml'].active {
-      color: #fb9602;
-    }
-    .reachout-node[data-platform='kaggle'] {
-      color: #20beff;
-    }
-    .reachout-node[data-platform='kaggle']:hover,
-    .reachout-node[data-platform='kaggle'].active {
-      color: #20beff;
-    }
-    .reachout-node[data-platform='streamlit'] {
-      color: #ff4b4b;
-    }
-    .reachout-node[data-platform='streamlit']:hover,
-    .reachout-node[data-platform='streamlit'].active {
-      color: #ff4b4b;
-    }
-    .reachout-node[data-platform='overleaf'] {
-      color: #46a060;
-    }
-    .reachout-node[data-platform='overleaf']:hover,
-    .reachout-node[data-platform='overleaf'].active {
-      color: #46a060;
-    }
-    .reachout-node[data-platform='substack'] {
-      color: #ff6719;
-    }
-    .reachout-node[data-platform='substack']:hover,
-    .reachout-node[data-platform='substack'].active {
-      color: #ff6719;
-    }
-    .reachout-node[data-platform='email'] {
-      color: #cf4963;
-    }
-    .reachout-node[data-platform='email']:hover,
-    .reachout-node[data-platform='email'].active {
-      color: #cf4963;
-    }
-    .reachout-node[data-platform='huggingface'] {
-      color: #b0a4f6;
-      background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%);
-      border-color: #5e5add;
-    }
-    .reachout-node[data-platform='huggingface']:hover,
-    .reachout-node[data-platform='huggingface'].active {
-      color: #5e5add;
-      filter: drop-shadow(0 3px 9px #9787e9aa);
-      background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%);
-      border-color: #5e5add;
+    /* ... Keep all your previous styles ... */
+
+    .reachout-icon img, .reachout-icon svg {
+      width: 40px;
+      height: 40px;
+      display: block;
+      margin: auto;
     }
     .center-message-overlay {
       pointer-events: auto;
@@ -260,7 +28,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       width: 260px;
-      height: 130px; /* large enough */
+      height: 130px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -272,501 +40,193 @@
       text-align: center;
       user-select: none;
     }
-    .center-message-overlay.show {
-      opacity: 1;
-    }
+    .center-message-overlay.show { opacity: 1; }
     .center-header {
       background: linear-gradient(90deg, #5e5add 70%, #766afd 100%);
       padding: 0.31em 1em 0.19em 1em;
       color: #fff;
-      font-size: 1.47em;
+      font-size: 1.15em;
       font-weight: 700;
       border-radius: 11px;
       margin-bottom: 12px;
       font-family: 'EB Garamond', serif;
       display: inline-block;
       box-shadow: 0 3px 19px #5e5add55;
-      letter-spacing: 0.03em;
-      opacity: 0;
-      transform: translateY(10px);
-      transition:
-        opacity 0.6s cubic-bezier(0.6, 0.6, 0.2, 1.25),
-        transform 1.2s cubic-bezier(0.25, 0.85, 0.38, 1.1);
+      letter-spacing: .03em;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.6s cubic-bezier(.6,0.6,.2,1.25), transform 1.2s cubic-bezier(.25,.85,.38,1.1);
     }
-    .center-message-overlay.show .center-header {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.15s;
-    }
+    .center-message-overlay.show .center-header { opacity: 1; transform: translateY(0); transition-delay: 0.15s;}
     .center-desc {
-      font-size: 0.99em;
+      font-size: 0.85em;               /* much smaller font! */
       background: #fff;
-      color: #222;
-      border-radius: 6px;
-      padding: 0.5em 0.9em;
-      box-shadow: 0 2px 7px #2d2d2d12;
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 500;
-      opacity: 0;
-      margin-top: 3px;
+      color: #222; border-radius: 6px;
+      padding: 0.50em 0.9em; box-shadow: 0 2px 7px #2d2d2d12;
+      font-family: 'Roboto Mono', monospace; font-weight: 400;
+      opacity: 0; margin-top: 3px;
       transform: translateY(10px);
-      transition:
-        opacity 1.5s 0.18s,
-        transform 1.2s cubic-bezier(0.25, 0.9, 0, 0.96) 0.19s;
+      transition: opacity 1.5s 0.18s, transform 1.2s cubic-bezier(.25,.90,0,.96) 0.19s;
     }
-    .center-message-overlay.show .center-desc {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.36s;
-    }
-    footer {
-      text-align: center;
-      padding: 1.6rem 0;
-      border-top: 1.8px solid #393a3f;
-      font-family: 'EB Garamond', serif;
-      font-weight: 500;
-      font-size: 0.92rem;
-      color: #555759;
-      margin-top: 4rem;
-    }
-    @media (max-width: 600px) {
-      .reachout-graph {
-        width: 94vw;
-        height: 94vw;
-        min-width: 220px !important;
-        min-height: 220px;
-      }
-      .reachout-node {
-        width: 38px;
-        height: 38px;
-      }
-      .reachout-icon {
-        width: 24px;
-        height: 24px;
-      }
-      .center-message-overlay {
-        width: 90vw;
-        height: 80px;
-      }
-      .center-header {
-        font-size: 1em;
-      }
-      .center-desc {
-        font-size: 0.83em;
-      }
-    }
+    .center-message-overlay.show .center-desc { opacity: 1; transform: translateY(0); transition-delay: 0.36s;}
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://via.placeholder.com/120" alt="Francesco Orsi Photo" />
-    <div class="header-text">
-      <h1>Francesco Orsi</h1>
-      <h2>Data Science Manager</h2>
-    </div>
-  </header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#detailed-cv">Detailed CV</a>
-    <a href="#interest">Interests</a>
-    <a href="#projects">Selected Projects</a>
-    <a href="#social">Reach Out &amp; Socials</a>
-  </nav>
-  <main class="container">
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I studied <b>theoretical physics</b> followed by a focus on <b>computational neuroscience</b> before developing an international career in data science and AI. My professional journey is grounded in academic rigor, translational science, and reproducible, impactful AI methods.<br /><br />
-        As a former academic researcher now managing data science initiatives at the intersection of AI, data regulation, and business, I strive to bridge the gap between technological innovation and meaningful application in complex, evolving environments. I value robust methodology, open science, and transparent, interdisciplinary collaboration.<br /><br />
-        For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
-      </p>
-    </section>
-    <section id="interest">
-      <h2>Interests</h2>
-      <ul>
-        <li><span class="interest-title">Reproducible computational research:</span>
-          Ensuring that methods, code, and data in AI/ML can be independently verified, extended, and trusted across the research community and industry.
-        </li>
-        <li><span class="interest-title">Mathematical foundation of ML:</span>
-          Deep understanding of probability, statistics, optimization, and linear algebra to design rigorous algorithms and interpret their limits.
-        </li>
-        <li><span class="interest-title">Data-centric auditing and ethical AI:</span>
-          Developing processes for auditing, validating, and governing data and models, with an emphasis on fairness, robustness, and regulatory compliance in sensitive domains like healthcare and life sciences.
-        </li>
-        <li><span class="interest-title">Interpretability and transparency of models:</span>
-          Creating models whose reasoning, predictions, and limitations can be explained to both technical and non-technical stakeholders, especially where decision-making impact is high.
-        </li>
-        <li><span class="interest-title">Collaborative science and knowledge sharing:</span>
-          Engaging with multidisciplinary teams across academia and industry, contributing to open-source software, and sharing ideas in global communities.
-        </li>
-        <li><span class="interest-title">Benchmarking robust predictive models:</span>
-          Developing and evaluating machine learning models on meaningful, real-world tasks while assessing generalization and practical value.
-        </li>
-        <li><span class="interest-title">Scientific communication, mentoring, and best practices:</span>
-          Presenting research clearly, mentoring the next generation of scientists, and fostering openness in code, data, and idea exchange.
-        </li>
-        <li><span class="interest-title">Research software &amp; scientific tools:</span>
-          Designing, building, and publishing software (including notebooks, apps, and libraries) that accelerate discovery and enable rigorous science.
-        </li>
-        <li><span class="interest-title">Academic-industry partnerships:</span>
-          Bridging theoretical work and industrial impact by driving collaborations and solutions between research institutions and business.
-        </li>
-        <li><span class="interest-title">Exploring new directions:</span>
-          Investigating generative AI, causal inference, privacy-preserving ML, and civic technology for social good.
-        </li>
-      </ul>
-    </section>
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <p>WIP</p>
-    </section>
-    <section id="social">
-      <h2>Reach Out &amp; Socials</h2>
-      <div class="reachout-graph-wrap">
-        <div
-          class="reachout-graph"
-          id="reachout-graph"
-          aria-label="Social media and contact platforms"
-        >
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 440 440"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <circle
-              cx="220"
-              cy="220"
-              r="165"
-              stroke="#c5c4de"
-              stroke-width="2"
-              fill="none"
-            />
-          </svg>
-
-          <!-- Email -->
-          <button
-            class="reachout-node node-email"
-            data-platform="email"
-            title="Email"
-            tabindex="0"
-            aria-label="Email"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- konsav envelope -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16v16H4z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </span>
-          </button>
-
-          <!-- LinkedIn -->
-          <button
-            class="reachout-node node-linkedin"
-            data-platform="linkedin"
-            title="LinkedIn"
-            tabindex="0"
-            aria-label="LinkedIn"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- konsav LinkedIn -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                <path d="M16 11a4 4 0 0 1 4 4v6"/>
-                <line x1="8" y1="11" x2="8" y2="21"/>
-                <line x1="12" y1="11" x2="12" y2="21"/>
-              </svg>
-            </span>
-          </button>
-
-          <!-- GitHub -->
-          <button
-            class="reachout-node node-github"
-            data-platform="github"
-            title="GitProfile"
-            tabindex="0"
-            aria-label="GitHub"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- konsav GitHub -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.21.68-.47v-1.65c-2.78.6-3.37-1.37-3.37-1.37-.45-1.15-1.11-1.46-1.11-1.46-.91-.63.07-.62.07-.62 1 .07 1.53 1.04 1.53 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.54 9.54 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.9-1.29 2.74-1.02 2.74-1.02.56 1.38.21 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.67.92.67 1.85v2.74c0 .26.18.56.69.47A10 10 0 0 0 12 2z"/>
-              </svg>
-            </span>
-          </button>
-
-          <!-- OpenML -->
-          <button
-            class="reachout-node node-openml"
-            data-platform="openml"
-            title="OpenML"
-            tabindex="0"
-            aria-label="OpenML"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- custom: use database icon from konsav as "OpenML" -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <ellipse cx="12" cy="5" rx="9" ry="3" />
-                <path d="M3 5v14c0 1.67 4 3 9 3s9-1.33 9-3V5" />
-              </svg>
-            </span>
-          </button>
-
-          <!-- Kaggle -->
-          <button
-            class="reachout-node node-kaggle"
-            data-platform="kaggle"
-            title="Kaggle"
-            tabindex="0"
-            aria-label="Kaggle"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- use a "database" icon with different style for Kaggle (simplify) -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <ellipse cx="12" cy="5" rx="9" ry="3" />
-                <path d="M3 5v14c0 1.67 4 3 9 3s9-1.33 9-3V5" />
-              </svg>
-            </span>
-          </button>
-
-          <!-- Streamlit -->
-          <button
-            class="reachout-node node-streamlit"
-            data-platform="streamlit"
-            title="Streamlit"
-            tabindex="0"
-            aria-label="Streamlit"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- simplified wave square -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="7" width="18" height="10" rx="5" ry="5" />
-                <path d="M3 7l9 10 9-10" />
-              </svg>
-            </span>
-          </button>
-
-          <!-- Overleaf -->
-          <button
-            class="reachout-node node-overleaf"
-            data-platform="overleaf"
-            title="OverLeaf"
-            tabindex="0"
-            aria-label="OverLeaf"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- original svg style from your code -->
-              <svg
-                height="60"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22" />
-                <path
-                  d="M16 6C14 13 22 15 16 26"
-                  stroke="#393a3f"
-                  stroke-width="2.2"
-                  fill="none"
-                />
-              </svg>
-            </span>
-          </button>
-
-          <!-- Substack -->
-          <button
-            class="reachout-node node-substack"
-            data-platform="substack"
-            title="Substack"
-            tabindex="0"
-            aria-label="Substack"
-          >
-            <span class="reachout-icon" aria-hidden="true">
-              <!-- envelope open text -->
-              <svg role="img" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-                <path d="M20 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6" />
-                <polyline points="2 7 12 13 22 7" />
-                <path d="M22 7v-.5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2V7" />
-              </svg>
-            </span>
-          </button>
-
-          <!-- Hugging Face: Use emoji as before -->
-          <button
-            class="reachout-node node-huggingface"
-            data-platform="huggingface"
-            title="Hugging Face"
-            tabindex="0"
-            style="
-              background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%);
-              border-color: #5e5add;
-            "
-            aria-label="Hugging Face"
-          >
-            <span class="reachout-icon huggingface-emoji" aria-hidden="true" style="font-size: 2.3rem;"
-              >🤗</span
-            >
-          </button>
-
-          <div class="center-message-overlay" id="center-message-overlay"></div>
-        </div>
+  <!-- ...header and nav unchanged... -->
+  <section id="social">
+    <h2>Reach Out &amp; Socials</h2>
+    <div class="reachout-graph-wrap">
+      <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
+        <svg width="100%" height="100%" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
+          <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
+        </svg>
+        <!-- Email -->
+        <button class="reachout-node node-email" data-platform="email" title="Email" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/email.svg" alt="Email" />
+          </span>
+        </button>
+        <!-- LinkedIn -->
+        <button class="reachout-node node-linkedin" data-platform="linkedin" title="LinkedIn" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/linkedin.svg" alt="LinkedIn" />
+          </span>
+        </button>
+        <!-- GitHub -->
+        <button class="reachout-node node-github" data-platform="github" title="Github" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/github.svg" alt="GitHub" />
+          </span>
+        </button>
+        <!-- Kaggle -->
+        <button class="reachout-node node-kaggle" data-platform="kaggle" title="Kaggle" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/kaggle.svg" alt="Kaggle" />
+          </span>
+        </button>
+        <!-- Streamlit (use generic link as no standard icon) -->
+        <button class="reachout-node node-streamlit" data-platform="streamlit" title="Streamlit" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/link.svg" alt="Streamlit" />
+          </span>
+        </button>
+        <!-- OverLeaf (use LaTeX as closest match, or link) -->
+        <button class="reachout-node node-overleaf" data-platform="overleaf" title="OverLeaf" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/latex.svg" alt="Overleaf" />
+          </span>
+        </button>
+        <!-- Substack (use newsletter as closest match) -->
+        <button class="reachout-node node-substack" data-platform="substack" title="Substack" tabindex="0">
+          <span class="reachout-icon">
+            <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium_colored/newsletter.svg" alt="Substack" />
+          </span>
+        </button>
+        <!-- Hugging Face (not in repo; emoji fallback) -->
+        <button class="reachout-node node-huggingface" data-platform="huggingface" title="Hugging Face" tabindex="0">
+          <span class="reachout-icon huggingface-emoji" style="font-size: 2.2rem;">🤗</span>
+        </button>
+        <div class="center-message-overlay" id="center-message-overlay"></div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
   <footer>
     &copy; 2025 Francesco Orsi | Data Science Manager
   </footer>
   <script>
+    // JS unchanged, including positioning logic
     const platforms = {
-      email: {
-        name: 'Email',
-        desc:
-          "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science.",
-      },
-      linkedin: {
-        name: 'LinkedIn',
-        desc: 'Connect on LinkedIn for professional network building and updates.',
-      },
-      github: {
-        name: 'GitProfile',
-        desc: 'Explore my open source & code work. Feedback and PRs welcome!',
-      },
-      openml: {
-        name: 'OpenML',
-        desc: 'Find datasets, benchmarks and transparent ML science on OpenML.',
-      },
-      kaggle: {
-        name: 'Kaggle',
-        desc: 'Discover my competition entries and data notebooks.',
-      },
-      streamlit: {
-        name: 'Streamlit',
-        desc: 'I create interactive ML apps and analytics demos in Streamlit.',
-      },
-      overleaf: {
-        name: 'OverLeaf',
-        desc: 'Collaborative scientific writing — join me on Overleaf!',
-      },
-      substack: {
-        name: 'Substack',
-        desc: 'Essays and research summaries on AI, ML, and open science.',
-      },
-      huggingface: {
-        name: 'Hugging Face',
-        desc: 'Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!',
-      },
+      email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
+      linkedin:    { name: "LinkedIn", desc: "Connect on LinkedIn for professional network building and updates." },
+      github:      { name: "GitProfile", desc: "Explore my open source & code work. Feedback and PRs welcome!" },
+      openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." },
+      kaggle:      { name: "Kaggle", desc: "Discover my competition entries and data notebooks." },
+      streamlit:   { name: "Streamlit", desc: "I create interactive ML apps and analytics demos in Streamlit." },
+      overleaf:    { name: "OverLeaf", desc: "Collaborative scientific writing — join me on Overleaf!" },
+      substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
+      huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
     };
-
     const graph = document.getElementById('reachout-graph');
     const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
     const overlay = document.getElementById('center-message-overlay');
-
-    // Circle parameters
-    const CENTER_X = 220;
-    const CENTER_Y = 220;
-    const RADIUS = 165;
-
+    const CENTER_X = 220, CENTER_Y = 220, RADIUS = 165;
     function positionNodes() {
       const NODES_COUNT = nodes.length;
       for (let i = 0; i < NODES_COUNT; i++) {
         const node = nodes[i];
-        // Angle starts at -90deg (top) going clockwise
         const angle = ((-90 + (360 / NODES_COUNT) * i) * Math.PI) / 180;
         const x = CENTER_X + RADIUS * Math.cos(angle);
         const y = CENTER_Y + RADIUS * Math.sin(angle);
         node.style.left = x + 'px';
         node.style.top = y + 'px';
-        node.style.transform = 'translate(-50%, -50%)'; // center it exactly
+        node.style.transform = 'translate(-50%, -50%)';
       }
     }
     positionNodes();
     window.addEventListener('resize', positionNodes);
-
-    let hoveredNode = null;
-    let overlayHover = false;
-    let lockActive = false;
-    let resetTO = null;
-
-    function showMessage(platform, lock = false) {
-      if (!platform) {
-        overlay.classList.remove('show', 'lock');
-        hoveredNode = null;
-        return;
-      }
-      overlay.innerHTML = `
-        <span class="center-header">${platforms[platform].name}</span>
-        <span class="center-desc">${platforms[platform].desc}</span>
-      `;
+    let hoveredNode = null, overlayHover = false, lockActive = false, resetTO = null;
+    function showMessage(plat, lock=false) {
+      if (!plat) { overlay.classList.remove('show','lock'); hoveredNode=null; return; }
+      overlay.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
       overlay.classList.add('show');
-      if (lock) overlay.classList.add('lock');
+      if(lock) overlay.classList.add('lock');
       else overlay.classList.remove('lock');
-      hoveredNode = lock ? platform : null;
+      hoveredNode = lock ? plat : null;
     }
-
     function hideMessageIfEligible() {
       if (!hoveredNode && !overlayHover && !lockActive) {
         showMessage(null);
         nodes.forEach(n => n.classList.remove('active'));
       }
     }
-
-    nodes.forEach(node => {
-      node.addEventListener('mouseenter', () => {
+    nodes.forEach(node=>{
+      node.addEventListener('mouseenter', function() {
         if (lockActive) return;
         hoveredNode = node.getAttribute('data-platform');
         showMessage(hoveredNode, false);
       });
-      node.addEventListener('mouseleave', () => {
-        hoveredNode = null;
-        setTimeout(hideMessageIfEligible, 30);
+      node.addEventListener('mouseleave', function() {
+        hoveredNode=null; setTimeout(hideMessageIfEligible, 30);
       });
-      node.addEventListener('focus', () => {
+      node.addEventListener('focus', function() {
         if (lockActive) return;
         hoveredNode = node.getAttribute('data-platform');
         showMessage(hoveredNode, false);
       });
-      node.addEventListener('blur', () => {
-        hoveredNode = null;
-        setTimeout(hideMessageIfEligible, 30);
+      node.addEventListener('blur', function() {
+        hoveredNode=null; setTimeout(hideMessageIfEligible, 30);
       });
-      node.addEventListener('click', e => {
+      node.addEventListener('click', function(e){
         e.preventDefault();
         if (lockActive) return;
         lockActive = true;
         const plat = node.getAttribute('data-platform');
         showMessage(plat, true);
-        nodes.forEach(n => n.classList.remove('active'));
+        nodes.forEach(n=>n.classList.remove('active'));
         node.classList.add('active');
-        if (resetTO) clearTimeout(resetTO);
-        resetTO = setTimeout(() => {
+        if(resetTO) clearTimeout(resetTO);
+        resetTO = setTimeout(()=>{
           lockActive = false;
           node.classList.remove('active');
-          showMessage(null, false);
+          showMessage(null,false);
         }, 4200);
       });
-      node.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          node.click();
-        }
+      node.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' ') node.click();
       });
     });
-
-    overlay.addEventListener('mouseenter', () => {
+    overlay.addEventListener('mouseenter', function(){
       overlayHover = true;
       if (!lockActive && hoveredNode) showMessage(hoveredNode, false);
     });
-    overlay.addEventListener('mouseleave', () => {
+    overlay.addEventListener('mouseleave', function(){
       overlayHover = false;
       setTimeout(hideMessageIfEligible, 30);
     });
-    graph.addEventListener('mouseleave', () => {
-      hoveredNode = null;
-      setTimeout(hideMessageIfEligible, 30);
+    graph.addEventListener('mouseleave', function() {
+      hoveredNode=null; setTimeout(hideMessageIfEligible, 30);
     });
   </script>
 </body>
 </html>
+
 

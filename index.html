@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact Social Graph – Francesco Orsi</title>
+  <title>FranzuBaren/Francesco Orsi's GitHub</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
@@ -13,233 +13,332 @@
       font-family: 'EB Garamond', serif;
       margin: 0; padding: 0;
     }
-    .reachout-graph-wrap {
-      width: 100%; display: flex; align-items: center; justify-content: center;
-      margin-top: 3.2rem; margin-bottom: 2.1rem;
+    header {
+      display: flex; align-items: center; gap: 2.5rem;
+      padding: 3rem 2rem 1.5rem 2rem;
+      background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
+      border-bottom: 2px solid #22232a; box-shadow: 0 6px 24px #00000010;
     }
-    .reachout-graph {
-      position: relative;
-      width: 440px;
-      height: 440px;
-      min-height: 220px;
-      max-width: 100vw;
-      user-select: none;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    header img {
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 3px solid #5e5add; object-fit: cover; background: #fff;
+      box-shadow: 0 4px 20px #8b8aad22;
     }
-    .reachout-center {
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      width: 260px; min-height: 82px;
-      z-index: 10;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      pointer-events: none;
+    header .header-text { max-width: 600px; }
+    header h1 { font-family: 'EB Garamond', serif; font-size: 2.7rem; color: #22232a; font-weight: 700; margin: 0 0 .35em 0; text-shadow: 0 2px 24px #5e5add10; letter-spacing: 1.5px; }
+    header h2 { font-family: 'Roboto Mono', monospace; font-size: 1.15rem; color: #5e5add; margin: 0; letter-spacing: 0.7px; font-weight: 400; }
+    nav {
+      background: #f9f8f6; border-bottom: 1.5px solid #393a3f; margin: 0 0 1.7rem 0; text-align: center;
+      padding: 0.9rem 0 0.7rem 0; box-shadow: 0 2px 10px #1a1a1a08;
     }
-    .reachout-center-content {
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s;
-    }
-    .reachout-center-content.reveal {
-      opacity: 1;
-      pointer-events: none;
-      transition: opacity .5s;
-    }
-    .center-header {
-      background: linear-gradient(90deg, #5e5add 70%, #766afd 100%);
-      padding: 0.23em 1em 0.11em 1em;
-      color: #fff;
-      font-size: 1.35em;
-      font-weight: 700;
-      border-radius: 11px;
-      margin-bottom: 11px;
-      font-family: 'EB Garamond', serif;
+    nav a {
       display: inline-block;
-      box-shadow: 0 3px 19px #5e5add22;
-      letter-spacing: .01em;
+      color: #22232a;
+      border-bottom: 2.5px solid transparent;
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-size: 1.09rem;
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      padding: 0.25em 0.6em .07em 0.6em;
+      letter-spacing: 0.09em;
+      border-radius: 2px 2px 0 0;
+      transition: border 0.23s, color 0.18s;
     }
-    .center-desc {
-      font-size: 0.99em;
-      background: #fff;
-      color: #222;
-      border-radius: 6px;
-      padding: 0.50em 0.9em;
-      box-shadow: 0 2px 7px #2d2d2d10;
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 500;
-      margin-top: 0px;
-      opacity: 0.97;
+    nav a:hover { border-bottom: 2.5px solid #5e5add; color: #5e5add; background: #edeef0; }
+    .container { max-width: 950px; margin: 2.4rem auto 0 auto; background: #fff;
+      box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
+      border-radius: 18px; border: 1.7px solid #393a3f;
+      padding: 2.7rem 2.5rem 2.2rem 2.5rem;
     }
-    /* Circle SVG background */
-    .reachout-graph svg {
-      position: absolute;
-      left: 0; top: 0; width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
+    h2 {
+      font-weight: 700; font-size: 1.56rem; color: #22232a;
+      border-left: 6px solid #5e5add; padding-left: 0.55em; margin: 2.2em 0 0.6em 0;
+      background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
+      border-radius: 7px; letter-spacing: 0.03em; font-family: 'EB Garamond', serif;
     }
-    .reachout-icons {
-      width: 100%; height: 100%;
-      position: absolute; left: 0; top: 0; z-index: 2;
-      pointer-events: none; /* icons themselves permit pointer events */
-    }
-    .reachout-btn {
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%) rotate(var(--angle, 0)) translateY(-165px) rotate(calc(var(--angle, 0) * -1));
-      width: 82px; height: 82px;
-      margin: -41px 0 0 -41px;
-      border-radius: 50%;
-      border: 2.6px solid #393a3f;
-      background: linear-gradient(120deg, #fff 68%, #edeefe 100%);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      z-index: 5;
+    /* --- SOCIAL GRAPHICS --- */
+    .reachout-graph-wrap { width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 3.2rem; margin-bottom: 2.1rem; }
+    .reachout-graph { position: relative; width: 440px; height: 440px; max-width: 100vw; user-select: none; }
+    .reachout-graph svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+    .reachout-node {
+      --circle-size: 82px; position: absolute; left: 50%; top: 50%;
+      width: var(--circle-size); height: var(--circle-size); margin: calc(var(--circle-size) / -2);
+      border-radius: 50%; border: 2.6px solid #393a3f;
+      background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3;
       box-shadow: 0 5px 24px #83839322;
-      transition: box-shadow 0.18s, background 0.13s, border 0.16s;
-      filter: grayscale(45%);
-      outline: none;
-      pointer-events: auto;
+      transition: box-shadow 0.18s, transform 0.27s cubic-bezier(.3,1.7,.5,1), background 0.14s, border 0.16s;
+      filter: grayscale(45%); outline: none;
     }
-    .reachout-btn:focus { outline: 2px solid #5e5add; }
-    .reachout-btn:hover, .reachout-btn:focus-visible {
+    .reachout-icon { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px;
+      color: #5e5add; transition: color 0.16s, filter 0.18s, transform 0.13s; }
+    .reachout-node[data-platform='linkedin']:hover .reachout-icon,
+    .reachout-node[data-platform='linkedin'].active .reachout-icon { color: #0077b5; }
+    .reachout-node[data-platform='github']:hover .reachout-icon,
+    .reachout-node[data-platform='github'].active .reachout-icon { color: #171515; }
+    .reachout-node[data-platform='openml']:hover .reachout-icon,
+    .reachout-node[data-platform='openml'].active .reachout-icon { color: #fb9602; }
+    .reachout-node[data-platform='kaggle']:hover .reachout-icon,
+    .reachout-node[data-platform='kaggle'].active .reachout-icon { color: #20beff; }
+    .reachout-node[data-platform='streamlit']:hover .reachout-icon,
+    .reachout-node[data-platform='streamlit'].active .reachout-icon { color: #ff4b4b; }
+    .reachout-node[data-platform='overleaf']:hover .reachout-icon,
+    .reachout-node[data-platform='overleaf'].active .reachout-icon { color: #46a060; }
+    .reachout-node[data-platform='substack']:hover .reachout-icon,
+    .reachout-node[data-platform='substack'].active .reachout-icon { color: #ff6719; }
+    .reachout-node[data-platform='huggingface'] .huggingface-emoji { color: #b0a4f6; transition: color 0.18s, filter 0.18s; }
+    .reachout-node[data-platform='huggingface']:hover .huggingface-emoji,
+    .reachout-node[data-platform='huggingface'].active .huggingface-emoji { color: #5e5add; filter: drop-shadow(0 3px 9px #9787e9aa);}
+    .reachout-node[data-platform='email']:hover .reachout-icon,
+    .reachout-node[data-platform='email'].active .reachout-icon { color: #cf4963; }
+    .reachout-node:hover, .reachout-node:focus-visible, .reachout-node.active {
       filter: grayscale(0%);
       background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
       border-color: #5e5add;
       box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
-      z-index: 7;
+      z-index: 7; transform: scale(1.13) rotate(0deg);
     }
-    .reachout-btn .reachout-icon {
-      font-size: 2.15rem;
-      width: 60px; height: 60px;
-      color: #5e5add;
-      transition: color 0.14s, filter 0.14s, transform 0.21s;
+    .reachout-node:active { transform: scale(0.96);}
+    .huggingface-emoji { font-size: 2.1rem; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+      transition: color 0.26s, filter 0.22s; color: #b0a4f6;}
+    .node-email        { --angle: 0deg; }
+    .node-linkedin     { --angle: 40deg; }
+    .node-github       { --angle: 80deg; }
+    .node-openml       { --angle: 120deg; }
+    .node-kaggle       { --angle: 160deg; }
+    .node-streamlit    { --angle: 200deg; }
+    .node-overleaf     { --angle: 240deg; }
+    .node-substack     { --angle: 280deg; }
+    .node-huggingface  { --angle: 320deg; }
+    .reachout-node {
+      transform: translate(-50%, -50%) rotate(var(--angle, 0)) translateY(-165px) rotate(calc(var(--angle, 0) * -1));
     }
-    .reachout-btn:hover .reachout-icon, .reachout-btn:focus-visible .reachout-icon {
-      transform: scale(1.27);
+    .reachout-node.active {
+      z-index: 999;
+      transform: translate(-50%, -50%) scale(1.29) !important;
+      background: #edeafd;
+      border-color: #5e5add;
+      box-shadow: 0 16px 32px 5px #7672d339;
+      filter: none;
     }
-    /* Brand colors on hover */
-    .reachout-btn[data-platform='linkedin']:hover .reachout-icon, .reachout-btn[data-platform='linkedin']:focus-visible .reachout-icon { color: #0077b5;}
-    .reachout-btn[data-platform='github']:hover .reachout-icon, .reachout-btn[data-platform='github']:focus-visible .reachout-icon { color: #171515;}
-    .reachout-btn[data-platform='openml']:hover .reachout-icon, .reachout-btn[data-platform='openml']:focus-visible .reachout-icon { color: #fb9602;}
-    .reachout-btn[data-platform='kaggle']:hover .reachout-icon, .reachout-btn[data-platform='kaggle']:focus-visible .reachout-icon { color: #20beff;}
-    .reachout-btn[data-platform='streamlit']:hover .reachout-icon, .reachout-btn[data-platform='streamlit']:focus-visible .reachout-icon { color: #ff4b4b;}
-    .reachout-btn[data-platform='overleaf']:hover .reachout-icon, .reachout-btn[data-platform='overleaf']:focus-visible .reachout-icon { color: #46a060;}
-    .reachout-btn[data-platform='substack']:hover .reachout-icon, .reachout-btn[data-platform='substack']:focus-visible .reachout-icon { color: #ff6719;}
-    .reachout-btn[data-platform='huggingface'] .huggingface-emoji { color: #b0a4f6; transition: color 0.18s, filter 0.18s; }
-    .reachout-btn[data-platform='huggingface']:hover .huggingface-emoji,
-    .reachout-btn[data-platform='huggingface']:focus-visible .huggingface-emoji { color: #5e5add;filter: drop-shadow(0 3px 9px #9787e9aa);}
-    .reachout-btn[data-platform='email']:hover .reachout-icon,
-    .reachout-btn[data-platform='email']:focus-visible .reachout-icon { color: #cf4963; }
-    .huggingface-emoji { font-size: 2.1rem; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; transition: color 0.26s, filter 0.22s; color: #b0a4f6;}
-    /* Circle positions for 9 nodes */
-    .btn-email        { --angle: 0deg; }
-    .btn-linkedin     { --angle: 40deg; }
-    .btn-github       { --angle: 80deg; }
-    .btn-openml       { --angle: 120deg; }
-    .btn-kaggle       { --angle: 160deg; }
-    .btn-streamlit    { --angle: 200deg; }
-    .btn-overleaf     { --angle: 240deg; }
-    .btn-substack     { --angle: 280deg; }
-    .btn-huggingface  { --angle: 320deg; }
+    /* -- CENTER MESSAGE ANTI-FLICKER -- */
+    .center-message-overlay {
+      pointer-events: auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 260px; height: 130px; /* Large enough to hover center from icons */
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 1000;
+      opacity: 0; transition: opacity 0.6s; background: transparent;
+    }
+    .center-message-overlay.show { opacity: 1; }
+    .center-header {
+      background: linear-gradient(90deg, #5e5add 70%, #766afd 100%);
+      padding: 0.31em 1em 0.19em 1em;
+      color: #fff;
+      font-size: 1.47em;
+      font-weight: 700;
+      border-radius: 11px;
+      margin-bottom: 12px;
+      font-family: 'EB Garamond', serif;
+      display: inline-block;
+      box-shadow: 0 3px 19px #5e5add55;
+      letter-spacing: .03em;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.6s cubic-bezier(.6,0.6,.2,1.25), transform 1.2s cubic-bezier(.25,.85,.38,1.1);
+    }
+    .center-message-overlay.show .center-header { opacity: 1; transform: translateY(0); transition-delay: 0.15s;}
+    .center-desc { font-size: 0.99em; background: #fff;
+      color: #222; border-radius: 6px;
+      padding: 0.50em 0.9em; box-shadow: 0 2px 7px #2d2d2d12;
+      font-family: 'Roboto Mono', monospace; font-weight: 500;
+      opacity: 0; margin-top: 3px;
+      transform: translateY(10px);
+      transition: opacity 1.5s 0.18s, transform 1.2s cubic-bezier(.25,.90,0,.96) 0.19s;
+    }
+    .center-message-overlay.show .center-desc { opacity: 1; transform: translateY(0); transition-delay: 0.36s;}
     @media (max-width: 600px) {
       .reachout-graph { width: 94vw; height:94vw; min-width:220px !important; min-height:220px;}
-      .reachout-btn { width:38px; height:38px; margin: -19px 0 0 -19px;}
+      .reachout-node { width:38px; height:38px;}
       .reachout-icon { width: 24px; height: 24px; font-size: 1.13rem;}
       .huggingface-emoji { font-size: 1.1rem;}
-      .reachout-center  {width:90vw;min-height:40px;}
+      .center-message-overlay  {width:90vw;height:80px;}
       .center-header {font-size: 1em;}
       .center-desc {font-size:.83em;}
     }
   </style>
 </head>
 <body>
-  <section>
-    <h2>Reach Out &amp; Socials</h2>
-    <div class="reachout-graph-wrap">
-      <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
-        <!-- SVG circle -->
-        <svg width="100%" height="100%" viewBox="0 0 440 440">
-          <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
-        </svg>
-        <!-- Center message always statically present -->
-        <div class="reachout-center">
-          <div class="reachout-center-content" id="center-content">
-            <!-- Filled dynamically -->
-          </div>
-        </div>
-        <!-- Icons -->
-        <div class="reachout-icons">
-          <button class="reachout-btn btn-email" data-platform="email" aria-label="Email"><span class="reachout-icon"><i class="fa-solid fa-envelope"></i></span></button>
-          <button class="reachout-btn btn-linkedin" data-platform="linkedin" aria-label="LinkedIn"><span class="reachout-icon"><i class="fa-brands fa-linkedin"></i></span></button>
-          <button class="reachout-btn btn-github" data-platform="github" aria-label="GitProfile"><span class="reachout-icon"><i class="fa-brands fa-github"></i></span></button>
-          <button class="reachout-btn btn-openml" data-platform="openml" aria-label="OpenML"><span class="reachout-icon"><i class="fa-solid fa-database"></i></span></button>
-          <button class="reachout-btn btn-kaggle" data-platform="kaggle" aria-label="Kaggle"><span class="reachout-icon"><i class="fa-brands fa-kaggle"></i></span></button>
-          <button class="reachout-btn btn-streamlit" data-platform="streamlit" aria-label="Streamlit"><span class="reachout-icon"><i class="fa-solid fa-wave-square"></i></span></button>
-          <button class="reachout-btn btn-overleaf" data-platform="overleaf" aria-label="OverLeaf"><span class="reachout-icon"><svg height="32" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22"/><path d="M16 6C14 13 22 15 16 26" stroke="#393a3f" stroke-width="2.2" fill="none"/></svg></span></button>
-          <button class="reachout-btn btn-substack" data-platform="substack" aria-label="Substack"><span class="reachout-icon"><i class="fa-solid fa-envelope-open-text"></i></span></button>
-          <button class="reachout-btn btn-huggingface" data-platform="huggingface" aria-label="Hugging Face" style="background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%); border-color: #5e5add;"><span class="reachout-icon huggingface-emoji" aria-hidden="true">🤗</span></button>
+  <header>
+    <img src="https://via.placeholder.com/120" alt="Francesco Orsi Photo" />
+    <div class="header-text">
+      <h1>Francesco Orsi</h1>
+      <h2>Data Science Manager</h2>
+    </div>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#detailed-cv">Detailed CV</a>
+    <a href="#interest">Interests</a>
+    <a href="#projects">Selected Projects</a>
+    <a href="#social">Reach Out &amp; Socials</a>
+  </nav>
+  <main class="container">
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I studied <b>theoretical physics</b> followed by a focus on <b>computational neuroscience</b> before developing an international career in data science and AI. My professional journey is grounded in academic rigor, translational science, and reproducible, impactful AI methods.<br><br>
+        As a former academic researcher now managing data science initiatives at the intersection of AI, data regulation, and business, I strive to bridge the gap between technological innovation and meaningful application in complex, evolving environments. I value robust methodology, open science, and transparent, interdisciplinary collaboration.<br><br>
+        For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
+      </p>
+    </section>
+    <section id="interest">
+      <h2>Interests</h2>
+      <ul>
+        <li><span class="interest-title">Reproducible computational research:</span>
+          Ensuring that methods, code, and data in AI/ML can be independently verified, extended, and trusted across the research community and industry.
+        </li>
+        <li><span class="interest-title">Mathematical foundation of ML:</span>
+          Deep understanding of probability, statistics, optimization, and linear algebra to design rigorous algorithms and interpret their limits.
+        </li>
+        <li><span class="interest-title">Data-centric auditing and ethical AI:</span>
+          Developing processes for auditing, validating, and governing data and models, with an emphasis on fairness, robustness, and regulatory compliance in sensitive domains like healthcare and life sciences.
+        </li>
+        <li><span class="interest-title">Interpretability and transparency of models:</span>
+          Creating models whose reasoning, predictions, and limitations can be explained to both technical and non-technical stakeholders, especially where decision-making impact is high.
+        </li>
+        <li><span class="interest-title">Collaborative science and knowledge sharing:</span>
+          Engaging with multidisciplinary teams across academia and industry, contributing to open-source software, and sharing ideas in global communities.
+        </li>
+        <li><span class="interest-title">Benchmarking robust predictive models:</span>
+          Developing and evaluating machine learning models on meaningful, real-world tasks while assessing generalization and practical value.
+        </li>
+        <li><span class="interest-title">Scientific communication, mentoring, and best practices:</span>
+          Presenting research clearly, mentoring the next generation of scientists, and fostering openness in code, data, and idea exchange.
+        </li>
+        <li><span class="interest-title">Research software & scientific tools:</span>
+          Designing, building, and publishing software (including notebooks, apps, and libraries) that accelerate discovery and enable rigorous science.
+        </li>
+        <li><span class="interest-title">Academic-industry partnerships:</span>
+          Bridging theoretical work and industrial impact by driving collaborations and solutions between research institutions and business.
+        </li>
+        <li><span class="interest-title">Exploring new directions:</span>
+          Investigating generative AI, causal inference, privacy-preserving ML, and civic technology for social good.
+        </li>
+      </ul>
+    </section>
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <p>WIP</p>
+    </section>
+    <section id="social">
+      <h2>Reach Out &amp; Socials</h2>
+      <div class="reachout-graph-wrap">
+        <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
+          <svg width="100%" height="100%" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
+            <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
+          </svg>
+          <button class="reachout-node node-email"        data-platform="email"        title="Email"        tabindex="0"><span class="reachout-icon"><i class="fa-solid fa-envelope"></i></span></button>
+          <button class="reachout-node node-linkedin"     data-platform="linkedin"     title="LinkedIn"     tabindex="0"><span class="reachout-icon"><i class="fa-brands fa-linkedin"></i></span></button>
+          <button class="reachout-node node-github"       data-platform="github"       title="GitProfile"   tabindex="0"><span class="reachout-icon"><i class="fa-brands fa-github"></i></span></button>
+          <button class="reachout-node node-openml"       data-platform="openml"       title="OpenML"       tabindex="0"><span class="reachout-icon"><i class="fa-solid fa-database"></i></span></button>
+          <button class="reachout-node node-kaggle"       data-platform="kaggle"       title="Kaggle"       tabindex="0"><span class="reachout-icon"><i class="fa-brands fa-kaggle"></i></span></button>
+          <button class="reachout-node node-streamlit"    data-platform="streamlit"    title="Streamlit"    tabindex="0"><span class="reachout-icon"><i class="fa-solid fa-wave-square"></i></span></button>
+          <button class="reachout-node node-overleaf"     data-platform="overleaf"     title="OverLeaf"     tabindex="0"><span class="reachout-icon"><svg height="32" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22"/><path d="M16 6C14 13 22 15 16 26" stroke="#393a3f" stroke-width="2.2" fill="none"/></svg></span></button>
+          <button class="reachout-node node-substack"     data-platform="substack"     title="Substack"     tabindex="0"><span class="reachout-icon"><i class="fa-solid fa-envelope-open-text"></i></span></button>
+          <button class="reachout-node node-huggingface"  data-platform="huggingface"  title="Hugging Face" tabindex="0" style="background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%); border-color: #5e5add;">
+            <span class="reachout-icon huggingface-emoji" aria-hidden="true">🤗</span>
+          </button>
+          <div class="center-message-overlay" id="center-message-overlay"></div>
         </div>
       </div>
-    </div>
-    <script>
-      // Platform data
-      const platforms = {
-        email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
-        linkedin:    { name: "LinkedIn", desc: "Connect on LinkedIn for professional network building and updates." },
-        github:      { name: "GitProfile", desc: "Explore my open source & code work. Feedback and PRs welcome!" },
-        openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." },
-        kaggle:      { name: "Kaggle", desc: "Discover my competition entries and data notebooks." },
-        streamlit:   { name: "Streamlit", desc: "I create interactive ML apps and analytics demos in Streamlit." },
-        overleaf:    { name: "OverLeaf", desc: "Collaborative scientific writing — join me on Overleaf!" },
-        substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
-        huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
-      };
-      // Logic, mouseover ANY icon populates center
-      const nodes = Array.from(document.querySelectorAll('.reachout-btn'));
-      const center = document.getElementById('center-content');
-      let timer = null;
-
-      function setCenterContent(platform, fade=true) {
-        if (!platforms[platform]) {
-          center.innerHTML = "";
-          center.classList.remove('reveal');
-          return;
-        }
-        center.innerHTML = `<span class="center-header">${platforms[platform].name}</span><span class="center-desc">${platforms[platform].desc}</span>`;
-        setTimeout(()=>center.classList.add('reveal'), fade?100:0);
-      }
-
-      // Mouseover/focus = show text; mouseleave/blur = hide
-      nodes.forEach(node=>{
-        node.addEventListener('mouseenter', function() {
-          setCenterContent(node.getAttribute('data-platform'), true);
-        });
-        node.addEventListener('mouseleave', function() {
-          setTimeout(()=>center.classList.remove('reveal'), 10);
-        });
-        node.addEventListener('focus', function() {
-          setCenterContent(node.getAttribute('data-platform'), true);
-        });
-        node.addEventListener('blur', function() {
-          center.classList.remove('reveal');
-        });
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Francesco Orsi | Data Science Manager
+  </footer>
+  <script>
+    // Platform data
+    const platforms = {
+      email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
+      linkedin:    { name: "LinkedIn", desc: "Connect on LinkedIn for professional network building and updates." },
+      github:      { name: "GitProfile", desc: "Explore my open source & code work. Feedback and PRs welcome!" },
+      openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." },
+      kaggle:      { name: "Kaggle", desc: "Discover my competition entries and data notebooks." },
+      streamlit:   { name: "Streamlit", desc: "I create interactive ML apps and analytics demos in Streamlit." },
+      overleaf:    { name: "OverLeaf", desc: "Collaborative scientific writing — join me on Overleaf!" },
+      substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
+      huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
+    };
+    const graph = document.getElementById('reachout-graph');
+    const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
+    const overlay = document.getElementById('center-message-overlay');
+    let lockActive = false;
+    let heldNode = null;
+    let resetTO = null;
+    // Show overlay for platform
+    function showMessage(plat, lock=false) {
+      if (!plat) { overlay.classList.remove('show','lock'); heldNode=null; return; }
+      overlay.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
+      overlay.classList.add('show');
+      if(lock) overlay.classList.add('lock');
+      else overlay.classList.remove('lock');
+      heldNode = lock ? plat : null;
+    }
+    // Node hover: reveal and track current
+    nodes.forEach(node=>{
+      node.addEventListener('mouseenter', function() {
+        if (lockActive) return;
+        showMessage(node.getAttribute('data-platform'), false);
       });
-
-      // Optional: touch devices tap support
-      nodes.forEach(node=>{
-        node.addEventListener('touchstart', function(e){
-          setCenterContent(node.getAttribute('data-platform'), false);
-          nodes.forEach(n=>{if(n!==node)n.blur();});
-        });
+      node.addEventListener('focus', function() {
+        if (lockActive) return;
+        showMessage(node.getAttribute('data-platform'), false);
       });
-    </script>
-  </section>
+      node.addEventListener('mouseleave', function() {
+        if (lockActive) return; // overlay stays if message overlay still hovered
+        setTimeout(()=> {
+          if(document.querySelector(':hover') !== overlay) { showMessage(null); }
+        }, 10);
+      });
+      node.addEventListener('blur', function() {
+        if (lockActive) return;
+        showMessage(null);
+      });
+      node.addEventListener('click', function(e){
+        e.preventDefault();
+        if (lockActive) return;
+        lockActive = true;
+        showMessage(node.getAttribute('data-platform'), true);
+        nodes.forEach(n=>n.classList.remove('active'));
+        node.classList.add('active');
+        if(resetTO) clearTimeout(resetTO);
+        resetTO = setTimeout(()=>{
+          lockActive = false;
+          node.classList.remove('active');
+          showMessage(null,false);
+        }, 4200);
+      });
+      node.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' ') node.click();
+      });
+    });
+    overlay.addEventListener('mouseenter', function(){
+      if (lockActive) return;
+      if(heldNode) showMessage(heldNode, false);
+    });
+    overlay.addEventListener('mouseleave', function(){
+      if (lockActive) return;
+      showMessage(null,false);
+    });
+    graph.addEventListener('mouseleave', function() {
+      if (!lockActive) showMessage(null,false);
+    });
+  </script>
 </body>
 </html>
-
 
 

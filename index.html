@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI/ML Professional & Research Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>AI/ML Professional & Research Portfolio</title  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Google Fonts for academic style -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Lato:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Lato:400,700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
   <style>
     body {
       background: #f7f9fa;
       color: #21243c;
-      font-family: 'Lato', Arial, sans-serif;
+      font-family: "Lato", Arial, sans-serif;
       line-height: 1.7;
       margin: 0;
       padding: 0;
@@ -37,7 +43,7 @@
       max-width: 600px;
     }
     header h1 {
-      font-family: 'Merriweather', serif;
+      font-family: "Merriweather", serif;
       font-size: 2.6rem;
       margin-bottom: 0.6rem;
       letter-spacing: 1.5px;
@@ -67,7 +73,8 @@
       transition: background 0.3s;
     }
     nav a:hover {
-      background: #dce3ed; color: #13203a;
+      background: #dce3ed;
+      color: #13203a;
     }
     .container {
       max-width: 880px;
@@ -77,22 +84,34 @@
       box-shadow: 0 3px 20px #bdc5d64b;
       padding: 2.5rem 2rem;
     }
-    h2, h3 {
-      font-family: 'Merriweather', serif;
+    h2,
+    h3 {
+      font-family: "Merriweather", serif;
       color: #22406e;
       margin-top: 1.2em;
     }
-    h2 { font-size: 1.5rem; }
-    h3 { font-size: 1.1rem; margin-bottom: 0.5em; }
-    section { margin-bottom: 2.5rem; }
-    ul, li { font-size: 1.02rem; }
+    h2 {
+      font-size: 1.5rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5em;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    ul,
+    li {
+      font-size: 1.02rem;
+    }
     .activities-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 1.2rem;
       margin-bottom: 1.4rem;
     }
-    .activities-table th, .activities-table td {
+    .activities-table th,
+    .activities-table td {
       border: 1px solid #d6dae5;
       padding: 0.7em 1em;
       text-align: left;
@@ -108,7 +127,7 @@
     }
     .contact-info a {
       color: #395b89;
-      text-decoration: underline;
+      text-decoration: none;
     }
     footer {
       text-align: center;
@@ -119,14 +138,60 @@
       border-top: 1px solid #dee2ee;
       background: #f2f3f7;
     }
+    .platform-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .platform {
+      background: #e5e9ef;
+      border-radius: 8px;
+      padding: 1rem 1.3rem;
+      min-width: 140px;
+      box-shadow: 0 2px 8px rgba(57, 91, 137, 0.15);
+      text-align: center;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .platform:hover {
+      background: #395b89;
+      box-shadow: 0 4px 12px rgba(57, 91, 137, 0.5);
+      color: #f7f9fa;
+    }
+    .platform a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .platform i {
+      font-size: 1.8rem;
+      margin-bottom: 0.35rem;
+      display: block;
+      color: #395b89;
+      transition: color 0.3s;
+    }
+    .platform:hover i {
+      color: #f7f9fa;
+    }
+
     @media (max-width: 900px) {
-      .container { padding: 1.1rem 0.5rem; }
-      header, footer { padding: 1.2rem 0.7rem; }
+      .container {
+        padding: 1.1rem 0.5rem;
+      }
+      header,
+      footer {
+        padding: 1.2rem 0.7rem;
+      }
       header {
         flex-direction: column;
         gap: 1rem;
       }
-      header h1, header h2 {
+      header h1,
+      header h2 {
         text-align: center;
       }
       header div.header-text {
@@ -137,7 +202,7 @@
 </head>
 <body>
   <header>
-    <img src="https://via.placeholder.com/120" alt="Profile Picture">
+    <img src="https://via.placeholder.com/120" alt="Profile Picture" />
     <div class="header-text">
       <h1>Dr. [Your Name]</h1>
       <h2>AI/ML Manager & Scientific Researcher | Analytics - Audit & Risk, Roche</h2>
@@ -146,7 +211,7 @@
 
   <nav>
     <a href="#about">About</a>
-    <a href="#interests">Research Interests</a>
+    <a href="#interest">Interests</a>
     <a href="#activities">Academic Activities</a>
     <a href="#projects">Selected Projects</a>
     <a href="#contact">Contact</a>
@@ -156,15 +221,19 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        I am a <strong>former academic researcher</strong> currently serving as an <strong>AI/ML manager</strong> in the pharmaceutical sector, with a focus on analytics for Audit & Risk at Roche. My professional ethos is rooted in scholarly rigor, translational science, and the advancement of reproducible methods in data-driven research and applied artificial intelligence.
+        I am a <strong>former academic researcher</strong> currently serving as an
+        <strong>AI/ML manager</strong> in the pharmaceutical sector, with a focus on analytics for Audit &amp; Risk at Roche.
+        My professional ethos is rooted in scholarly rigor, translational science, and the advancement of reproducible
+        methods in data-driven research and applied artificial intelligence.
       </p>
       <p>
-        My mission is to bridge the gap between state-of-the-art machine learning innovation and trustworthy, real-world applications within highly regulated environments. I continually advocate for open science, robust research methodology, and transparent collaboration.
+        My mission is to bridge the gap between state-of-the-art machine learning innovation and trustworthy, real-world applications within highly
+        regulated environments. I continually advocate for open science, robust research methodology, and transparent collaboration.
       </p>
     </section>
 
-    <section id="interests">
-      <h2>Research Interests</h2>
+    <section id="interest">
+      <h2>Interests</h2>
       <ul>
         <li>Reproducible computational research in AI/ML</li>
         <li>Data-centric auditing, risk minimization, and ethical AI in healthcare</li>
@@ -176,40 +245,32 @@
 
     <section id="activities">
       <h2>Academic & Professional Activities</h2>
-      <table class="activities-table">
-        <thead>
-          <tr>
-            <th>Platform</th>
-            <th>Focus</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><i class="fa-solid fa-database"></i> <a href="https://www.openml.org/" target="_blank" rel="noopener">OpenML</a></td>
-            <td>Open sharing of annotated datasets, algorithms, and machine learning benchmarks</td>
-          </tr>
-          <tr>
-            <td><i class="fa-solid fa-trophy"></i> <a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a></td>
-            <td>Collaborative participation in global data science competitions and reproducibility studies</td>
-          </tr>
-          <tr>
-            <td><i class="fa-solid fa-stream"></i> <a href="https://streamlit.io/" target="_blank" rel="noopener">Streamlit</a></td>
-            <td>Development of interactive scientific dashboards and reproducible code artifacts</td>
-          </tr>
-          <tr>
-            <td><i class="fa-solid fa-file-alt"></i> <a href="https://www.overleaf.com/" target="_blank" rel="noopener">OverLeaf</a></td>
-            <td>Co-authoring and publishing peer-reviewed research, technical documentation, and white papers</td>
-          </tr>
-          <tr>
-            <td><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></td>
-            <td>Professional networking and scholarly discourse on analytics and AI in pharma</td>
-          </tr>
-          <tr>
-            <td><i class="fa-solid fa-envelope-open-text"></i> <a href="https://substack.com/" target="_blank" rel="noopener">Substack</a></td>
-            <td>Publishing essays and research summaries on advancements in AI, ML, and data audit</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="platform-links">
+        <div class="platform" title="OpenML: sharing datasets and benchmarks">
+          <i class="fa-solid fa-database"></i>
+          <a href="https://www.openml.org/" target="_blank" rel="noopener noreferrer">OpenML</a>
+        </div>
+        <div class="platform" title="Kaggle: competitions and reproducibility studies">
+          <i class="fa-solid fa-trophy"></i>
+          <a href="https://www.kaggle.com/" target="_blank" rel="noopener noreferrer">Kaggle</a>
+        </div>
+        <div class="platform" title="Streamlit: interactive scientific dashboards">
+          <i class="fa-solid fa-stream"></i>
+          <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer">Streamlit</a>
+        </div>
+        <div class="platform" title="OverLeaf: collaborative scientific writing">
+          <i class="fa-solid fa-file-alt"></i>
+          <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">OverLeaf</a>
+        </div>
+        <div class="platform" title="LinkedIn: professional networking">
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="platform" title="Substack: publishing essays and summaries">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <a href="https://substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
+        </div>
+      </div>
     </section>
 
     <section id="projects">
@@ -218,14 +279,36 @@
     </section>
 
     <section id="contact">
-      <h2>Contact & Academic Profiles</h2>
-      <div class="contact-info">
-        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>
-          Find me on:
-          <a href="[Your LinkedIn Profile]" target="_blank">LinkedIn</a> |
-          <a href="[Your Substack Page]" target="_blank">Substack</a>
-        </p>
+      <h2>Contact</h2>
+      <div class="platform-links" style="justify-content: center;">
+        <div class="platform" title="Email me">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:your.email@example.com">your.email@example.com</a>
+        </div>
+        <div class="platform" title="LinkedIn profile">
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="[Your LinkedIn Profile]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="platform" title="Substack newsletter">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <a href="[Your Substack Page]" target="_blank" rel="noopener noreferrer">Substack</a>
+        </div>
+        <div class="platform" title="OpenML profile">
+          <i class="fa-solid fa-database"></i>
+          <a href="https://www.openml.org/" target="_blank" rel="noopener noreferrer">OpenML</a>
+        </div>
+        <div class="platform" title="Kaggle profile">
+          <i class="fa-solid fa-trophy"></i>
+          <a href="https://www.kaggle.com/" target="_blank" rel="noopener noreferrer">Kaggle</a>
+        </div>
+        <div class="platform" title="Streamlit apps">
+          <i class="fa-solid fa-stream"></i>
+          <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer">Streamlit</a>
+        </div>
+        <div class="platform" title="OverLeaf projects">
+          <i class="fa-solid fa-file-alt"></i>
+          <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">OverLeaf</a>
+        </div>
       </div>
     </section>
   </main>

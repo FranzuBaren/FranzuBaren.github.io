@@ -2,10 +2,235 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>hello world</title>
+  <title>AI & ML Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #16192c 0%, #2266b1 100%);
+      color: #f4f4fa;
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      color: #49e9cb;
+      text-shadow: 0 0 20px #2266b199;
+    }
+    header p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      color: #b5c1e3;
+    }
+    .highlight {
+      color: #d89aff;
+      font-weight: bold;
+      background: rgba(36,28,68,0.3);
+      padding: 0.25em 0.5em;
+      border-radius: 8px;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      color: #ffffff;
+      background: #1e304d;
+      text-decoration: none;
+      margin: 0 1rem;
+      padding: 0.6em 1.3em;
+      border-radius: 25px;
+      font-size: 1rem;
+      transition: background 0.3s;
+      box-shadow: 0 2px 15px #58e2b799;
+    }
+    nav a:hover {
+      background: #49e9cb;
+      color: #0a182e;
+    }
+    section {
+      max-width: 820px;
+      margin: 2rem auto 2.5rem auto;
+      background: rgba(35,40,80,0.94);
+      border-radius: 18px;
+      padding: 2rem 1.6rem;
+      box-shadow: 0 16px 40px 0 #2c519a99;
+    }
+    .icons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem 0 1rem 0;
+    }
+    .icons i {
+      font-size: 2.2rem;
+      color: #d89aff;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .icons i:hover {
+      color: #49e9cb;
+      transform: scale(1.2) rotate(-6deg);
+    }
+    .projects {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .card {
+      background: rgba(52, 69, 110, 0.82);
+      color: #eafffa;
+      padding: 1rem 1.4rem;
+      border-radius: 12px;
+      width: 250px;
+      box-shadow: 0 6px 28px #1F304029;
+      margin-bottom: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-7px) scale(1.03);
+      box-shadow: 0 14px 40px #49e9cb44;
+    }
+    .card h3 {
+      margin-top: 0.6rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: #49e9cb;
+    }
+    .card p {
+      font-size: 0.97rem;
+      color: #c6cffa;
+    }
+    .card .fa-up-right-from-square {
+      color: #b479e7;
+      margin-left: 0.4em;
+    }
+    footer {
+      text-align: center;
+      color: #a8adba;
+      font-size: 0.95rem;
+      padding: 2rem 1rem 1rem 1rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 800px) {
+      .projects { flex-direction: column; align-items: center; }
+      section { padding: 1.3rem 0.8rem; }
+      .card { width: 100%; max-width: 340px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Francesco Orsi</h1>
-  <p>Welcome to my GitHub!</p>
+  <header>
+    <h1>🤖 AI + ML Portfolio</h1>
+    <p>
+      Welcome to my <span class="highlight">Machine Learning & Artificial Intelligence</span> playground.<br>
+      Passionate about building intelligent systems, exploring neural networks, and making data-driven magic happen!
+    </p>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#platforms">Activities</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="icons">
+      <i class="fas fa-brain" title="Neural Networks"></i>
+      <i class="fas fa-robot" title="AI Robotics"></i>
+      <i class="fas fa-chart-line" title="Data Science"></i>
+      <i class="fas fa-cubes" title="Deep Learning"></i>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>👩‍💻 About Me</h2>
+    <p>
+      I am a <span class="highlight">former researcher</span> turned <span class="highlight">AI/ML manager</span> in the pharmaceutical domain.
+      Currently, I am working in the <span class="highlight">analytics space in Audit & Risk at Roche</span>.
+      My professional journey is driven by a passion for <b>reproducible coding</b>, rigorous research, and the open sharing of ideas to advance our industry.
+      I focus on making state-of-the-art machine learning and AI practical and impactful within regulated settings, fostering transparency, collaboration, and lasting value.
+    </p>
+  </section>
+
+  <section id="platforms">
+    <h2>🌐 Where I Share, Build, and Collaborate</h2>
+    <p>
+      Explore my activities across leading platforms for science, analytics, and professional growth:
+    </p>
+    <div class="projects">
+      <div class="card">
+        <h3><i class="fa-solid fa-database"></i> OpenML</h3>
+        <p>Sharing and benchmarking ML datasets and models.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-trophy"></i> Kaggle</h3>
+        <p>Competing and collaborating on data science challenges.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-stream"></i> Streamlit</h3>
+        <p>Building interactive ML apps and dashboards.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-file-alt"></i> OverLeaf</h3>
+        <p>Collaborative scientific writing and publishing.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-brands fa-linkedin"></i> LinkedIn</h3>
+        <p>Professional networking and sharing insights.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-envelope-open-text"></i> Substack</h3>
+        <p>Publishing newsletters on AI/ML topics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>🛠️ Featured Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>GAN Art Generator <i class="fa-solid fa-up-right-from-square"></i></h3>
+        <p>Turning random noise into digital artwork using Generative Adversarial Networks.</p>
+      </div>
+      <div class="card">
+        <h3>Smart Predict API <i class="fa-solid fa-up-right-from-square"></i></h3>
+        <p>Deploying custom ML models for real-time analytics and scalable applications.</p>
+      </div>
+      <div class="card">
+        <h3>AI Chatbot Suite <i class="fa-solid fa-up-right-from-square"></i></h3>
+        <p>Intelligent conversational bots that enhance user experience and support business operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>📬 Get in Touch</h2>
+    <p>
+      Interested in collaborating, exchanging ideas on AI, ML, or pharmaceutical data science, or discussing best practices in analytics and audit?<br>
+      <span class="highlight">Let's talk AI!</span>
+    </p>
+    <p>Email: <a href="mailto:your.email@example.com" style="color: #49e9cb;">your.email@example.com</a></p>
+    <p>
+      Find me on LinkedIn: [Your LinkedIn Profile]<br>
+      Subscribe to my Substack: [Your Substack Page]
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 AI + ML Portfolio. Always evolving. Powered by curiosity from the analytics space in Audit & Risk at Roche.
+  </footer>
 </body>
 </html>

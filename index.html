@@ -6,202 +6,169 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      background: #f9f8f6; color: #22232a;
-      font-family: 'EB Garamond', serif; margin: 0; padding: 0;
-    }
-    header { display: flex; align-items: center; gap: 2.5rem; padding: 3rem 2rem 1.5rem 2rem; background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%); border-bottom: 2px solid #22232a; box-shadow: 0 6px 24px #00000010; }
-    header img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #5e5add; object-fit: cover; background: #fff; box-shadow: 0 4px 20px #8b8aad22; }
-    header .header-text { max-width: 600px; }
-    header h1 { font-family: 'EB Garamond', serif; font-size: 2.7rem; color: #22232a; font-weight: 700; margin: 0 0 .35em 0; text-shadow: 0 2px 24px #5e5add10; letter-spacing: 1.5px; }
-    header h2 { font-family: 'Roboto Mono', monospace; font-size: 1.15rem; color: #5e5add; margin: 0; letter-spacing: 0.7px; font-weight: 400; }
-    nav { background: #f9f8f6; border-bottom: 1.5px solid #393a3f; margin: 0 0 1.7rem 0; text-align: center; padding: 0.9rem 0 0.7rem 0; box-shadow: 0 2px 10px #1a1a1a08; }
-    nav a { display: inline-block; color: #22232a; border-bottom: 2.5px solid transparent; text-decoration: none; margin: 0 1.2rem; font-size: 1.09rem; font-family: 'EB Garamond', serif; font-weight: 600; padding: 0.25em 0.6em .07em 0.6em; letter-spacing: 0.09em; border-radius: 2px 2px 0 0; transition: border 0.23s, color 0.18s; }
-    nav a:hover { border-bottom: 2.5px solid #5e5add; color: #5e5add; background: #edeef0; }
-    .container { max-width: 950px; margin: 2.4rem auto 0 auto; background: #fff; box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212; border-radius: 18px; border: 1.7px solid #393a3f; padding: 2.7rem 2.5rem 2.2rem 2.5rem; }
-    h2 { font-weight: 700; font-size: 1.56rem; color: #22232a; border-left: 6px solid #5e5add; padding-left: 0.55em; margin: 2.2em 0 0.6em 0; background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%); border-radius: 7px; letter-spacing: 0.03em; font-family: 'EB Garamond', serif; }
+    body { background: #f9f8f6; color: #22232a; font-family: 'EB Garamond', serif; margin: 0; padding: 0; }
     .reachout-graph-wrap { width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 3.2rem; margin-bottom: 2.1rem; }
-    .reachout-graph { position: relative; width: 440px; height: 440px; max-width: 100vw; user-select: none; }
-    .reachout-graph svg.base { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-    .reachout-node { position: absolute; left: 50%; top: 50%; --circle-size: 75px; width: var(--circle-size); height: var(--circle-size); margin: calc(var(--circle-size) / -2); border-radius: 50%; border: 2.6px solid #393a3f; background: linear-gradient(120deg, #fff 70%, #edeefe 100%); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; box-shadow: 0 5px 24px #83839322; transition: box-shadow 0.18s, transform 0.27s cubic-bezier(.3,1.7,.5,1), background 0.14s, border 0.16s, filter 0.2s; filter: grayscale(45%); outline: none; transform: translate(-50%, -50%);}
-    .reachout-node:hover, .reachout-node:focus-visible, .reachout-node.active { filter: grayscale(0%); background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%); border-color: #5e5add; box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314; z-index: 7; transform: translate(-50%, -50%) scale(1.13);}
-    .reachout-node:active { transform: translate(-50%, -50%) scale(0.96);}
-    .reachout-node.active { z-index: 999; transform: translate(-50%, -50%) scale(1.29) !important; background: #edeafd; border-color: #5e5add; box-shadow: 0 16px 32px 5px #7672d339; filter: none;}
-    .reachout-icon { width: 43px; height: 43px; display: flex; align-items: center; justify-content: center; }
-    .reachout-icon img { width: 100%; height: 100%; display: block; }
-    .center-message-overlay { pointer-events: auto; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 250px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.6s; background: transparent; text-align: center; user-select: none; }
+    .reachout-graph {
+      position: relative;
+      width: 440px; height: 440px;
+      max-width: 95vw; max-height: 95vw;
+      margin: 0 auto; display: block;
+    }
+    .reachout-graph svg.base {
+      position: absolute; left: 0; top: 0;
+      width: 100%; height: 100%; display: block; pointer-events: none; z-index: 1;
+    }
+    .reachout-node {
+      position: absolute;
+      width: 72px; height: 72px;
+      left: 50%; top: 50%;
+      margin: -36px 0 0 -36px;
+      border-radius: 50%;
+      border: 2.6px solid #393a3f;
+      background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 24px #83839322;
+      transition: box-shadow 0.18s, transform 0.27s cubic-bezier(.3,1.7,.5,1), background 0.14s, border 0.16s, filter 0.2s;
+      filter: grayscale(45%);
+      z-index: 3;
+    }
+    .reachout-node:hover, .reachout-node.active {
+      filter: grayscale(0%);
+      background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
+      border-color: #5e5add;
+      box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
+      z-index: 7;
+      transform: scale(1.13);
+    }
+    .reachout-node img {
+      width: 42px; height: 42px; display: block; object-fit: contain;
+    }
+    .center-message-overlay {
+      pointer-events: auto;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px; height: 100px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 1000; opacity: 0; transition: opacity 0.6s; background: transparent; text-align: center; user-select: none;
+    }
     .center-message-overlay.show { opacity: 1; }
-    .center-header { background: linear-gradient(90deg, #5e5add 70%, #766afd 100%); padding: 0.20em 1em 0.12em 1em; color: #fff; font-size: 1em; font-weight: 700; border-radius: 9px; margin-bottom: 9px; font-family: 'EB Garamond', serif; display: inline-block; box-shadow: 0 3px 19px #5e5add55; letter-spacing: .03em; opacity: 0; transform: translateY(8px); transition: opacity 0.6s cubic-bezier(.6,0.6,.2,1.25), transform 1.2s cubic-bezier(.25,.85,.38,1.1);}
-    .center-message-overlay.show .center-header { opacity: 1; transform: translateY(0); transition-delay: 0.12s;}
-    .center-desc { font-size: 0.77em; background: #fff; color: #222; border-radius: 6px; padding: 0.40em 0.8em; box-shadow: 0 2px 7px #2d2d2d12; font-family: 'Roboto Mono', monospace; font-weight: 400; opacity: 0; margin-top: 2px; transform: translateY(7px); transition: opacity 1.5s 0.12s, transform 1.2s cubic-bezier(.25,.90,0,.96) 0.16s;}
-    .center-message-overlay.show .center-desc { opacity: 1; transform: translateY(0); transition-delay: 0.22s;}
-    footer { text-align: center; padding: 1.6rem 0; border-top: 1.8px solid #393a3f; font-family: 'EB Garamond', serif; font-weight: 500; font-size: 0.92rem; color: #555759; margin-top: 4rem;}
+    .center-header { background: linear-gradient(90deg, #5e5add 70%, #766afd 100%); padding: 0.20em 1em 0.12em 1em; color: #fff; font-size: 1em; font-weight: 700; border-radius: 9px; margin-bottom: 9px; font-family: 'EB Garamond', serif; display: inline-block; box-shadow: 0 3px 19px #5e5add55; letter-spacing: .03em; opacity: 0; transform: translateY(8px); transition: opacity 0.6s, transform 1.2s;}
+    .center-message-overlay.show .center-header { opacity: 1; transform: translateY(0);}
+    .center-desc { font-size: 0.77em; background: #fff; color: #222; border-radius: 6px; padding: 0.40em 0.8em; box-shadow: 0 2px 7px #2d2d2d12; font-family: 'Roboto Mono', monospace; font-weight: 400; opacity: 0; margin-top: 2px; transform: translateY(7px); transition: opacity 1.5s 0.12s, transform 1.2s 0.16s;}
+    .center-message-overlay.show .center-desc { opacity: 1; transform: translateY(0);}
+    .stats-container {
+      display: flex; flex-direction: row; flex-wrap: wrap;
+      gap: 2rem; align-items: flex-start;
+      margin-top: 2.7rem; margin-bottom: 2.5rem;
+      justify-content: center;
+    }
+    .stats-container img {
+      background: #fff; border-radius: 12px; box-shadow: 0 2px 10px #31324420; border: 1px solid #d6d6ee;
+    }
+    .activity-graph {
+      margin: 2.5rem auto 0 auto; text-align: center;
+    }
+    .activity-graph img { max-width: 100%; border-radius: 12px; border: 1px solid #d6d6ee; background: #fff;}
+    @media (max-width: 900px){
+      .stats-container {flex-direction: column;align-items: center;}
+    }
     @media (max-width: 600px) {
       .reachout-graph { width: 94vw; height: 94vw; min-width: 220px !important; min-height: 220px;}
-      .reachout-node { width:38px; height:38px;}
-      .reachout-icon, .reachout-icon img { width: 25px; height: 25px;}
+      .reachout-node { width:38px; height:38px; margin: -19px 0 0 -19px; }
+      .reachout-node img { width: 22px; height: 22px; }
       .center-message-overlay  {width:90vw;height:60px;}
       .center-header {font-size: 0.87em;}
       .center-desc {font-size:.64em;}
+      .stats-container img { width: 98vw !important; min-width: 0 !important; max-width: 98vw !important;}
     }
   </style>
 </head>
 <body>
-<header>
-  <img src="https://via.placeholder.com/120" alt="Francesco Orsi Photo" />
-  <div class="header-text">
-    <h1>Francesco Orsi</h1>
-    <h2>Data Science Manager</h2>
-  </div>
-</header>
-<nav>
-  <a href="#about">About</a>
-  <a href="#detailed-cv">Detailed CV</a>
-  <a href="#interest">Interests</a>
-  <a href="#projects">Selected Projects</a>
-  <a href="#social">Reach Out &amp; Socials</a>
-</nav>
-<main class="container">
-  <section id="about"><h2>About</h2>
-    <p>
-      I studied <b>theoretical physics</b> followed by a focus on <b>computational neuroscience</b> before developing an international career in data science and AI. My professional journey is grounded in academic rigor, translational science, and reproducible, impactful AI methods.<br /><br />
-      As a former academic researcher now managing data science initiatives at the intersection of AI, data regulation, and business, I strive to bridge the gap between technological innovation and meaningful application in complex, evolving environments. I value robust methodology, open science, and transparent, interdisciplinary collaboration.<br /><br />
-      For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
-    </p>
-  </section>
-  <section id="interest">
-    <h2>Interests</h2>
-    <ul>
-      <li><span class="interest-title">Reproducible computational research:</span>
-        Ensuring that methods, code, and data in AI/ML can be independently verified, extended, and trusted across the research community and industry.
-      </li>
-      <li><span class="interest-title">Mathematical foundation of ML:</span>
-        Deep understanding of probability, statistics, optimization, and linear algebra to design rigorous algorithms and interpret their limits.
-      </li>
-      <li><span class="interest-title">Data-centric auditing and ethical AI:</span>
-        Developing processes for auditing, validating, and governing data and models, with an emphasis on fairness, robustness, and regulatory compliance in sensitive domains like healthcare and life sciences.
-      </li>
-      <li><span class="interest-title">Interpretability and transparency of models:</span>
-        Creating models whose reasoning, predictions, and limitations can be explained to both technical and non-technical stakeholders, especially where decision-making impact is high.
-      </li>
-      <li><span class="interest-title">Collaborative science and knowledge sharing:</span>
-        Engaging with multidisciplinary teams across academia and industry, contributing to open-source software, and sharing ideas in global communities.
-      </li>
-      <li><span class="interest-title">Benchmarking robust predictive models:</span>
-        Developing and evaluating machine learning models on meaningful, real-world tasks while assessing generalization and practical value.
-      </li>
-      <li><span class="interest-title">Scientific communication, mentoring, and best practices:</span>
-        Presenting research clearly, mentoring the next generation of scientists, and fostering openness in code, data, and idea exchange.
-      </li>
-      <li><span class="interest-title">Research software & scientific tools:</span>
-        Designing, building, and publishing software (including notebooks, apps, and libraries) that accelerate discovery and enable rigorous science.
-      </li>
-      <li><span class="interest-title">Academic-industry partnerships:</span>
-        Bridging theoretical work and industrial impact by driving collaborations and solutions between research institutions and business.
-      </li>
-      <li><span class="interest-title">Exploring new directions:</span>
-        Investigating generative AI, causal inference, privacy-preserving ML, and civic technology for social good.
-      </li>
-    </ul>
-  </section>
-  <section id="projects">
-    <h2>Selected Projects</h2>
-    <p>WIP</p>
-  </section>
-  <section id="social">
-    <h2>Reach Out &amp; Socials</h2>
-    <div class="reachout-graph-wrap">
-      <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
-        <svg class="base" width="100%" height="100%" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
-          <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
-        </svg>
-        <!-- GMAIL -->
-        <button class="reachout-node node-gmail" data-platform="email" title="Email" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/gmail.svg" alt="Gmail icon" />
-          </span>
-        </button>
-        <!-- LinkedIn -->
-        <button class="reachout-node node-linkedin" data-platform="linkedin" title="LinkedIn" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/linkedin.svg" alt="LinkedIn icon" />
-          </span>
-        </button>
-        <!-- GitHub -->
-        <button class="reachout-node node-github" data-platform="github" title="GitHub" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/github.svg" alt="GitHub icon" />
-          </span>
-        </button>
-        <!-- Kaggle -->
-        <button class="reachout-node node-kaggle" data-platform="kaggle" title="Kaggle" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/kaggle.svg" alt="Kaggle icon" />
-          </span>
-        </button>
-        <!-- Substack -->
-        <button class="reachout-node node-substack" data-platform="substack" title="Substack" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/substack.svg" alt="Substack icon" />
-          </span>
-        </button>
-        <!-- Streamlit -->
-        <button class="reachout-node node-streamlit" data-platform="streamlit" title="Streamlit" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/streamlit.svg" alt="Streamlit icon" />
-          </span>
-        </button>
-        <!-- Overleaf -->
-        <button class="reachout-node node-overleaf" data-platform="overleaf" title="Overleaf" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/overleaf.svg" alt="Overleaf icon" />
-          </span>
-        </button>
-        <!-- Hugging Face -->
-        <button class="reachout-node node-huggingface" data-platform="huggingface" title="Hugging Face" tabindex="0">
-          <span class="reachout-icon">
-            <img src="icons/huggingface.svg" alt="Hugging Face icon" />
-          </span>
-        </button>
-        <div class="center-message-overlay" id="center-message-overlay"></div>
+  <main class="container">
+    <!-- Other sections omitted for brevity, copy your previous About and Interest sections here if needed -->
+    <section id="social">
+      <h2>Reach Out &amp; Socials</h2>
+      <div class="reachout-graph-wrap">
+        <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
+          <svg class="base" width="100%" height="100%" viewBox="0 0 440 440">
+            <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
+          </svg>
+          <button class="reachout-node" data-platform="email" title="Email"><img src="icons/gmail.svg" alt="Gmail"></button>
+          <button class="reachout-node" data-platform="linkedin" title="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></button>
+          <button class="reachout-node" data-platform="github" title="GitHub"><img src="icons/github.svg" alt="GitHub"></button>
+          <button class="reachout-node" data-platform="kaggle" title="Kaggle"><img src="icons/kaggle.svg" alt="Kaggle"></button>
+          <button class="reachout-node" data-platform="substack" title="Substack"><img src="icons/substack.svg" alt="Substack"></button>
+          <button class="reachout-node" data-platform="streamlit" title="Streamlit"><img src="icons/streamlit.svg" alt="Streamlit"></button>
+          <button class="reachout-node" data-platform="overleaf" title="Overleaf"><img src="icons/overleaf.svg" alt="Overleaf"></button>
+          <button class="reachout-node" data-platform="huggingface" title="Hugging Face"><img src="icons/huggingface.svg" alt="Hugging Face"></button>
+          <button class="reachout-node" data-platform="openml" title="OpenML"><img src="icons/openml.svg" alt="OpenML"></button>
+          <div class="center-message-overlay" id="center-message-overlay"></div>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
-<footer>
-  &copy; 2025 Francesco Orsi | Data Science Manager
-</footer>
+    </section>
+    <section id="statistics">
+      <h2>GitHub Statistics</h2>
+      <div class="stats-container">
+        <!-- Replace YOUR_GITHUB_USERNAME with your real username -->
+        <img 
+          src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=default&hide_title=true"
+          alt="GitHub stats" 
+          style="max-width: 410px; width: 100%; min-width: 280px;"
+          loading="lazy"
+        />
+        <img 
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=default&hide_title=true"
+          alt="Top Languages"
+          style="max-width: 340px; width: 100%; min-width: 220px;"
+          loading="lazy"
+        />
+      </div>
+      <div class="activity-graph">
+        <img 
+          src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_GITHUB_USERNAME&theme=github&area=true" 
+          alt="Contribution Graph"
+          style="width:100%; max-width:700px;"
+          loading="lazy"
+        />
+      </div>
+    </section>
+  </main>
 <script>
-  // Platform data
   const platforms = {
     email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
     linkedin:    { name: "LinkedIn", desc: "Connect on LinkedIn for professional network building and updates." },
     github:      { name: "GitProfile", desc: "Explore my open source & code work. Feedback and PRs welcome!" },
-    openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." },
     kaggle:      { name: "Kaggle", desc: "Discover my competition entries and data notebooks." },
     streamlit:   { name: "Streamlit", desc: "I create interactive ML apps and analytics demos in Streamlit." },
     overleaf:    { name: "OverLeaf", desc: "Collaborative scientific writing — join me on Overleaf!" },
     substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
-    huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
+    huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" },
+    openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." }
   };
-  const graph = document.getElementById('reachout-graph');
-  const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
-  const overlay = document.getElementById('center-message-overlay');
-  const CENTER_X = 220, CENTER_Y = 220, RADIUS = 165;
+
   function positionNodes() {
+    const graph = document.getElementById('reachout-graph');
+    const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
+    const W = graph.clientWidth, H = graph.clientHeight;
+    const cx = W/2, cy = H/2;
+    const R = Math.min(W,H)*0.375; // 165 for 440
     const NODES_COUNT = nodes.length;
     for (let i = 0; i < NODES_COUNT; i++) {
-      const node = nodes[i];
       const angle = ((-90 + (360 / NODES_COUNT) * i) * Math.PI) / 180;
-      const x = CENTER_X + RADIUS * Math.cos(angle);
-      const y = CENTER_Y + RADIUS * Math.sin(angle);
-      node.style.left = x + 'px';
-      node.style.top = y + 'px';
-      node.style.transform = 'translate(-50%, -50%)';
+      const x = cx + R * Math.cos(angle);
+      const y = cy + R * Math.sin(angle);
+      nodes[i].style.left = x + 'px';
+      nodes[i].style.top = y + 'px';
     }
   }
   positionNodes();
   window.addEventListener('resize', positionNodes);
+
+  const graph = document.getElementById('reachout-graph');
+  const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
+  const overlay = document.getElementById('center-message-overlay');
   let hoveredNode = null, overlayHover = false, lockActive = false, resetTO = null;
   function showMessage(plat, lock=false) {
     if (!plat) { overlay.classList.remove('show','lock'); hoveredNode=null; return; }

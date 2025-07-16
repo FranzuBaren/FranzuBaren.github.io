@@ -4,245 +4,268 @@
   <meta charset="UTF-8" />
   <title>FranzuBaren/Francesco Orsi's GitHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- Academic & Monochrome Styles -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Source+Sans+Pro:400,700&display=swap" rel="stylesheet"/>
-  <!-- Font Awesome for general icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-  <!-- Hugging Face SVG favicon inline -->
+  <!-- Fonts: Serious, modern, academic -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     :root {
-      --light: #f8f8f8;
-      --dark: #1a1a1a;
-      --soft: #efefef;
-      --border: #333333;
-      --gray: #5b5b5b;
-      --accent: #bbbbbb;
-      --white: #fff;
+      --main-bg: #f9f8f6;
+      --panel-bg: #ffffff;
+      --border: #22232a;
+      --outline: #393a3f;
+      --serif: 'EB Garamond', serif;
+      --mono: 'Roboto Mono', monospace;
+      --accent: #5e5add;
+      --neutral: #878585;
+      --soft: #edeef0;
+      --shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
     }
     body {
-      background: var(--light);
-      color: var(--dark);
-      font-family: 'Source Sans Pro', Arial, sans-serif;
+      background: var(--main-bg);
+      color: var(--border);
+      font-family: var(--serif);
       margin: 0;
       padding: 0;
-      font-size: 1.07rem;
+      font-size: 1.12rem;
+      letter-spacing: 0.01em;
     }
     header {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 2.5rem;
-      padding: 2.2rem 2rem 1.8rem 2rem;
-      background: var(--white);
+      padding: 3rem 2rem 1.5rem 2rem;
+      background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
       border-bottom: 2px solid var(--border);
+      box-shadow: 0 6px 24px #00000010;
     }
     header img {
-      width: 116px;
-      height: 116px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
+      border: 3px solid var(--accent);
       object-fit: cover;
-      border: 3.5px solid var(--border);
-      filter: grayscale(100%);
+      box-shadow: 0 4px 20px #8b8aad22;
+      background: #fff;
     }
     header .header-text {
-      min-width: 0;
+      max-width: 600px;
     }
     header h1 {
-      font-family: 'Merriweather', serif;
-      font-size: 2.45rem;
-      color: var(--dark);
-      margin: 0 0 .5rem 0;
+      font-family: var(--serif);
+      font-size: 2.7rem;
+      color: var(--border);
       font-weight: 700;
-      letter-spacing: 1px;
+      margin: 0 0 .35em 0;
+      text-shadow: 0 2px 24px #5e5add10;
+      letter-spacing: 1.5px;
     }
     header h2 {
-      font-family: 'Source Sans Pro', Arial, sans-serif;
-      color: var(--gray);
-      font-size: 1.11rem;
-      font-style: italic;
-      font-weight: 400;
+      font-family: var(--mono);
+      font-size: 1.15rem;
+      color: var(--accent);
       margin: 0;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.7px;
+      font-weight: 400;
     }
     nav {
-      background: var(--white);
-      border-bottom: 1.5px solid var(--border);
-      margin-bottom: 0.8rem;
+      background: var(--main-bg);
+      border-bottom: 1.5px solid var(--outline);
+      margin: 0 0 1.7rem 0;
       text-align: center;
-      padding: 0.7rem 0;
+      padding: 0.9rem 0 0.7rem 0;
+      box-shadow: 0 2px 10px #1a1a1a08;
     }
     nav a {
       display: inline-block;
-      color: var(--dark);
+      color: var(--border);
       border-bottom: 2.5px solid transparent;
       text-decoration: none;
-      margin: 0 1.09rem;
-      font-size: 1.04rem;
-      font-family: 'Merriweather', serif;
-      padding-bottom: 0.18em;
-      transition: border 0.23s;
+      margin: 0 1.2rem;
+      font-size: 1.09rem;
+      font-family: var(--serif);
+      font-weight: 600;
+      padding: 0.25em 0.6em .07em 0.6em;
+      letter-spacing: 0.09em;
+      border-radius: 2px 2px 0 0;
+      transition: border 0.23s, color 0.18s;
     }
     nav a:hover {
-      border-bottom: 2.5px solid var(--dark);
+      border-bottom: 2.5px solid var(--accent);
+      color: var(--accent);
       background: var(--soft);
     }
     .container {
-      max-width: 850px;
-      margin: 2rem auto 0 auto;
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 1.5px 12px #2222;
-      padding: 2.3rem 2.1rem 2rem 2.1rem;
-      border: 1.7px solid var(--border);
+      max-width: 950px;
+      margin: 2.4rem auto 0 auto;
+      background: var(--panel-bg);
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+      border: 1.7px solid var(--outline);
+      padding: 2.7rem 2.5rem 2.2rem 2.5rem;
     }
     section {
       margin-bottom: 2.2rem;
     }
-    h2, h3 {
-      font-family: 'Merriweather', serif;
-      color: var(--dark);
-      border-left: 4.5px solid var(--border);
-      padding-left: 0.45em;
-      margin-top: 1.25em;
-      margin-bottom: 0.3em;
-      font-size: 1.37rem;
+    h2 {
+      font-family: var(--serif);
       font-weight: 700;
+      font-size: 1.56rem;
+      color: var(--border);
+      border-left: 6px solid var(--accent);
+      padding-left: 0.55em;
+      margin: 2.2em 0 0.6em 0;
+      background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
+      border-radius: 7px;
+      letter-spacing: 0.03em;
     }
-    h3 {
-      font-size: 1.13rem;
-      margin-top: 1.1em;
-      border-left: 3.5px solid var(--gray);
-      color: var(--gray);
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.7em 0 0.7em 0;
     }
-    ul, li {
-      font-family: 'Source Sans Pro', Arial, sans-serif;
-      color: var(--dark);
-      font-size: 1.01rem;
-      margin-bottom: 0.41em;
-      line-height: 1.6;
+    li {
+      font-family: var(--serif);
+      margin: 1.2em 0;
+      padding-left: 1.7em;
+      position: relative;
+      color: var(--border);
+      font-size: 1.05rem;
+    }
+    li::before {
+      content: "◆";
+      font-size: 0.7em;
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      top: 0.17em;
+    }
+    .interest-title {
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--accent);
+      margin-right: 0.18em;
+      font-size: 1.10em;
+      letter-spacing: .02em;
     }
     a, a:visited {
-      color: var(--border);
-      text-decoration: underline;
+      color: var(--accent);
+      text-decoration: underline dotted;
+      word-break: break-all;
       transition: color 0.15s;
     }
     a:hover {
-      color: var(--gray);
+      color: var(--border);
+      text-decoration: underline solid;
     }
-    .interest-title {
-      font-weight: bold;
-      font-family: 'Merriweather', serif;
-      color: var(--dark);
-      font-size: 1.06em;
-    }
-
-    /* Social network graph styling */
-    .social-network-graph {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 2.6rem auto 1.7rem auto;
-      width: 100%;
+    /* --- SOCIAL GRAPH FANCY --- */
+    .social-network-graph-acad {
       position: relative;
-      min-height: 375px;
+      min-height: 460px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3.1rem 0 1.2rem 0;
     }
-    .network-svg {
-      width: 470px;
-      height: 320px;
-      display: block;
+    .social-graph-canvas {
       position: absolute;
-      top: -40px;
-      left: 50%;
+      top: 0; left: 50%;
       transform: translateX(-50%);
-      pointer-events: none;
       z-index: 1;
+      width: 600px;
+      height: 450px;
+      pointer-events: none;
     }
-    .icon-node {
+    .acad-social-node {
       position: absolute;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 2.5px solid var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2.5px 14px #1112;
-      transition: box-shadow 0.22s, border 0.14s;
+      width: 93px;
+      height: 93px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff 65%, #f0f1f8 100%);
+      border: 2.5px solid var(--border);
+      box-shadow: 0 6px 28px #3332, 0 2px 7px #2221;
       cursor: pointer;
-      filter: grayscale(80%);
+      transition: box-shadow 0.21s, transform 0.17s, border 0.22s, background 0.23s;
+      filter: grayscale(75%);
       z-index: 2;
     }
-    .icon-node .node-label, .hug-label {
+    .acad-social-node:hover,
+    .acad-social-node:focus {
+      box-shadow: 0 8px 40px #211c5033, 0 1px 6px #665fd911;
+      filter: grayscale(0%);
+      background: linear-gradient(135deg, #f2eefa 70%, #ccc5fd 100%);
+      border-color: var(--accent);
+      transform: translateY(-12px) scale(1.07);
+      z-index: 10;
+    }
+    .acad-social-icon {
+      font-size: 2.6rem;
+      color: var(--accent);
+      transition: color 0.2s;
+      width: 55px; height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.1em;
+    }
+    .acad-social-node:hover .acad-social-icon { color: var(--border); }
+    .acad-social-node .huggingface-svg { width: 50px; height: 50px; display: inline-block;}
+    .acad-social-label {
+      font-family: var(--mono);
+      color: var(--panel-bg);
+      background: var(--accent);
+      opacity: 0;
+      border-radius: 7px;
+      padding: 0.40em 1.2em;
+      font-size: 1.01em;
+      font-weight: 600;
       position: absolute;
+      white-space: nowrap;
       left: 50%;
       transform: translateX(-50%);
-      bottom: -32px;
-      background: var(--border);
-      color: var(--white);
-      font-size: 0.97rem;
-      font-family: 'Source Sans Pro', Arial, sans-serif;
-      border-radius: 7px;
-      padding: 0.32em 0.88em;
+      bottom: -42px;
+      box-shadow: 0 2px 10px #8c8aad62;
       pointer-events: none;
-      white-space: nowrap;
-      opacity: 0;
-      box-shadow: 0 2px 12px #2224;
-      transition: opacity 0.18s, bottom 0.16s;
-      z-index: 4;
-      letter-spacing: 0.43px;
+      letter-spacing: .02em;
       text-transform: capitalize;
+      transition: opacity 0.2s, bottom 0.17s;
+      z-index: 9;
+      background: linear-gradient(91deg, #665fd9 60%, #534eaa 100%);
     }
-    .icon-node:hover, .icon-node:focus {
-      box-shadow: 0 6px 22px #0003;
-      border: 2.5px solid var(--gray);
-      background: var(--soft);
-      filter: grayscale(0%);
-    }
-    .icon-node:hover .node-label,
-    .icon-node:focus .node-label,
-    .icon-node:hover .hug-label,
-    .icon-node:focus .hug-label {
-      opacity: 1;
-      bottom: -49px;
-      transition-delay: 0.12s;
-    }
-    .icon-node a {color:var(--dark); font-size:2.15rem; display:flex; align-items:center; justify-content:center; width:100%; height:100%;text-decoration:none;}
-    .icon-node svg { width: 2.05rem; height: 2.05rem;}
-    /* Layout positions for graph nodes */
-    .node-email      { top: 110px; left: 8px;}
-    .node-linkedin   { top: 21px; left: 105px;}
-    .node-substack   { top: 10px; left: 232px;}
-    .node-openml     { top: 70px; left: 345px;}
-    .node-kaggle     { top: 187px; left: 380px;}
-    .node-streamlit  { top: 258px; left: 276px;}
-    .node-overleaf   { top: 247px; left: 145px;}
-    .node-github     { top: 190px; left: 49px;}
-    .node-huggingface{ top: 154px; left:212px;}
-
+    .acad-social-node:hover .acad-social-label,
+    .acad-social-node:focus .acad-social-label { opacity: 1; bottom: -59px;}
+    /* Fancy positions for 9 nodes in a stylized "tree/star" graph */
+    .node-email      { left: 85px;  top: 185px; }
+    .node-linkedin   { left: 230px; top: 51px;  }
+    .node-substack   { left: 470px; top: 55px;  }
+    .node-openml     { left: 545px; top: 187px; }
+    .node-kaggle     { left: 495px; top: 329px;}
+    .node-streamlit  { left: 345px; top: 400px;}
+    .node-overleaf   { left: 186px; top: 393px;}
+    .node-github     { left: 52px;  top: 330px;}
+    .node-huggingface{ left: 306px; top: 240px;}
     @media (max-width: 700px) {
-      .container { padding: 1rem 0.1rem; border-radius: 0;}
-      .social-network-graph { min-height: 340px; }
-      .network-svg { width: 335px; height: 190px; top:-30px;}
-      .icon-node  { width: 50px; height: 50px; }
-      .icon-node a { font-size:1.15rem;}
-      .icon-node svg { width: 1.15rem; height: 1.15rem;}
-      .icon-node .node-label, .hug-label { font-size: 0.67rem; bottom: -22px;}
-      .icon-node:hover .node-label,
-      .icon-node:focus .node-label,
-      .icon-node:hover .hug-label,
-      .icon-node:focus .hug-label {bottom: -30px;}
-      /* Reduced positions for mobile */
-      .node-email      { top: 69px; left: 2px;}
-      .node-linkedin   { top: 9px; left: 57px;}
-      .node-substack   { top: 3px; left: 142px;}
-      .node-openml     { top: 31px; left: 214px;}
-      .node-kaggle     { top: 103px; left: 230px;}
-      .node-streamlit  { top: 149px; left: 175px;}
-      .node-overleaf   { top: 142px; left: 92px;}
-      .node-github     { top: 107px; left:26px;}
-      .node-huggingface{ top: 86px; left:121px;}
+      .container { padding: 0.5rem 0.1rem; border-radius: 0;}
+      .social-network-graph-acad { min-height: 280px;}
+      .social-graph-canvas { width: 350px; height: 240px; }
+      .acad-social-node { width: 49px; height: 49px; }
+      .acad-social-icon { font-size: 1.44rem; width:28px; height:28px;}
+      .acad-social-node .huggingface-svg { width: 28px; height: 28px; }
+      .acad-social-label { font-size: 0.69em; padding:0.23em 0.7em; bottom: -22px;}
+      .acad-social-node:hover .acad-social-label, .acad-social-node:focus .acad-social-label { bottom: -30px;}
+      .node-email      { left: 24px; top: 100px; }
+      .node-linkedin   { left: 93px; top: 19px;  }
+      .node-substack   { left: 225px; top: 17px; }
+      .node-openml     { left: 260px; top: 97px; }
+      .node-kaggle     { left: 238px; top: 172px;}
+      .node-streamlit  { left: 164px; top: 209px;}
+      .node-overleaf   { left: 92px; top: 206px;}
+      .node-github     { left: 19px; top: 172px;}
+      .node-huggingface{ left: 140px; top: 130px;}
     }
   </style>
 </head>
@@ -326,91 +349,96 @@
 
     <section id="social">
       <h2>Reach Out &amp; Socials</h2>
-      <div class="social-network-graph" style="position:relative;">
-        <svg class="network-svg" viewBox="0 0 470 320">
-          <!-- edges linking nodes (drawn statically for demo) -->
-          <line x1="48" y1="150" x2="114" y2="60"   stroke="#bbb" stroke-width="2"/>
-          <line x1="114" y1="60" x2="241" y2="41"    stroke="#bbb" stroke-width="2"/>
-          <line x1="241" y1="41" x2="347" y2="95"    stroke="#bbb" stroke-width="2"/>
-          <line x1="347" y1="95" x2="382" y2="211"   stroke="#bbb" stroke-width="2"/>
-          <line x1="382" y1="211" x2="278" y2="282"  stroke="#bbb" stroke-width="2"/>
-          <line x1="278" y1="282" x2="150" y2="271"  stroke="#bbb" stroke-width="2"/>
-          <line x1="150" y1="271" x2="53" y2="208"   stroke="#bbb" stroke-width="2"/>
-          <line x1="114" y1="60"  x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="347" y1="95"  x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="150" y1="271" x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="278" y1="282" x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="382" y1="211" x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="53" y1="208"  x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="48" y1="150"  x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
-          <line x1="241" y1="41"  x2="214" y2="166"  stroke="#ddd" stroke-width="1.3" stroke-dasharray="6 4"/>
+      <div class="social-network-graph-acad">
+        <svg class="social-graph-canvas" viewBox="0 0 600 450">
+          <!-- Graph edges (bezier/curves for organic look) -->
+          <path d="M128,194 Q170,140 238,90" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M238,90 Q355,40 488,96" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M492,96 Q545,170 553,200" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M545,200 Q550,320 505,335" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M495,329 Q420,410 360,420" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M350,418 Q210,425 200,410" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M186,393 Q60,335 98,240" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <path d="M52,330 Q38,230 98,196" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
+          <!-- Center links -->
+          <path d="M320,190 Q320,100 238,90" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
+          <path d="M320,210 Q410,100 492,96" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
+          <path d="M320,234 Q395,295 495,329" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
+          <path d="M320,239 Q250,335 150,271" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
         </svg>
-        <!-- Main network nodes (icons, interactive with tooltips) -->
-        <div class="icon-node node-email"     tabindex="0">
+        <!-- Network nodes with icons & labels -->
+        <div class="acad-social-node node-email" tabindex="0">
           <a href="mailto:your.email@example.com" target="_blank" title="Email">
-            <i class="fa-solid fa-envelope"></i>
+            <span class="acad-social-icon"><i class="fa-solid fa-envelope"></i></span>
           </a>
-          <span class="node-label">Email</span>
+          <span class="acad-social-label">Email</span>
         </div>
-        <div class="icon-node node-linkedin"  tabindex="0">
+        <div class="acad-social-node node-linkedin"  tabindex="0">
           <a href="[Your LinkedIn Profile]" target="_blank" title="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
+            <span class="acad-social-icon"><i class="fa-brands fa-linkedin"></i></span>
           </a>
-          <span class="node-label">LinkedIn</span>
+          <span class="acad-social-label">LinkedIn</span>
         </div>
-        <div class="icon-node node-substack"  tabindex="0">
+        <div class="acad-social-node node-substack"  tabindex="0">
           <a href="[Your Substack Page]" target="_blank" title="Substack">
-            <i class="fa-solid fa-envelope-open-text"></i>
+            <span class="acad-social-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
           </a>
-          <span class="node-label">Substack</span>
+          <span class="acad-social-label">Substack</span>
         </div>
-        <div class="icon-node node-openml"    tabindex="0">
+        <div class="acad-social-node node-openml"    tabindex="0">
           <a href="https://www.openml.org/" target="_blank" title="OpenML">
-            <i class="fa-solid fa-database"></i>
+            <span class="acad-social-icon"><i class="fa-solid fa-database"></i></span>
           </a>
-          <span class="node-label">OpenML</span>
+          <span class="acad-social-label">OpenML</span>
         </div>
-        <div class="icon-node node-kaggle"    tabindex="0">
+        <div class="acad-social-node node-kaggle"    tabindex="0">
           <a href="https://www.kaggle.com/" target="_blank" title="Kaggle">
-            <i class="fa-solid fa-trophy"></i>
+            <span class="acad-social-icon"><i class="fa-brands fa-kaggle"></i></span>
           </a>
-          <span class="node-label">Kaggle</span>
+          <span class="acad-social-label">Kaggle</span>
         </div>
-        <div class="icon-node node-streamlit" tabindex="0">
+        <div class="acad-social-node node-streamlit" tabindex="0">
           <a href="https://streamlit.io/" target="_blank" title="Streamlit">
-            <i class="fa-solid fa-stream"></i>
+            <span class="acad-social-icon"><i class="fa-solid fa-wave-square"></i></span>
           </a>
-          <span class="node-label">Streamlit</span>
+          <span class="acad-social-label">Streamlit</span>
         </div>
-        <div class="icon-node node-overleaf"  tabindex="0">
+        <div class="acad-social-node node-overleaf"  tabindex="0">
           <a href="https://www.overleaf.com/" target="_blank" title="OverLeaf">
-            <i class="fa-solid fa-file-alt"></i>
+            <span class="acad-social-icon">
+              <!-- Overleaf Leaf SVG icon since no standard FontAwesome -->
+              <svg height="32" viewBox="0 0 32 32" fill="none">
+                <ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22"/>
+                <path d="M16 6C14 13 22 15 16 26" stroke="#333" stroke-width="2.2" fill="none"/>
+              </svg>
+            </span>
           </a>
-          <span class="node-label">OverLeaf</span>
+          <span class="acad-social-label">OverLeaf</span>
         </div>
-        <div class="icon-node node-github"    tabindex="0">
+        <div class="acad-social-node node-github"    tabindex="0">
           <a href="[Your GitProfile URL]" target="_blank" title="GitProfile">
-            <i class="fa-brands fa-github"></i>
+            <span class="acad-social-icon"><i class="fa-brands fa-github"></i></span>
           </a>
-          <span class="node-label">GitProfile</span>
+          <span class="acad-social-label">GitProfile</span>
         </div>
-        <div class="icon-node node-huggingface" tabindex="0" style="background: #fffbe7; border-color: #ffd65c;">
-          <a href="[Your HuggingFace URL]" target="_blank" title="Hugging Face" style="color: #f3bb40;">
-            <!-- Hugging Face official icon SVG (cc-by-sa HuggingFace) -->
-            <svg viewBox="0 0 40 40" fill="none">
-              <ellipse cx="20" cy="20" rx="20" ry="20" fill="#FFD65C"/>
-              <ellipse cx="20" cy="19.7" rx="13.2" ry="12.7" fill="#fff"/>
-              <ellipse cx="13.3" cy="19.5" rx="1.6" ry="2.8" fill="#232323"/>
-              <ellipse cx="26.5" cy="19.5" rx="1.6" ry="2.8" fill="#232323"/>
-              <path d="M13.5 25c4 .6 9.2.7 13.1.1-.4 4.2-6.8 5.1-13.1-.1z" fill="#232323" />
-            </svg>
+        <div class="acad-social-node node-huggingface" tabindex="0" style="background: linear-gradient(135deg, #fffbe7 60%, #ffe069 100%); border-color: #ffd65c;">
+          <a href="[Your HuggingFace URL]" target="_blank" title="Hugging Face">
+            <span class="acad-social-icon huggingface-svg">
+              <!-- Hugging Face official emoji logo from their official SVGs -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                <circle cx="64" cy="64" r="64" fill="#FFD21F"/>
+                <ellipse cx="64" cy="79" rx="32.5" ry="15.5" fill="#fff"/>
+                <ellipse cx="47.5" cy="68.5" rx="7.5" ry="14.5" fill="#231f20"/>
+                <ellipse cx="80.5" cy="68.5" rx="7.5" ry="14.5" fill="#231f20"/>
+                <path d="M39 89c11 4 39 5 50 0-2 14-37 17-50 0z" fill="#231f20"/>
+              </svg>
+            </span>
           </a>
-          <span class="hug-label">Hugging Face</span>
+          <span class="acad-social-label">Hugging Face</span>
         </div>
       </div>
     </section>
   </main>
-
   <footer>
     &copy; 2025 Francesco Orsi | Data Science Manager
   </footer>

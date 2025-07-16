@@ -1,142 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FranzuBaren/Francesco Orsi's GitHub</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body { background: #f9f8f6; color: #22232a; font-family: 'EB Garamond', serif; margin: 0; padding: 0; }
-    .reachout-graph-wrap { width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 3.2rem; margin-bottom: 2.1rem; }
-    .reachout-graph {
-      position: relative;
-      width: 440px; height: 440px;
-      max-width: 95vw; max-height: 95vw;
-      margin: 0 auto; display: block;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FranzuBaren/Francesco Orsi's GitHub</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background: #f9f8f6; color: #22232a;
+    font-family: 'EB Garamond', serif;
+    margin: 0; padding: 0;
+  }
+  header {
+    display: flex; align-items: center; gap: 2.5rem;
+    padding: 3rem 2rem 1.5rem 2rem;
+    background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
+    border-bottom: 2px solid #22232a;
+    box-shadow: 0 6px 24px #00000010;
+  }
+  header img {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 3px solid #5e5add;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 4px 20px #8b8aad22;
+  }
+  header .header-text {
+    max-width: 600px;
+  }
+  header h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.7rem;
+    color: #22232a;
+    font-weight: 700;
+    margin: 0 0 .35em 0;
+    text-shadow: 0 2px 24px #5e5add10;
+    letter-spacing: 1.5px;
+  }
+  header h2 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.15rem;
+    color: #5e5add;
+    margin: 0;
+    letter-spacing: 0.7px;
+    font-weight: 400;
+  }
+  nav {
+    background: #f9f8f6;
+    border-bottom: 1.5px solid #393a3f;
+    margin: 0 0 1.7rem 0;
+    text-align: center;
+    padding: 0.9rem 0 0.7rem 0;
+    box-shadow: 0 2px 10px #1a1a1a08;
+  }
+  nav a {
+    display: inline-block;
+    color: #22232a;
+    border-bottom: 2.5px solid transparent;
+    text-decoration: none;
+    margin: 0 1.2rem;
+    font-size: 1.09rem;
+    font-family: 'EB Garamond', serif;
+    font-weight: 600;
+    padding: 0.25em 0.6em .07em 0.6em;
+    letter-spacing: 0.09em;
+    border-radius: 2px 2px 0 0;
+    transition: border 0.23s, color 0.18s;
+  }
+  nav a:hover {
+    border-bottom: 2.5px solid #5e5add;
+    color: #5e5add;
+    background: #edeef0;
+  }
+  main.container {
+    max-width: 950px;
+    margin: 2.4rem auto 0 auto;
+    background: #fff;
+    box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
+    border-radius: 18px;
+    border: 1.7px solid #393a3f;
+    padding: 2.7rem 2.5rem 2.2rem 2.5rem;
+  }
+  h2.section-title {
+    font-weight: 700;
+    font-size: 1.56rem;
+    color: #22232a;
+    border-left: 6px solid #5e5add;
+    padding-left: 0.55em;
+    margin: 2.2em 0 0.6em 0;
+    background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
+    border-radius: 7px;
+    letter-spacing: 0.03em;
+    font-family: 'EB Garamond', serif;
+  }
+  p, li {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: 'EB Garamond', serif;
+  }
+  ul {
+    list-style: disc;
+    margin-left: 1.4em;
+  }
+  .reachout-graph-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .reachout-graph {
+    position: relative;
+    height: 440px;
+    width: 440px;
+    max-width: 95vw;
+    max-height: 95vw;
+  }
+  .reachout-graph svg.base {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .reachout-node {
+    position: absolute;
+    width: 72px; height: 72px;
+    left: 50%; top: 50%;
+    margin: -36px 0 0 -36px;
+    border-radius: 50%;
+    border: 2.6px solid #393a3f;
+    background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 24px #83839322;
+    transition: box-shadow 0.18s, transform 0.27s cubic-bezier(.3,1.7,.5,1), background 0.14s, border 0.16s, filter 0.2s;
+    filter: grayscale(45%);
+    z-index: 3;
+  }
+  .reachout-node:hover,
+  .reachout-node.active {
+    filter: grayscale(0%);
+    background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
+    border-color: #5e5add;
+    box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
+    z-index: 7;
+    transform: scale(1.13);
+  }
+  .reachout-node img {
+    width: 42px; height: 42px;
+    object-fit: contain;
+  }
+  .center-message-overlay {
+    pointer-events: auto;
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px; height: 100px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 1000; opacity: 0; transition: opacity 0.6s; background: transparent; text-align: center; user-select: none;
+  }
+  .center-message-overlay.show {
+    opacity: 1;
+  }
+  .center-header {
+    background: linear-gradient(90deg, #5e5add 70%, #766afd 100%);
+    padding: 0.20em 1em 0.12em 1em;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 9px;
+    margin-bottom: 9px;
+    font-family: 'EB Garamond', serif;
+    display: inline-block;
+    box-shadow: 0 3px 19px #5e5add55;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.6s, transform 1.2s;
+  }
+  .center-message-overlay.show .center-header {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .center-desc {
+    font-size: 0.77em;
+    background: #fff;
+    color: #222;
+    border-radius: 6px;
+    padding: 0.40em 0.8em;
+    box-shadow: 0 2px 7px #2d2d2d12;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    opacity: 0;
+    margin-top: 2px;
+    transform: translateY(7px);
+    transition: opacity 1.5s 0.12s, transform 1.2s 0.16s;
+  }
+  .center-message-overlay.show .center-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2.5rem 0;
+  }
+  .stats-container img {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #31324420;
+    border: 1px solid #d6d6ee;
+    max-width: 100%;
+  }
+  .activity-graph {
+    text-align: center;
+    margin: 2.5rem auto 0 auto;
+    max-width: 700px;
+  }
+  .activity-graph img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #d6d6ee;
+    background: #fff;
+  }
+  footer {
+    text-align: center;
+    padding: 1.6rem 0;
+    border-top: 1.8px solid #393a3f;
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: #555759;
+    margin-top: 4rem;
+  }
+  @media (max-width: 900px) {
+    .stats-container {
+      flex-direction: column;
+      align-items: center;
     }
-    .reachout-graph svg.base {
-      position: absolute; left: 0; top: 0;
-      width: 100%; height: 100%; display: block; pointer-events: none; z-index: 1;
+  }
+  @media (max-width: 600px) {
+    .reachout-graph {
+      width: 94vw;
+      height: 94vw;
+      min-width: 220px !important;
+      min-height: 220px;
     }
     .reachout-node {
-      position: absolute;
-      width: 72px; height: 72px;
-      left: 50%; top: 50%;
-      margin: -36px 0 0 -36px;
-      border-radius: 50%;
-      border: 2.6px solid #393a3f;
-      background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 5px 24px #83839322;
-      transition: box-shadow 0.18s, transform 0.27s cubic-bezier(.3,1.7,.5,1), background 0.14s, border 0.16s, filter 0.2s;
-      filter: grayscale(45%);
-      z-index: 3;
-    }
-    .reachout-node:hover, .reachout-node.active {
-      filter: grayscale(0%);
-      background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
-      border-color: #5e5add;
-      box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
-      z-index: 7;
-      transform: scale(1.13);
+      width: 38px;
+      height: 38px;
+      margin: -19px 0 0 -19px;
     }
     .reachout-node img {
-      width: 42px; height: 42px; display: block; object-fit: contain;
+      width: 22px;
+      height: 22px;
     }
     .center-message-overlay {
-      pointer-events: auto;
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      width: 250px; height: 100px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 1000; opacity: 0; transition: opacity 0.6s; background: transparent; text-align: center; user-select: none;
+      width: 90vw;
+      height: 60px;
     }
-    .center-message-overlay.show { opacity: 1; }
-    .center-header { background: linear-gradient(90deg, #5e5add 70%, #766afd 100%); padding: 0.20em 1em 0.12em 1em; color: #fff; font-size: 1em; font-weight: 700; border-radius: 9px; margin-bottom: 9px; font-family: 'EB Garamond', serif; display: inline-block; box-shadow: 0 3px 19px #5e5add55; letter-spacing: .03em; opacity: 0; transform: translateY(8px); transition: opacity 0.6s, transform 1.2s;}
-    .center-message-overlay.show .center-header { opacity: 1; transform: translateY(0);}
-    .center-desc { font-size: 0.77em; background: #fff; color: #222; border-radius: 6px; padding: 0.40em 0.8em; box-shadow: 0 2px 7px #2d2d2d12; font-family: 'Roboto Mono', monospace; font-weight: 400; opacity: 0; margin-top: 2px; transform: translateY(7px); transition: opacity 1.5s 0.12s, transform 1.2s 0.16s;}
-    .center-message-overlay.show .center-desc { opacity: 1; transform: translateY(0);}
-    .stats-container {
-      display: flex; flex-direction: row; flex-wrap: wrap;
-      gap: 2rem; align-items: flex-start;
-      margin-top: 2.7rem; margin-bottom: 2.5rem;
-      justify-content: center;
+    .center-header {
+      font-size: 0.87em;
+    }
+    .center-desc {
+      font-size: 0.64em;
     }
     .stats-container img {
-      background: #fff; border-radius: 12px; box-shadow: 0 2px 10px #31324420; border: 1px solid #d6d6ee;
+      width: 98vw !important;
+      min-width: 0 !important;
+      max-width: 98vw !important;
     }
-    .activity-graph {
-      margin: 2.5rem auto 0 auto; text-align: center;
-    }
-    .activity-graph img { max-width: 100%; border-radius: 12px; border: 1px solid #d6d6ee; background: #fff;}
-    @media (max-width: 900px){
-      .stats-container {flex-direction: column;align-items: center;}
-    }
-    @media (max-width: 600px) {
-      .reachout-graph { width: 94vw; height: 94vw; min-width: 220px !important; min-height: 220px;}
-      .reachout-node { width:38px; height:38px; margin: -19px 0 0 -19px; }
-      .reachout-node img { width: 22px; height: 22px; }
-      .center-message-overlay  {width:90vw;height:60px;}
-      .center-header {font-size: 0.87em;}
-      .center-desc {font-size:.64em;}
-      .stats-container img { width: 98vw !important; min-width: 0 !important; max-width: 98vw !important;}
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <main class="container">
-    <!-- Insert your About/Interest sections here as desired -->
+<header>
+  <img src="https://via.placeholder.com/120" alt="Francesco Orsi Photo" />
+  <div class="header-text">
+    <h1>Francesco Orsi</h1>
+    <h2>Data Science Manager</h2>
+  </div>
+</header>
+<nav>
+  <a href="#about">About</a>
+  <a href="#detailed-cv">Detailed CV</a>
+  <a href="#interest">Interests</a>
+  <a href="#projects">Selected Projects</a>
+  <a href="#social">Reach Out &amp; Socials</a>
+  <a href="#statistics">GitHub Statistics</a>
+</nav>
+<main class="container">
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <p>
+      I studied <b>theoretical physics</b> followed by a focus on <b>computational neuroscience</b> before developing an international career in data science and AI. My professional journey is grounded in academic rigor, translational science, and reproducible, impactful AI methods.<br /><br />
+      As a former academic researcher now managing data science initiatives at the intersection of AI, data regulation, and business, I strive to bridge the gap between technological innovation and meaningful application in complex, evolving environments. I value robust methodology, open science, and transparent, interdisciplinary collaboration.<br /><br />
+      For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
+    </p>
+  </section>
 
-    <section id="social">
-      <h2>Reach Out &amp; Socials</h2>
-      <div class="reachout-graph-wrap">
-        <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
-          <svg class="base" width="100%" height="100%" viewBox="0 0 440 440">
-            <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
-          </svg>
-          <button class="reachout-node" data-platform="email" title="Email"><img src="icons/gmail.svg" alt="Gmail"></button>
-          <button class="reachout-node" data-platform="linkedin" title="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></button>
-          <button class="reachout-node" data-platform="github" title="GitHub"><img src="icons/github.svg" alt="GitHub"></button>
-          <button class="reachout-node" data-platform="kaggle" title="Kaggle"><img src="icons/kaggle.svg" alt="Kaggle"></button>
-          <button class="reachout-node" data-platform="substack" title="Substack"><img src="icons/substack.svg" alt="Substack"></button>
-          <button class="reachout-node" data-platform="streamlit" title="Streamlit"><img src="icons/streamlit.svg" alt="Streamlit"></button>
-          <button class="reachout-node" data-platform="overleaf" title="Overleaf"><img src="icons/overleaf.svg" alt="Overleaf"></button>
-          <button class="reachout-node" data-platform="huggingface" title="Hugging Face"><img src="icons/huggingface.svg" alt="Hugging Face"></button>
-          <button class="reachout-node" data-platform="openml" title="OpenML"><img src="icons/openml.svg" alt="OpenML"></button>
-          <div class="center-message-overlay" id="center-message-overlay"></div>
-        </div>
-      </div>
-    </section>
+  <section id="interest">
+    <h2 class="section-title">Interests</h2>
+    <ul>
+      <li><b>Reproducible computational research:</b> Ensuring that methods, code, and data in AI/ML can be independently verified, extended, and trusted across the research community and industry.</li>
+      <li><b>Mathematical foundation of ML:</b> Deep understanding of probability, statistics, optimization, and linear algebra to design rigorous algorithms and interpret their limits.</li>
+      <li><b>Data-centric auditing and ethical AI:</b> Developing processes for auditing, validating, and governing data and models, emphasizing fairness, robustness, and compliance in healthcare and life sciences.</li>
+      <li><b>Interpretability and transparency of models:</b> Creating models whose reasoning, predictions, and limitations can be explained to technical and non-technical stakeholders.</li>
+      <li><b>Collaborative science and knowledge sharing:</b> Engaging with multidisciplinary teams across academia and industry, contributing to open-source software and global communities.</li>
+      <li><b>Benchmarking robust predictive models:</b> Developing and evaluating ML models on meaningful real-world tasks, assessing generalization and practical value.</li>
+      <li><b>Scientific communication and mentoring:</b> Presenting research clearly, mentoring scientists, and fostering openness in code, data, and idea exchange.</li>
+      <li><b>Research software & scientific tools:</b> Designing and publishing software (notebooks, apps, libraries) accelerating scientific discovery.</li>
+      <li><b>Academic-industry partnerships:</b> Bridging theory and impact by driving collaborations between research and business.</li>
+      <li><b>Exploring new directions:</b> Investigating generative AI, causal inference, privacy-preserving ML, civic tech for social good.</li>
+    </ul>
+  </section>
 
-    <section id="statistics">
-      <h2>GitHub Statistics</h2>
-      <div class="stats-container">
-        <!-- ✨ Replace YOUR_GITHUB_USERNAME with your GitHub username -->
-        <img 
-          src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=default&hide_title=true"
-          alt="GitHub stats" 
-          style="max-width: 410px; width: 100%; min-width: 280px;"
-          loading="lazy"
-        />
-        <img 
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=default&hide_title=true"
-          alt="Top Languages"
-          style="max-width: 340px; width: 100%; min-width: 220px;"
-          loading="lazy"
-        />
+  <section id="projects">
+    <h2 class="section-title">Selected Projects</h2>
+    <p>WIP</p>
+  </section>
+
+  <section id="social">
+    <h2 class="section-title">Reach Out &amp; Socials</h2>
+    <div class="reachout-graph-wrap">
+      <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
+        <svg class="base" viewBox="0 0 440 440" aria-hidden="true" focusable="false"><circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/></svg>
+        <button class="reachout-node" data-platform="email" title="Email"><img src="icons/gmail.svg" alt="Gmail"></button>
+        <button class="reachout-node" data-platform="linkedin" title="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></button>
+        <button class="reachout-node" data-platform="github" title="GitHub"><img src="icons/github.svg" alt="GitHub"></button>
+        <button class="reachout-node" data-platform="kaggle" title="Kaggle"><img src="icons/kaggle.svg" alt="Kaggle"></button>
+        <button class="reachout-node" data-platform="substack" title="Substack"><img src="icons/substack.svg" alt="Substack"></button>
+        <button class="reachout-node" data-platform="streamlit" title="Streamlit"><img src="icons/streamlit.svg" alt="Streamlit"></button>
+        <button class="reachout-node" data-platform="overleaf" title="Overleaf"><img src="icons/overleaf.svg" alt="Overleaf"></button>
+        <button class="reachout-node" data-platform="huggingface" title="Hugging Face"><img src="icons/huggingface.svg" alt="Hugging Face"></button>
+        <button class="reachout-node" data-platform="openml" title="OpenML"><img src="icons/openml.svg" alt="OpenML"></button>
+        <div class="center-message-overlay" id="center-message-overlay"></div>
       </div>
-      <div class="activity-graph">
-        <img 
-          src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_GITHUB_USERNAME&theme=github&area=true" 
-          alt="Contribution Graph"
-          style="width:100%; max-width:700px;"
-          loading="lazy"
-        />
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section id="statistics">
+    <h2 class="section-title">GitHub Statistics</h2>
+    <div class="stats-container">
+      <img 
+        src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=default&hide_title=true"
+        alt="GitHub stats" 
+        loading="lazy"
+      />
+      <img 
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=default&hide_title=true"
+        alt="Top Languages"
+        loading="lazy"
+      />
+    </div>
+    <div class="activity-graph">
+      <img 
+        src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_GITHUB_USERNAME&theme=github&area=true" 
+        alt="Contribution Graph"
+        loading="lazy"
+      />
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Francesco Orsi | Data Science Manager
+</footer>
+
 <script>
   const platforms = {
     email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
@@ -155,10 +387,10 @@
     const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
     const W = graph.clientWidth, H = graph.clientHeight;
     const cx = W/2, cy = H/2;
-    const R = Math.min(W,H)*0.375; // 165 for 440
-    const NODES_COUNT = nodes.length;
-    for (let i = 0; i < NODES_COUNT; i++) {
-      const angle = ((-90 + (360 / NODES_COUNT) * i) * Math.PI) / 180;
+    const R = Math.min(W,H)*0.375;
+    const count = nodes.length;
+    for (let i = 0; i < count; i++) {
+      const angle = ((-90 + (360 / count) * i) * Math.PI) / 180;
       const x = cx + R * Math.cos(angle);
       const y = cy + R * Math.sin(angle);
       nodes[i].style.left = x + 'px';
@@ -171,14 +403,17 @@
   const graph = document.getElementById('reachout-graph');
   const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
   const overlay = document.getElementById('center-message-overlay');
-  let hoveredNode = null, overlayHover = false, lockActive = false, resetTO = null;
-  function showMessage(plat, lock=false) {
-    if (!plat) { overlay.classList.remove('show','lock'); hoveredNode=null; return; }
-    overlay.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
+  let hoveredNode = null, overlayHover = false, lockActive = false, resetTimeout = null;
+
+  function showMessage(platform, lock=false) {
+    if (!platform) {
+      overlay.classList.remove('show','lock'); hoveredNode=null; return;
+    }
+    overlay.innerHTML = `<span class="center-header">${platforms[platform].name}</span><span class="center-desc">${platforms[platform].desc}</span>`;
     overlay.classList.add('show');
-    if(lock) overlay.classList.add('lock');
+    if (lock) overlay.classList.add('lock');
     else overlay.classList.remove('lock');
-    hoveredNode = lock ? plat : null;
+    hoveredNode = lock ? platform : null;
   }
   function hideMessageIfEligible() {
     if (!hoveredNode && !overlayHover && !lockActive) {
@@ -186,55 +421,63 @@
       nodes.forEach(n => n.classList.remove('active'));
     }
   }
+
   nodes.forEach(node=>{
-    node.addEventListener('mouseenter', function() {
-      if (lockActive) return;
+    node.addEventListener('mouseenter', () => {
+      if(lockActive) return;
       hoveredNode = node.getAttribute('data-platform');
       showMessage(hoveredNode, false);
     });
-    node.addEventListener('mouseleave', function() {
-      hoveredNode=null; setTimeout(hideMessageIfEligible, 30);
+    node.addEventListener('mouseleave', () => {
+      hoveredNode = null; setTimeout(hideMessageIfEligible, 30);
     });
-    node.addEventListener('focus', function() {
-      if (lockActive) return;
+    node.addEventListener('focus', () => {
+      if(lockActive) return;
       hoveredNode = node.getAttribute('data-platform');
       showMessage(hoveredNode, false);
     });
-    node.addEventListener('blur', function() {
-      hoveredNode=null; setTimeout(hideMessageIfEligible, 30);
+    node.addEventListener('blur', () => {
+      hoveredNode = null; setTimeout(hideMessageIfEligible, 30);
     });
-    node.addEventListener('click', function(e){
+    node.addEventListener('click', e=>{
       e.preventDefault();
-      if (lockActive) return;
+      if(lockActive) return;
       lockActive = true;
-      const plat = node.getAttribute('data-platform');
-      showMessage(plat, true);
-      nodes.forEach(n=>n.classList.remove('active'));
+      const platform = node.getAttribute('data-platform');
+      showMessage(platform, true);
+      nodes.forEach(n => n.classList.remove('active'));
       node.classList.add('active');
-      if(resetTO) clearTimeout(resetTO);
-      resetTO = setTimeout(()=>{
+      if(resetTimeout) clearTimeout(resetTimeout);
+      resetTimeout = setTimeout(() => {
         lockActive = false;
         node.classList.remove('active');
-        showMessage(null,false);
+        showMessage(null, false);
       }, 4200);
     });
-    node.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' ') node.click();
+    node.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        node.click();
+      }
     });
   });
-  overlay.addEventListener('mouseenter', function(){
+
+  overlay.addEventListener('mouseenter', () => {
     overlayHover = true;
-    if (!lockActive && hoveredNode) showMessage(hoveredNode, false);
+    if(!lockActive && hoveredNode) showMessage(hoveredNode, false);
   });
-  overlay.addEventListener('mouseleave', function(){
+  overlay.addEventListener('mouseleave', () => {
     overlayHover = false;
     setTimeout(hideMessageIfEligible, 30);
   });
-  graph.addEventListener('mouseleave', function() {
-    hoveredNode=null; setTimeout(hideMessageIfEligible, 30);
+
+  graph.addEventListener('mouseleave', () => {
+    hoveredNode = null;
+    setTimeout(hideMessageIfEligible, 30);
   });
 </script>
+<footer>
+  &copy; 2025 Francesco Orsi | Data Science Manager
+</footer>
 </body>
 </html>
-
-

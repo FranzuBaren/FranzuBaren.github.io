@@ -13,13 +13,115 @@
       font-family: 'EB Garamond', serif;
       margin: 0; padding: 0;
     }
-    .reachout-graph-wrap {
-      width: 100%;
+    header {
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin-top: 3.2rem;
-      margin-bottom: 2.1rem;
+      gap: 2.5rem;
+      padding: 3rem 2rem 1.5rem 2rem;
+      background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
+      border-bottom: 2px solid #22232a;
+      box-shadow: 0 6px 24px #00000010;
+    }
+    header img {
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 3px solid #5e5add;
+      object-fit: cover;
+      box-shadow: 0 4px 20px #8b8aad22;
+      background: #fff;
+    }
+    header .header-text { max-width: 600px; }
+    header h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.7rem;
+      color: #22232a;
+      font-weight: 700;
+      margin: 0 0 .35em 0;
+      text-shadow: 0 2px 24px #5e5add10;
+      letter-spacing: 1.5px;
+    }
+    header h2 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.15rem;
+      color: #5e5add;
+      margin: 0;
+      letter-spacing: 0.7px;
+      font-weight: 400;
+    }
+    nav {
+      background: #f9f8f6;
+      border-bottom: 1.5px solid #393a3f;
+      margin: 0 0 1.7rem 0;
+      text-align: center;
+      padding: 0.9rem 0 0.7rem 0;
+      box-shadow: 0 2px 10px #1a1a1a08;
+    }
+    nav a {
+      display: inline-block;
+      color: #22232a;
+      border-bottom: 2.5px solid transparent;
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-size: 1.09rem;
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      padding: 0.25em 0.6em .07em 0.6em;
+      letter-spacing: 0.09em;
+      border-radius: 2px 2px 0 0;
+      transition: border 0.23s, color 0.18s;
+    }
+    nav a:hover {
+      border-bottom: 2.5px solid #5e5add;
+      color: #5e5add;
+      background: #edeef0;
+    }
+    .container {
+      max-width: 950px;
+      margin: 2.4rem auto 0 auto;
+      background: #ffffff;
+      box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
+      border-radius: 18px;
+      border: 1.7px solid #393a3f;
+      padding: 2.7rem 2.5rem 2.2rem 2.5rem;
+    }
+    section { margin-bottom: 2.2rem; }
+    h2 {
+      font-weight: 700;
+      font-size: 1.56rem;
+      color: #22232a;
+      border-left: 6px solid #5e5add;
+      padding-left: 0.55em;
+      margin: 2.2em 0 0.6em 0;
+      background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
+      border-radius: 7px;
+      letter-spacing: 0.03em;
+      font-family: 'EB Garamond', serif;
+    }
+    .interest-title {
+      font-weight: 700;
+      font-family: 'Roboto Mono', monospace;
+      color: #5e5add;
+      margin-right: 0.18em;
+      font-size: 1.10em;
+      letter-spacing: .02em;
+    }
+    ul { list-style: none; padding-left: 0; margin: 0.7em 0 0.7em 0; }
+    li {
+      margin: 1.2em 0;
+      padding-left: 1.7em;
+      position: relative;
+      color: #22232a;
+      font-size: 1.05rem;
+    }
+    li::before {
+      content: "◆";
+      font-size: 0.7em;
+      position: absolute;
+      left: 0; color: #5e5add; top: 0.17em;
+    }
+    /* ---- SOCIAL GRAPHICS ---- */
+    .reachout-graph-wrap {
+      width: 100%; display: flex; align-items: center; justify-content: center;
+      margin-top: 3.2rem; margin-bottom: 2.1rem;
     }
     .reachout-graph {
       position: relative;
@@ -30,10 +132,7 @@
       background: transparent;
     }
     .reachout-graph svg {
-      position: absolute;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      z-index: 1;
+      position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1;
       pointer-events: none;
     }
     .reachout-node {
@@ -59,31 +158,36 @@
     }
     .reachout-icon {
       font-size: 2.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       width: 60px; height: 60px;
       color: #5e5add;
       transition: color 0.16s, filter 0.18s, transform 0.13s;
     }
-    /* Brand colors on hover */
-    .reachout-node[data-platform='linkedin']:hover .reachout-icon { color: #0077b5; }
-    .reachout-node[data-platform='github']:hover .reachout-icon { color: #171515; }
-    .reachout-node[data-platform='openml']:hover .reachout-icon { color: #fb9602; }
-    .reachout-node[data-platform='kaggle']:hover .reachout-icon { color: #20beff; }
-    .reachout-node[data-platform='streamlit']:hover .reachout-icon { color: #ff4b4b; }
-    .reachout-node[data-platform='overleaf']:hover .reachout-icon { color: #46a060; }
-    .reachout-node[data-platform='substack']:hover .reachout-icon { color: #ff6719; }
+    .reachout-node[data-platform='linkedin']:hover .reachout-icon,
+    .reachout-node[data-platform='linkedin'].hovered .reachout-icon { color: #0077b5; }
+    .reachout-node[data-platform='github']:hover .reachout-icon,
+    .reachout-node[data-platform='github'].hovered .reachout-icon { color: #171515; }
+    .reachout-node[data-platform='openml']:hover .reachout-icon,
+    .reachout-node[data-platform='openml'].hovered .reachout-icon { color: #fb9602; }
+    .reachout-node[data-platform='kaggle']:hover .reachout-icon,
+    .reachout-node[data-platform='kaggle'].hovered .reachout-icon { color: #20beff; }
+    .reachout-node[data-platform='streamlit']:hover .reachout-icon,
+    .reachout-node[data-platform='streamlit'].hovered .reachout-icon { color: #ff4b4b; }
+    .reachout-node[data-platform='overleaf']:hover .reachout-icon,
+    .reachout-node[data-platform='overleaf'].hovered .reachout-icon { color: #46a060; }
+    .reachout-node[data-platform='substack']:hover .reachout-icon,
+    .reachout-node[data-platform='substack'].hovered .reachout-icon { color: #ff6719; }
     .reachout-node[data-platform='huggingface'] .huggingface-emoji { color: #b0a4f6; transition: color 0.18s, filter 0.18s; }
-    .reachout-node[data-platform='huggingface']:hover .huggingface-emoji { color: #5e5add; filter: drop-shadow(0 3px 9px #9787e9aa);}
-    .reachout-node[data-platform='email']:hover .reachout-icon { color: #cf4963; }
-    .reachout-node:hover, .reachout-node:focus-visible { 
+    .reachout-node[data-platform='huggingface']:hover .huggingface-emoji,
+    .reachout-node[data-platform='huggingface'].hovered .huggingface-emoji { color: #5e5add; filter: drop-shadow(0 3px 9px #9787e9aa);}
+    .reachout-node[data-platform='email']:hover .reachout-icon,
+    .reachout-node[data-platform='email'].hovered .reachout-icon { color: #cf4963; }
+    .reachout-node:hover, .reachout-node:focus-visible, .reachout-node.hovered {
       filter: grayscale(0%);
       background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
       border-color: #5e5add;
       box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
-      z-index: 7;
-      transform: scale(1.13);
+      z-index: 7; transform: scale(1.13) rotate(0deg);
     }
     .reachout-node:active { transform: scale(0.96);}
     .huggingface-emoji {
@@ -92,7 +196,6 @@
       transition: color 0.26s, filter 0.22s;
       color: #b0a4f6;
     }
-    /* Node positions: set with --angle */
     .node-email        { --angle: 0deg; }
     .node-linkedin     { --angle: 40deg; }
     .node-github       { --angle: 80deg; }
@@ -112,15 +215,13 @@
     .reachout-node.active {
       z-index: 999;
       transform: translate(-50%, -50%) scale(1.29) !important;
-      transition: transform 0.5s cubic-bezier(.3,2.1,.3,1), box-shadow 0.35s, background 0.4s;
       background: #edeafd;
       border-color: #5e5add;
       box-shadow: 0 16px 32px 5px #7672d339;
       filter: none;
     }
-    /* Centered message styling */
     .center-message {
-      pointer-events: none;
+      pointer-events: auto;
       position: absolute;
       left: 50%; top: 50%;
       transform: translate(-50%, -50%);
@@ -129,7 +230,7 @@
       z-index: 1000;
       text-align: center;
       font-family: 'Roboto Mono', monospace;
-      transition: opacity 0.25s, visibility 0.5s;
+      transition: opacity 0.2s, visibility 0.4s;
       white-space: pre-line;
       visibility: hidden;
       display: flex;
@@ -151,16 +252,12 @@
       display: inline-block;
       box-shadow: 0 3px 19px #5e5add55;
       letter-spacing: .03em;
-      opacity: 0;
-      transform: translateY(10px);
-      transition:
-        opacity 0.5s cubic-bezier(.6,0.6,.2,1.25),
-        transform 1s cubic-bezier(.25,.85,.38,1.1);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.5s cubic-bezier(.6,0.6,.2,1.25), transform 1s cubic-bezier(.25,.85,.38,1.1);
     }
-    .center-message.show .center-header {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.1s;
+    .center-message.show .center-header,
+    .center-message.lock .center-header {
+      opacity: 1; transform: translateY(0); transition-delay: 0.1s;
     }
     .center-desc {
       font-size: 0.96em;
@@ -173,14 +270,11 @@
       font-weight: 500;
       opacity: 0;
       transform: translateY(10px);
-      transition:
-        opacity 1.7s 0.23s,
-        transform 1.7s cubic-bezier(.25,.90,0,.96) 0.29s;
+      transition: opacity 1.7s 0.23s, transform 1.7s cubic-bezier(.25,.90,0,.96) 0.29s;
     }
-    .center-message.show .center-desc {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.34s;
+    .center-message.show .center-desc,
+    .center-message.lock .center-desc {
+      opacity: 1; transform: translateY(0); transition-delay: 0.34s;
     }
     @media (max-width: 600px) {
       .reachout-graph { width: 94vw; height:94vw; min-width:220px !important; min-height:220px;}
@@ -194,101 +288,201 @@
   </style>
 </head>
 <body>
-  <section id="social">
-    <h2>Reach Out &amp; Socials</h2>
-    <div class="reachout-graph-wrap">
-      <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
-        <svg width="100%" height="100%" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
-          <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
-        </svg>
-        <!-- Nodes -->
-        <button class="reachout-node node-email" data-platform="email" title="Email" tabindex="0">
-          <span class="reachout-icon"><i class="fa-solid fa-envelope"></i></span>
-        </button>
-        <button class="reachout-node node-linkedin" data-platform="linkedin" title="LinkedIn" tabindex="0">
-          <span class="reachout-icon"><i class="fa-brands fa-linkedin"></i></span>
-        </button>
-        <button class="reachout-node node-github" data-platform="github" title="GitProfile" tabindex="0">
-          <span class="reachout-icon"><i class="fa-brands fa-github"></i></span>
-        </button>
-        <button class="reachout-node node-openml" data-platform="openml" title="OpenML" tabindex="0">
-          <span class="reachout-icon"><i class="fa-solid fa-database"></i></span>
-        </button>
-        <button class="reachout-node node-kaggle" data-platform="kaggle" title="Kaggle" tabindex="0">
-          <span class="reachout-icon"><i class="fa-brands fa-kaggle"></i></span>
-        </button>
-        <button class="reachout-node node-streamlit" data-platform="streamlit" title="Streamlit" tabindex="0">
-          <span class="reachout-icon"><i class="fa-solid fa-wave-square"></i></span>
-        </button>
-        <button class="reachout-node node-overleaf" data-platform="overleaf" title="OverLeaf" tabindex="0">
-          <span class="reachout-icon">
-            <svg height="32" viewBox="0 0 32 32" fill="none">
-              <ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22"/>
-              <path d="M16 6C14 13 22 15 16 26" stroke="#393a3f" stroke-width="2.2" fill="none"/>
-            </svg>
-          </span>
-        </button>
-        <button class="reachout-node node-substack" data-platform="substack" title="Substack" tabindex="0">
-          <span class="reachout-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
-        </button>
-        <button class="reachout-node node-huggingface" data-platform="huggingface" title="Hugging Face" tabindex="0" style="background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%); border-color: #5e5add;">
-          <span class="reachout-icon huggingface-emoji" aria-hidden="true">🤗</span>
-        </button>
-        <div class="center-message" id="center-message"></div>
-      </div>
+  <header>
+    <img src="https://via.placeholder.com/120" alt="Francesco Orsi Photo" />
+    <div class="header-text">
+      <h1>Francesco Orsi</h1>
+      <h2>Data Science Manager</h2>
     </div>
-    <script>
-      // Platform display names and descriptions
-      const platforms = {
-        email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
-        linkedin:    { name: "LinkedIn", desc: "Connect on LinkedIn for professional network building and updates." },
-        github:      { name: "GitProfile", desc: "Explore my open source & code work. Feedback and PRs welcome!" },
-        openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." },
-        kaggle:      { name: "Kaggle", desc: "Discover my competition entries and data notebooks." },
-        streamlit:   { name: "Streamlit", desc: "I create interactive ML apps and analytics demos in Streamlit." },
-        overleaf:    { name: "OverLeaf", desc: "Collaborative scientific writing — join me on Overleaf!" },
-        substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
-        huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
-      };
-      var nodes = Array.from(document.querySelectorAll('.reachout-node'));
-      var msg = document.getElementById('center-message');
-      var clearTimeoutId = null;
-      nodes.forEach(node=>{
-        node.addEventListener('mouseenter', function() {
-          let plat = node.getAttribute('data-platform');
-          msg.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
-          msg.classList.add('show');
-          // Remove active state everywhere else on hover
-          nodes.forEach(n=>n.classList.remove('active'));
-        });
-        node.addEventListener('mouseleave', function() {
-          // If not just made active, fade out message
-          if (!node.classList.contains('active')) {
-            msg.classList.remove('show');
-          }
-        });
-        node.addEventListener('click', function(e){
-          e.preventDefault();
-          // All nodes: remove .active, except this one
-          nodes.forEach(n=>n.classList.remove('active'));
-          node.classList.add('active');
-          // Place msg for this plat in the center
-          let plat = node.getAttribute('data-platform');
-          msg.innerHTML = `<span class="center-header">${platforms[plat].name}</span>
-            <span class="center-desc">${platforms[plat].desc}</span>`;
-          msg.classList.add('show');
-          if(clearTimeoutId) clearTimeout(clearTimeoutId);
-          clearTimeoutId = setTimeout(()=>{
-            node.classList.remove('active');
-            msg.classList.remove('show');
-          }, 3800);
-        });
-        node.addEventListener('keydown', function(e){
-          if(e.key==="Enter"||e.key===" ") node.click();
-        });
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#detailed-cv">Detailed CV</a>
+    <a href="#interest">Interests</a>
+    <a href="#projects">Selected Projects</a>
+    <a href="#social">Reach Out &amp; Socials</a>
+  </nav>
+  <main class="container">
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I studied <b>theoretical physics</b> followed by a focus on <b>computational neuroscience</b> before developing an international career in data science and artificial intelligence across several leading companies. My professional journey is grounded in academic rigor, translational science, and reproducible, impactful AI methods.<br><br>
+        As a former academic researcher now managing data science initiatives at the intersection of AI, data regulation, and business, I strive to bridge the gap between technological innovation and meaningful application in complex, evolving environments. I value robust methodology, open science, and transparent, interdisciplinary collaboration.<br><br>
+        For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
+      </p>
+    </section>
+    <section id="interest">
+      <h2>Interests</h2>
+      <ul>
+        <li>
+          <span class="interest-title">Reproducible computational research:</span>
+          Ensuring that methods, code, and data in AI/ML can be independently verified, extended, and trusted across the research community and industry.
+        </li>
+        <li>
+          <span class="interest-title">Mathematical foundation of ML:</span>
+          Deep understanding of probability, statistics, optimization, and linear algebra to design rigorous algorithms and interpret their limits.
+        </li>
+        <li>
+          <span class="interest-title">Data-centric auditing and ethical AI:</span>
+          Developing processes for auditing, validating, and governing data and models, with an emphasis on fairness, robustness, and regulatory compliance in sensitive domains like healthcare and life sciences.
+        </li>
+        <li>
+          <span class="interest-title">Interpretability and transparency of models:</span>
+          Creating models whose reasoning, predictions, and limitations can be explained to both technical and non-technical stakeholders, especially where decision-making impact is high.
+        </li>
+        <li>
+          <span class="interest-title">Collaborative science and knowledge sharing:</span>
+          Engaging with multidisciplinary teams across academia and industry, contributing to open-source software, and sharing ideas in global communities.
+        </li>
+        <li>
+          <span class="interest-title">Benchmarking robust predictive models:</span>
+          Developing and evaluating machine learning models on meaningful, real-world tasks while assessing generalization and practical value.
+        </li>
+        <li>
+          <span class="interest-title">Scientific communication, mentoring, and best practices:</span>
+          Presenting research clearly, mentoring the next generation of scientists, and fostering openness in code, data, and idea exchange.
+        </li>
+        <li>
+          <span class="interest-title">Research software & scientific tools:</span>
+          Designing, building, and publishing software (including notebooks, apps, and libraries) that accelerate discovery and enable rigorous science.
+        </li>
+        <li>
+          <span class="interest-title">Academic-industry partnerships:</span>
+          Bridging theoretical work and industrial impact by driving collaborations and solutions between research institutions and business.
+        </li>
+        <li>
+          <span class="interest-title">Exploring new directions:</span>
+          Investigating generative AI, causal inference, privacy-preserving machine learning, and civic technology for social good.
+        </li>
+      </ul>
+    </section>
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <p>WIP</p>
+    </section>
+    <section id="social">
+      <h2>Reach Out &amp; Socials</h2>
+      <div class="reachout-graph-wrap">
+        <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
+          <svg width="100%" height="100%" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
+            <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
+          </svg>
+          <!-- Nodes -->
+          <button class="reachout-node node-email" data-platform="email" title="Email" tabindex="0">
+            <span class="reachout-icon"><i class="fa-solid fa-envelope"></i></span>
+          </button>
+          <button class="reachout-node node-linkedin" data-platform="linkedin" title="LinkedIn" tabindex="0">
+            <span class="reachout-icon"><i class="fa-brands fa-linkedin"></i></span>
+          </button>
+          <button class="reachout-node node-github" data-platform="github" title="GitProfile" tabindex="0">
+            <span class="reachout-icon"><i class="fa-brands fa-github"></i></span>
+          </button>
+          <button class="reachout-node node-openml" data-platform="openml" title="OpenML" tabindex="0">
+            <span class="reachout-icon"><i class="fa-solid fa-database"></i></span>
+          </button>
+          <button class="reachout-node node-kaggle" data-platform="kaggle" title="Kaggle" tabindex="0">
+            <span class="reachout-icon"><i class="fa-brands fa-kaggle"></i></span>
+          </button>
+          <button class="reachout-node node-streamlit" data-platform="streamlit" title="Streamlit" tabindex="0">
+            <span class="reachout-icon"><i class="fa-solid fa-wave-square"></i></span>
+          </button>
+          <button class="reachout-node node-overleaf" data-platform="overleaf" title="OverLeaf" tabindex="0">
+            <span class="reachout-icon">
+              <svg height="32" viewBox="0 0 32 32" fill="none">
+                <ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22"/>
+                <path d="M16 6C14 13 22 15 16 26" stroke="#393a3f" stroke-width="2.2" fill="none"/>
+              </svg>
+            </span>
+          </button>
+          <button class="reachout-node node-substack" data-platform="substack" title="Substack" tabindex="0">
+            <span class="reachout-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
+          </button>
+          <button class="reachout-node node-huggingface" data-platform="huggingface" title="Hugging Face" tabindex="0" style="background: linear-gradient(95deg, #fffbe7 60%, #ede8ff 100%); border-color: #5e5add;">
+            <span class="reachout-icon huggingface-emoji" aria-hidden="true">🤗</span>
+          </button>
+          <div class="center-message" id="center-message"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Francesco Orsi | Data Science Manager
+  </footer>
+  <script>
+    const platforms = {
+      email:       { name: "Email", desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." },
+      linkedin:    { name: "LinkedIn", desc: "Connect on LinkedIn for professional network building and updates." },
+      github:      { name: "GitProfile", desc: "Explore my open source & code work. Feedback and PRs welcome!" },
+      openml:      { name: "OpenML", desc: "Find datasets, benchmarks and transparent ML science on OpenML." },
+      kaggle:      { name: "Kaggle", desc: "Discover my competition entries and data notebooks." },
+      streamlit:   { name: "Streamlit", desc: "I create interactive ML apps and analytics demos in Streamlit." },
+      overleaf:    { name: "OverLeaf", desc: "Collaborative scientific writing — join me on Overleaf!" },
+      substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
+      huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
+    };
+    const graph = document.getElementById('reachout-graph');
+    const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
+    const msg = document.getElementById('center-message');
+    let clearTimeoutId = null;
+    let locked = false;
+
+    // Helper to show message
+    function showMessage(plat) {
+      if (!plat) { msg.classList.remove('show','lock'); return; }
+      msg.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
+      msg.classList.add('show');
+    }
+    // Hover events: track the hovered node globally
+    graph.addEventListener('mouseover', function(e){
+      if (locked) return;
+      let node = e.target.closest('.reachout-node');
+      nodes.forEach(n=>n.classList.remove('hovered'));
+      if(node && node.classList.contains('reachout-node')) {
+        node.classList.add('hovered');
+        showMessage(node.getAttribute('data-platform'));
+      } else {
+        showMessage(null);
+      }
+    });
+    graph.addEventListener('mouseout', function(e){
+      if (locked) return;
+      let related = e.relatedTarget;
+      // Only hide if moved outside the whole graph container
+      if (!graph.contains(related)) {
+        nodes.forEach(n=>n.classList.remove('hovered'));
+        showMessage(null);
+      }
+    });
+    // On click - animate node to center, lock message
+    nodes.forEach(node=>{
+      node.addEventListener('click', function(e){
+        e.preventDefault();
+        if (locked) return;
+        nodes.forEach(n=>{ n.classList.remove('active','hovered') });
+        node.classList.add('active');
+        locked = true;
+        let plat = node.getAttribute('data-platform');
+        msg.innerHTML = `<span class="center-header">${platforms[plat].name}</span>
+          <span class="center-desc">${platforms[plat].desc}</span>`;
+        msg.classList.add('show','lock');
+        clearTimeoutId && clearTimeout(clearTimeoutId);
+        clearTimeoutId = setTimeout(()=>{
+          node.classList.remove('active');
+          msg.classList.remove('lock','show');
+          locked = false;
+        }, 4200);
       });
-    </script>
-  </section>
+      node.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' ') node.click();
+      });
+    });
+    // Clicking the central message unlocks again (for accessibility)
+    msg.addEventListener('click',function(){
+      nodes.forEach(n=>n.classList.remove('active'));
+      msg.classList.remove('lock','show');
+      locked = false;
+    });
+  </script>
 </body>
 </html>
 

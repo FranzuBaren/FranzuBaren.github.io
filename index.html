@@ -3,211 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <title>FranzuBaren/Francesco Orsi's GitHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Fonts for academic-modern blend -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Lato:400,700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <!-- Academic & Monochrome Styles -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Source+Sans+Pro:400,700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
   <style>
+    :root {
+      --light: #f8f8f8;
+      --dark: #1a1a1a;
+      --soft: #efefef;
+      --border: #333333;
+      --gray: #5b5b5b;
+      --accent: #bbbbbb;
+      --white: #fff;
+    }
     body {
-      background: #f7f9fa;
-      color: #21243c;
-      font-family: "Lato", Arial, sans-serif;
-      line-height: 1.7;
+      background: var(--light);
+      color: var(--dark);
+      font-family: 'Source Sans Pro', Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-size: 1.07rem;
     }
     header {
-      padding: 2.5rem 1rem 1.5rem 1rem;
-      background: #e5e9ef;
-      border-bottom: 1.5px solid #d1dbe3;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      text-align: center;
+      justify-content: flex-start;
+      gap: 2.5rem;
+      padding: 2.2rem 2rem 1.8rem 2rem;
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
     }
     header img {
-      width: 120px;
-      height: 120px;
+      width: 116px;
+      height: 116px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #395b89;
-      box-shadow: 0 0 0 8px #c6d1e1;
+      border: 3.5px solid var(--border);
+      filter: grayscale(100%);
     }
     header .header-text {
-      max-width: 600px;
-      flex: 1;
+      min-width: 0;
     }
     header h1 {
-      font-family: "Merriweather", serif;
-      font-size: 2.6rem;
-      margin-bottom: 0.6rem;
-      letter-spacing: 1.5px;
-      color: #183157;
-      text-align: left;
+      font-family: 'Merriweather', serif;
+      font-size: 2.45rem;
+      color: var(--dark);
+      margin: 0 0 .5rem 0;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     header h2 {
-      font-weight: 400;
-      color: #49719e;
-      font-size: 1.15rem;
-      margin-bottom: 1.5rem;
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      color: var(--gray);
+      font-size: 1.11rem;
       font-style: italic;
-      text-align: left;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 0.3px;
     }
     nav {
-      margin: 1.3rem auto 1.5rem auto;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+      margin-bottom: 0.8rem;
       text-align: center;
+      padding: 0.7rem 0;
     }
     nav a {
       display: inline-block;
-      color: #395b89;
+      color: var(--dark);
+      border-bottom: 2.5px solid transparent;
       text-decoration: none;
-      margin: 0 1.1rem;
-      font-size: 1.07rem;
-      padding: 0.3em 0.8em;
-      border-radius: 4px;
-      transition: background 0.3s, color 0.3s;
+      margin: 0 1.09rem;
+      font-size: 1.04rem;
+      font-family: 'Merriweather', serif;
+      padding-bottom: 0.18em;
+      transition: border 0.23s;
     }
     nav a:hover {
-      background: #dce3ed;
-      color: #13203a;
+      border-bottom: 2.5px solid var(--dark);
+      background: var(--soft);
     }
     .container {
-      max-width: 880px;
+      max-width: 850px;
       margin: 2rem auto 0 auto;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 3px 20px #bdc5d64b;
-      padding: 2.5rem 2rem;
-    }
-    h2,
-    h3 {
-      font-family: "Merriweather", serif;
-      color: #22406e;
-      margin-top: 1.2em;
-    }
-    h2 {
-      font-size: 1.5rem;
-    }
-    h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5em;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 1.5px 12px #2222;
+      padding: 2.3rem 2.1rem 2rem 2.1rem;
+      border: 1.7px solid var(--border);
     }
     section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.2rem;
+    }
+    h2, h3 {
+      font-family: 'Merriweather', serif;
+      color: var(--dark);
+      border-left: 4.5px solid var(--border);
+      padding-left: 0.45em;
+      margin-top: 1.25em;
+      margin-bottom: 0.3em;
+      font-size: 1.37rem;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.13rem;
+      margin-top: 1.1em;
+      border-left: 3.5px solid var(--gray);
+      color: var(--gray);
     }
     ul, li {
-      font-size: 1.06rem;
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      color: var(--dark);
+      font-size: 1.01rem;
+      margin-bottom: 0.22em;
     }
-
-    /* Social platforms sunburst/circle layout */
-    .social-media-sunburst {
+    a, a:visited {
+      color: var(--border);
+      text-decoration: underline;
+      transition: color 0.15s;
+    }
+    a:hover {
+      color: var(--gray);
+    }
+    /* Social grid - monochrome academic */
+    .social-media-grid {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      margin: 2.5rem 0 1.8rem 0;
+      gap: 1.65rem 1.65rem;
+      margin: 2.1rem auto 1.3rem auto;
+      max-width: 710px;
     }
-    .sunburst-circle-container {
+    .social-tile {
+      width: 84px;
+      height: 84px;
+      background: var(--light);
+      border: 2.2px solid var(--border);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      width: 320px;
-      height: 320px;
-      margin: 0 auto;
-    }
-    .sunburst-center {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: #395b89;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.18rem;
-      color: #fff;
-      box-shadow: 0 0 24px #b4b4dd60;
-      font-family: "Merriweather", serif;
-      letter-spacing: 1.5px;
+      box-shadow: 0 1px 7px #0002;
+      transition: box-shadow 0.21s, transform 0.18s, border 0.19s;
       text-align: center;
-    }
-    .sunburst-link {
-      position: absolute;
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #e5e9ef;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #395b89;
-      font-size: 2rem;
-      text-decoration: none;
-      transition: transform 0.25s, box-shadow 0.25s, background 0.25s, color 0.25s;
-      box-shadow: 0 1px 8px #b6bedc40;
-      z-index: 3;
       cursor: pointer;
+      filter: grayscale(87%);
     }
-    .sunburst-link:hover {
-      background: #395b89;
-      color: #fff;
-      transform: scale(1.13) rotate(-8deg);
-      box-shadow: 0 2px 18px #395b89ac;
-      z-index: 4;
+    .social-tile a {
+      color: var(--dark);
+      font-size: 2.1rem;
+      align-items: center;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: color 0.19s;
     }
-    .sunburst-tooltip {
-      visibility: hidden;
-      width: 160px;
-      background: #fff;
-      color: #183157;
-      text-align: center;
-      border-radius: 7px;
-      padding: 0.6em 0.9em;
+    .social-tile:hover,
+    .social-tile:focus {
+      background: var(--soft);
+      transform: translateY(-5px) scale(1.06);
+      border-color: var(--gray);
+      filter: grayscale(22%);
+      box-shadow: 0 5px 25px #1a1a1a22;
+    }
+    .social-tile:hover a,
+    .social-tile:focus a {
+      color: var(--border);
+    }
+    .social-label {
       position: absolute;
-      z-index: 10;
-      bottom: 90px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.99rem;
-      font-family: 'Lato', Arial, sans-serif;
-      box-shadow: 0 0 18px #b6b8b899;
-      border: 1px solid #e0e4f0;
+      bottom: -32px;
+      font-size: 0.97rem;
+      background: var(--border);
+      color: var(--white);
       opacity: 0;
-      transition: opacity 0.2s;
+      border-radius: 7px;
+      padding: 0.32em 0.88em;
       pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px #2224;
+      transition: opacity 0.18s, bottom 0.16s;
+      z-index: 4;
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      letter-spacing: 0.43px;
+      text-transform: capitalize;
     }
-    .sunburst-link:hover .sunburst-tooltip {
-      visibility: visible;
+    .social-tile:hover .social-label,
+    .social-tile:focus .social-label {
       opacity: 1;
-      transition-delay: 0.1s;
+      bottom: -46px;
+      transition-delay: 0.08s;
     }
-
-    /* Position social icons in circle */
-    .sunburst-link--1  { top: 13px;  left: 124px; }
-    .sunburst-link--2  { top: 51px;  left: 225px; }
-    .sunburst-link--3  { top: 140px; left: 263px; }
-    .sunburst-link--4  { top: 235px; left: 225px; }
-    .sunburst-link--5  { top: 273px; left: 124px; }
-    .sunburst-link--6  { top: 235px; left: 25px;  }
-    .sunburst-link--7  { top: 140px; left: -12px; }
-    .sunburst-link--8  { top: 51px;  left: 25px;  }
-
-    /* Responsive */
-    @media (max-width: 650px) {
-      .container { padding: 1.1rem 0.5rem; }
-      .sunburst-circle-container { width: 245px; height: 245px; }
-      .sunburst-center { width: 82px; height: 82px; font-size: 0.93rem; }
-      .sunburst-link { width: 44px; height: 44px; font-size: 1.17rem; }
-      .sunburst-tooltip { width: 105px; font-size: 0.81rem; padding: 0.4em 0.5em; }
-      .sunburst-link--1  { top: 8px;  left: 90px; }
-      .sunburst-link--2  { top: 30px;  left: 168px; }
-      .sunburst-link--3  { top: 85px; left: 196px; }
-      .sunburst-link--4  { top: 149px; left: 168px; }
-      .sunburst-link--5  { top: 172px; left: 90px; }
-      .sunburst-link--6  { top: 149px; left: 12px;  }
-      .sunburst-link--7  { top: 85px; left: -16px; }
-      .sunburst-link--8  { top: 30px;  left: 12px;  }
+    footer {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.99rem;
+      padding: 1.7rem 0 1rem 0;
+      background: var(--white);
+      border-top: 1.5px solid var(--border);
+      margin-top: 3rem;
+      font-family: 'Merriweather', serif;
+      letter-spacing: 0.3px;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 1.1rem 0.4rem; border-radius: 0; }
+      .social-media-grid { gap: 0.77rem 0.77rem; max-width: 100%; }
+      .social-tile { width: 54px; height: 54px; border-radius: 8px; }
+      .social-tile a { font-size: 1.18rem; }
+      .social-label { font-size: 0.74rem; padding: 0.2em 0.38em; bottom: -22px;}
+      .social-tile:hover .social-label, .social-tile:focus .social-label { bottom: -32px; }
     }
   </style>
 </head>
@@ -222,38 +230,42 @@
 
   <nav>
     <a href="#about">About</a>
+    <a href="#detailed-cv">Detailed CV</a>
     <a href="#interest">Interests</a>
     <a href="#projects">Selected Projects</a>
-    <a href="#detailed-cv">Detailed CV</a>
-    <a href="#social">Social Media</a>
+    <a href="#social">Reach Out &amp; Socials</a>
   </nav>
 
   <main class="container">
     <section id="about">
       <h2>About</h2>
       <p>
-        I studied <strong>theoretical physics</strong> and then specialized in <strong>computational neuroscience</strong>
-        before building a dynamic, international career in data science and artificial intelligence across several leading companies.
-        My professional journey is driven by scholarly rigor, translational science, and advancing reproducible, impactful methods in applied AI.<br><br>
-        As a former academic researcher now managing data science initiatives in the pharmaceutical sector—with a special focus on analytics within Audit &amp; Risk at Roche—
-        I strive to bridge the gap between cutting-edge innovations and real-world, trustworthy applications in highly regulated environments.
-        I value robust methodology, open science, and transparent collaboration across disciplines.<br><br>
-        For full details, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
+        I studied <b>theoretical physics</b> followed by a focus on <b>computational neuroscience</b> before developing an international career in data science and artificial intelligence across several leading companies. My professional journey is grounded in academic rigor, translational science, and reproducible, impactful AI methods.<br><br>
+        As a former academic researcher now managing data science initiatives at the intersection of AI, data regulation, and business, I strive to bridge the gap between technological innovation and meaningful application in complex, evolving environments. I value robust methodology, open science, and transparent, interdisciplinary collaboration.<br><br>
+        For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
       </p>
+    </section>
+
+    <section id="detailed-cv">
+      <h2>Detailed CV</h2>
+      <p>
+        <em>Comprehensive CV available upon request or for download on this page (add PDF/URL as appropriate).</em>
+      </p>
+      <!-- <a href="Francesco_Orsi_CV.pdf" download style="color:#333; font-weight:600;">Download my CV (PDF)</a> -->
     </section>
 
     <section id="interest">
       <h2>Interests</h2>
       <ul>
-        <li><strong>Reproducible computational research</strong> in AI/ML, from theory to scalable industrial pipelines.</li>
-        <li><strong>Data-centric auditing</strong> for risk minimization and ethical, robust AI in healthcare and pharmaceutical applications.</li>
-        <li><strong>Machine learning interpretability</strong> and model transparency in regulated environments.</li>
-        <li><strong>Collaborative science and knowledge sharing</strong> across disciplines—actively contributing to global open-source and research communities.</li>
-        <li><strong>Benchmarking and development of robust predictive models</strong> for real-world data, especially in pharma/health/life sciences.</li>
-        <li><strong>Effective scientific communication, mentoring</strong>, and fostering best practices in data, code, and idea sharing.</li>
-        <li><strong>Software for science</strong>: building, improving, and publishing tools (e.g., notebooks, apps) for researchers, practitioners, and learners.</li>
-        <li><strong>Enthusiasm for academic-industry partnerships</strong> to bring innovative data-driven technology to practical impact.</li>
-        <li><strong>Exploration of new directions in generative AI</strong>, causal inference, and privacy-preserving machine learning.</li>
+        <li><strong>Reproducible computational research</strong> in AI/ML, from theoretical approaches to scalable pipelines.</li>
+        <li><strong>Data-centric auditing</strong> and ethical, robust AI in healthcare, life sciences, and beyond.</li>
+        <li><strong>Interpretability and transparency</strong> of machine learning models, particularly in regulated settings.</li>
+        <li><strong>Collaborative science and knowledge sharing</strong>, bridging academia, industry, and open communities.</li>
+        <li><strong>Benchmarking robust predictive models</strong> for real-world, high-impact use cases.</li>
+        <li><strong>Scientific communication and mentoring</strong>, advanced research software, and best practices in data/code/idea exchange.</li>
+        <li><strong>Building tools for science</strong>—from Jupyter notebooks to web applications and libraries.</li>
+        <li><strong>Fostering academic-industry partnerships</strong> for innovative, practical, and responsible data-driven impact.</li>
+        <li><strong>Exploring new directions in generative AI</strong>, causal inference, privacy-preserving ML, and civic technology for public good.</li>
       </ul>
     </section>
 
@@ -262,54 +274,62 @@
       <p>WIP</p>
     </section>
 
-    <section id="detailed-cv">
-      <h2>Detailed CV</h2>
-      <p>
-        <em>Comprehensive CV available upon request or for download on this page (add PDF/URL as appropriate).</em>
-      </p>
-      <!-- You may embed a download button/link if you wish: -->
-      <!-- <a href="Francesco_Orsi_CV.pdf" download style="color:#395b89; font-weight:600;">Download my CV (PDF)</a> -->
-    </section>
-
     <section id="social">
-      <h2>Social Media</h2>
-      <div class="social-media-sunburst">
-        <div class="sunburst-circle-container">
-          <div class="sunburst-center">
-            <span>Let's Connect!</span>
-          </div>
-          <a class="sunburst-link sunburst-link--1" href="mailto:your.email@example.com" target="_blank" title="Email">
+      <h2>Reach Out &amp; Socials</h2>
+      <div class="social-media-grid">
+        <div class="social-tile" tabindex="0">
+          <a href="mailto:your.email@example.com" target="_blank" title="Email">
             <i class="fa-solid fa-envelope"></i>
-            <span class="sunburst-tooltip">Email Francesco</span>
           </a>
-          <a class="sunburst-link sunburst-link--2" href="[Your LinkedIn Profile]" target="_blank" title="LinkedIn">
+          <span class="social-label">Email</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="[Your LinkedIn Profile]" target="_blank" title="LinkedIn">
             <i class="fa-brands fa-linkedin"></i>
-            <span class="sunburst-tooltip">Connect on LinkedIn</span>
           </a>
-          <a class="sunburst-link sunburst-link--3" href="[Your Substack Page]" target="_blank" title="Substack">
+          <span class="social-label">LinkedIn</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="[Your Substack Page]" target="_blank" title="Substack">
             <i class="fa-solid fa-envelope-open-text"></i>
-            <span class="sunburst-tooltip">Read Francesco's Newsletter</span>
           </a>
-          <a class="sunburst-link sunburst-link--4" href="https://www.openml.org/" target="_blank" title="OpenML">
+          <span class="social-label">Substack</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="https://www.openml.org/" target="_blank" title="OpenML">
             <i class="fa-solid fa-database"></i>
-            <span class="sunburst-tooltip">OpenML Contributions</span>
           </a>
-          <a class="sunburst-link sunburst-link--5" href="https://www.kaggle.com/" target="_blank" title="Kaggle">
+          <span class="social-label">OpenML</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="https://www.kaggle.com/" target="_blank" title="Kaggle">
             <i class="fa-solid fa-trophy"></i>
-            <span class="sunburst-tooltip">Kaggle Profile</span>
           </a>
-          <a class="sunburst-link sunburst-link--6" href="https://streamlit.io/" target="_blank" title="Streamlit">
+          <span class="social-label">Kaggle</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="https://streamlit.io/" target="_blank" title="Streamlit">
             <i class="fa-solid fa-stream"></i>
-            <span class="sunburst-tooltip">Streamlit Apps</span>
           </a>
-          <a class="sunburst-link sunburst-link--7" href="https://www.overleaf.com/" target="_blank" title="OverLeaf">
+          <span class="social-label">Streamlit</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="https://www.overleaf.com/" target="_blank" title="OverLeaf">
             <i class="fa-solid fa-file-alt"></i>
-            <span class="sunburst-tooltip">Open OverLeaf Projects</span>
           </a>
-          <a class="sunburst-link sunburst-link--8" href="#" style="pointer-events:none;opacity:0.35;">
-            <i class="fa-solid fa-circle-half-stroke"></i>
-            <span class="sunburst-tooltip">More coming soon…</span>
+          <span class="social-label">OverLeaf</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="[Your GitProfile URL]" target="_blank" title="GitProfile">
+            <i class="fa-brands fa-github"></i>
           </a>
+          <span class="social-label">GitProfile</span>
+        </div>
+        <div class="social-tile" tabindex="0">
+          <a href="[Your HuggingFace URL]" target="_blank" title="Hugging Face">
+            <i class="fa-solid fa-face-smile-beam"></i>
+          </a>
+          <span class="social-label">Hugging Face</span>
         </div>
       </div>
     </section>

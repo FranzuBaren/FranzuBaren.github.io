@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>FranzuBaren/Francesco Orsi's GitHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- Fonts: Serious, modern, academic -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
@@ -12,11 +12,10 @@
       --main-bg: #f9f8f6;
       --panel-bg: #ffffff;
       --border: #22232a;
+      --accent: #5e5add;
       --outline: #393a3f;
       --serif: 'EB Garamond', serif;
       --mono: 'Roboto Mono', monospace;
-      --accent: #5e5add;
-      --neutral: #878585;
       --soft: #edeef0;
       --shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
     }
@@ -158,114 +157,121 @@
       text-decoration: underline solid;
     }
     /* --- SOCIAL GRAPH FANCY --- */
-    .social-network-graph-acad {
-      position: relative;
-      min-height: 460px;
+    .reachout-graph-wrap {
       width: 100%;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      margin: 3.1rem 0 1.2rem 0;
+      justify-content: center;
+      margin-top: 3.2rem;
+      margin-bottom: 2.1rem;
     }
-    .social-graph-canvas {
+    .reachout-graph {
+      position: relative;
+      width: 440px;
+      height: 440px;
+      max-width: 100vw;
+    }
+    .reachout-graph svg {
       position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
+      left: 0; top: 0;
+      width: 100%; height: 100%;
       z-index: 1;
-      width: 600px;
-      height: 450px;
-      pointer-events: none;
     }
-    .acad-social-node {
+    .reachout-node {
+      --circle-size: 80px;
       position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 93px;
-      height: 93px;
+      left: 50%; top: 50%;
+      width: var(--circle-size); height: var(--circle-size);
+      margin: calc(var(--circle-size) / -2);
+      background: linear-gradient(120deg, #fff 78%, #e5e5f7 100%);
       border-radius: 50%;
-      background: linear-gradient(135deg, #fff 65%, #f0f1f8 100%);
-      border: 2.5px solid var(--border);
-      box-shadow: 0 6px 28px #3332, 0 2px 7px #2221;
-      cursor: pointer;
-      transition: box-shadow 0.21s, transform 0.17s, border 0.22s, background 0.23s;
-      filter: grayscale(75%);
-      z-index: 2;
-    }
-    .acad-social-node:hover,
-    .acad-social-node:focus {
-      box-shadow: 0 8px 40px #211c5033, 0 1px 6px #665fd911;
-      filter: grayscale(0%);
-      background: linear-gradient(135deg, #f2eefa 70%, #ccc5fd 100%);
-      border-color: var(--accent);
-      transform: translateY(-12px) scale(1.07);
-      z-index: 10;
-    }
-    .acad-social-icon {
-      font-size: 2.6rem;
-      color: var(--accent);
-      transition: color 0.2s;
-      width: 55px; height: 55px;
+      border: 2.6px solid #393a3f;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.1em;
+      box-shadow: 0 5px 24px #83839322;
+      z-index: 3;
+      cursor: pointer;
+      transition: box-shadow 0.18s, transform 0.17s, background 0.17s, border 0.19s;
+      filter: grayscale(55%);
     }
-    .acad-social-node:hover .acad-social-icon { color: var(--border); }
-    .acad-social-node .huggingface-svg { width: 50px; height: 50px; display: inline-block;}
-    .acad-social-label {
-      font-family: var(--mono);
-      color: var(--panel-bg);
-      background: var(--accent);
-      opacity: 0;
-      border-radius: 7px;
-      padding: 0.40em 1.2em;
-      font-size: 1.01em;
-      font-weight: 600;
+    .reachout-node:hover, .reachout-node:focus {
+      box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
+      transform: scale(1.12) translateY(-4px);
+      background: linear-gradient(122deg, #efeafe 75%, #c2c4e4 100%);
+      border-color: #5e5add;
+      filter: grayscale(0%);
+      z-index:10;
+    }
+    .reachout-icon {
+      font-size: 2.18rem;
+      color: #5e5add;
+      transition: color 0.18s, filter 0.16s, transform 0.16s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px; height: 56px;
+    }
+    .reachout-node:hover .reachout-icon,
+    .reachout-node:focus .reachout-icon {
+      color: #2d2e44;
+      filter: drop-shadow(0 4px 12px #aaa3fd53);
+      transform: scale(1.12);
+    }
+    .huggingface-emoji {
+      font-size: 2.7rem;
+      line-height: 1;
+      user-select: none;
+      color: #f0b90b;
+      filter: drop-shadow(0 2px 6px #b08500aa);
+      transition: filter 0.2s, transform 0.2s;
+      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Android Emoji", "EmojiSymbols", sans-serif;
+    }
+    .reachout-node:hover .huggingface-emoji,
+    .reachout-node:focus .huggingface-emoji {
+      filter: drop-shadow(0 3px 9px #ccac00ee);
+      transform: scale(1.22);
+    }
+    .reachout-tooltip {
       position: absolute;
-      white-space: nowrap;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -42px;
-      box-shadow: 0 2px 10px #8c8aad62;
+      left: 50%; bottom: -38px;
+      transform: translate(-50%, 8px);
+      opacity: 0;
       pointer-events: none;
-      letter-spacing: .02em;
-      text-transform: capitalize;
-      transition: opacity 0.2s, bottom 0.17s;
-      z-index: 9;
-      background: linear-gradient(91deg, #665fd9 60%, #534eaa 100%);
+      background: linear-gradient(89deg, #5e5add 45%, #534eaa 100%);
+      color: #fff;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 1.08em;
+      padding: 6px 20px;
+      border-radius: 8px;
+      white-space: nowrap;
+      box-shadow: 0 1px 8px #8888;
+      letter-spacing: 0.05em;
+      transition: opacity 0.20s, bottom 0.4s;
+      z-index: 11;
     }
-    .acad-social-node:hover .acad-social-label,
-    .acad-social-node:focus .acad-social-label { opacity: 1; bottom: -59px;}
-    /* Fancy positions for 9 nodes in a stylized "tree/star" graph */
-    .node-email      { left: 85px;  top: 185px; }
-    .node-linkedin   { left: 230px; top: 51px;  }
-    .node-substack   { left: 470px; top: 55px;  }
-    .node-openml     { left: 545px; top: 187px; }
-    .node-kaggle     { left: 495px; top: 329px;}
-    .node-streamlit  { left: 345px; top: 400px;}
-    .node-overleaf   { left: 186px; top: 393px;}
-    .node-github     { left: 52px;  top: 330px;}
-    .node-huggingface{ left: 306px; top: 240px;}
-    @media (max-width: 700px) {
+    .reachout-node:hover .reachout-tooltip,
+    .reachout-node:focus .reachout-tooltip {
+      opacity: 1;
+      bottom: -46px;
+    }
+    /* Positions: 9 nodes around circle */
+    .node-email        { transform: rotate(0deg)   translateY(-190px) rotate(0deg);}
+    .node-linkedin     { transform: rotate(40deg)  translateY(-190px) rotate(-40deg);}
+    .node-github       { transform: rotate(80deg)  translateY(-190px) rotate(-80deg);}
+    .node-openml       { transform: rotate(120deg) translateY(-190px) rotate(-120deg);}
+    .node-kaggle       { transform: rotate(160deg) translateY(-190px) rotate(-160deg);}
+    .node-streamlit    { transform: rotate(200deg) translateY(-190px) rotate(-200deg);}
+    .node-overleaf     { transform: rotate(240deg) translateY(-190px) rotate(-240deg);}
+    .node-substack     { transform: rotate(280deg) translateY(-190px) rotate(-280deg);}
+    .node-huggingface  { transform: rotate(320deg) translateY(-190px) rotate(-320deg);}
+    @media (max-width: 600px) {
       .container { padding: 0.5rem 0.1rem; border-radius: 0;}
-      .social-network-graph-acad { min-height: 280px;}
-      .social-graph-canvas { width: 350px; height: 240px; }
-      .acad-social-node { width: 49px; height: 49px; }
-      .acad-social-icon { font-size: 1.44rem; width:28px; height:28px;}
-      .acad-social-node .huggingface-svg { width: 28px; height: 28px; }
-      .acad-social-label { font-size: 0.69em; padding:0.23em 0.7em; bottom: -22px;}
-      .acad-social-node:hover .acad-social-label, .acad-social-node:focus .acad-social-label { bottom: -30px;}
-      .node-email      { left: 24px; top: 100px; }
-      .node-linkedin   { left: 93px; top: 19px;  }
-      .node-substack   { left: 225px; top: 17px; }
-      .node-openml     { left: 260px; top: 97px; }
-      .node-kaggle     { left: 238px; top: 172px;}
-      .node-streamlit  { left: 164px; top: 209px;}
-      .node-overleaf   { left: 92px; top: 206px;}
-      .node-github     { left: 19px; top: 172px;}
-      .node-huggingface{ left: 140px; top: 130px;}
+      .reachout-graph { width: 92vw; height: 92vw; min-width:260px; min-height:260px;}
+      .reachout-node { --circle-size:44px;}
+      .reachout-icon { width: 44px; height: 44px; font-size: 1.15rem;}
+      .huggingface-emoji { font-size: 2.5rem;}
     }
   </style>
 </head>
@@ -347,94 +353,56 @@
       <p>WIP</p>
     </section>
 
+    <!-- Detailed CV is linked only in menu, no content section here -->
+
     <section id="social">
       <h2>Reach Out &amp; Socials</h2>
-      <div class="social-network-graph-acad">
-        <svg class="social-graph-canvas" viewBox="0 0 600 450">
-          <!-- Graph edges (bezier/curves for organic look) -->
-          <path d="M128,194 Q170,140 238,90" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M238,90 Q355,40 488,96" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M492,96 Q545,170 553,200" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M545,200 Q550,320 505,335" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M495,329 Q420,410 360,420" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M350,418 Q210,425 200,410" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M186,393 Q60,335 98,240" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <path d="M52,330 Q38,230 98,196" stroke="#bfc0ca" stroke-width="2.5" fill="none"/>
-          <!-- Center links -->
-          <path d="M320,190 Q320,100 238,90" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
-          <path d="M320,210 Q410,100 492,96" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
-          <path d="M320,234 Q395,295 495,329" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
-          <path d="M320,239 Q250,335 150,271" stroke="#e4e0fd" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
-        </svg>
-        <!-- Network nodes with icons & labels -->
-        <div class="acad-social-node node-email" tabindex="0">
-          <a href="mailto:your.email@example.com" target="_blank" title="Email">
-            <span class="acad-social-icon"><i class="fa-solid fa-envelope"></i></span>
+      <div class="reachout-graph-wrap">
+        <div class="reachout-graph" aria-label="Social media and contact platforms">
+          <svg width="100%" height="100%" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
+            <circle cx="220" cy="220" r="184" stroke="#c5c4de" stroke-width="2" fill="none"/>
+          </svg>
+          <a class="reachout-node node-email" href="mailto:your.email@example.com" target="_blank" title="Email" aria-label="Email">
+            <span class="reachout-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">Email</span>
           </a>
-          <span class="acad-social-label">Email</span>
-        </div>
-        <div class="acad-social-node node-linkedin"  tabindex="0">
-          <a href="[Your LinkedIn Profile]" target="_blank" title="LinkedIn">
-            <span class="acad-social-icon"><i class="fa-brands fa-linkedin"></i></span>
+          <a class="reachout-node node-linkedin" href="[Your LinkedIn Profile]" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+            <span class="reachout-icon"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">LinkedIn</span>
           </a>
-          <span class="acad-social-label">LinkedIn</span>
-        </div>
-        <div class="acad-social-node node-substack"  tabindex="0">
-          <a href="[Your Substack Page]" target="_blank" title="Substack">
-            <span class="acad-social-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
+          <a class="reachout-node node-github" href="[Your GitProfile URL]" target="_blank" title="GitProfile" aria-label="GitProfile">
+            <span class="reachout-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">GitProfile</span>
           </a>
-          <span class="acad-social-label">Substack</span>
-        </div>
-        <div class="acad-social-node node-openml"    tabindex="0">
-          <a href="https://www.openml.org/" target="_blank" title="OpenML">
-            <span class="acad-social-icon"><i class="fa-solid fa-database"></i></span>
+          <a class="reachout-node node-openml" href="https://www.openml.org/" target="_blank" title="OpenML" aria-label="OpenML">
+            <span class="reachout-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">OpenML</span>
           </a>
-          <span class="acad-social-label">OpenML</span>
-        </div>
-        <div class="acad-social-node node-kaggle"    tabindex="0">
-          <a href="https://www.kaggle.com/" target="_blank" title="Kaggle">
-            <span class="acad-social-icon"><i class="fa-brands fa-kaggle"></i></span>
+          <a class="reachout-node node-kaggle" href="https://www.kaggle.com/" target="_blank" title="Kaggle" aria-label="Kaggle">
+            <span class="reachout-icon"><i class="fa-brands fa-kaggle" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">Kaggle</span>
           </a>
-          <span class="acad-social-label">Kaggle</span>
-        </div>
-        <div class="acad-social-node node-streamlit" tabindex="0">
-          <a href="https://streamlit.io/" target="_blank" title="Streamlit">
-            <span class="acad-social-icon"><i class="fa-solid fa-wave-square"></i></span>
+          <a class="reachout-node node-streamlit" href="https://streamlit.io/" target="_blank" title="Streamlit" aria-label="Streamlit">
+            <span class="reachout-icon"><i class="fa-solid fa-wave-square" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">Streamlit</span>
           </a>
-          <span class="acad-social-label">Streamlit</span>
-        </div>
-        <div class="acad-social-node node-overleaf"  tabindex="0">
-          <a href="https://www.overleaf.com/" target="_blank" title="OverLeaf">
-            <span class="acad-social-icon">
-              <!-- Overleaf Leaf SVG icon since no standard FontAwesome -->
-              <svg height="32" viewBox="0 0 32 32" fill="none">
+          <a class="reachout-node node-overleaf" href="https://www.overleaf.com/" target="_blank" title="OverLeaf" aria-label="OverLeaf">
+            <span class="reachout-icon">
+              <svg height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
                 <ellipse cx="16" cy="16" rx="14" ry="14" fill="#5e5add22"/>
-                <path d="M16 6C14 13 22 15 16 26" stroke="#333" stroke-width="2.2" fill="none"/>
+                <path d="M16 6C14 13 22 15 16 26" stroke="#393a3f" stroke-width="2.2" fill="none"/>
               </svg>
             </span>
+            <span class="reachout-tooltip" role="tooltip">OverLeaf</span>
           </a>
-          <span class="acad-social-label">OverLeaf</span>
-        </div>
-        <div class="acad-social-node node-github"    tabindex="0">
-          <a href="[Your GitProfile URL]" target="_blank" title="GitProfile">
-            <span class="acad-social-icon"><i class="fa-brands fa-github"></i></span>
+          <a class="reachout-node node-substack" href="[Your Substack Page]" target="_blank" title="Substack" aria-label="Substack">
+            <span class="reachout-icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></span>
+            <span class="reachout-tooltip" role="tooltip">Substack</span>
           </a>
-          <span class="acad-social-label">GitProfile</span>
-        </div>
-        <div class="acad-social-node node-huggingface" tabindex="0" style="background: linear-gradient(135deg, #fffbe7 60%, #ffe069 100%); border-color: #ffd65c;">
-          <a href="[Your HuggingFace URL]" target="_blank" title="Hugging Face">
-            <span class="acad-social-icon huggingface-svg">
-              <!-- Hugging Face official emoji logo from their official SVGs -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                <circle cx="64" cy="64" r="64" fill="#FFD21F"/>
-                <ellipse cx="64" cy="79" rx="32.5" ry="15.5" fill="#fff"/>
-                <ellipse cx="47.5" cy="68.5" rx="7.5" ry="14.5" fill="#231f20"/>
-                <ellipse cx="80.5" cy="68.5" rx="7.5" ry="14.5" fill="#231f20"/>
-                <path d="M39 89c11 4 39 5 50 0-2 14-37 17-50 0z" fill="#231f20"/>
-              </svg>
-            </span>
+          <a class="reachout-node node-huggingface" href="[Your HuggingFace URL]" target="_blank" title="Hugging Face" aria-label="Hugging Face" style="background: linear-gradient(95deg, #fffbe7 60%, #ffe069 100%); border-color: #ffd65c;">
+            <span class="reachout-icon huggingface-emoji" aria-hidden="true">🤗</span>
+            <span class="reachout-tooltip" role="tooltip">Hugging Face</span>
           </a>
-          <span class="acad-social-label">Hugging Face</span>
         </div>
       </div>
     </section>

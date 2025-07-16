@@ -14,20 +14,15 @@
       margin: 0; padding: 0;
     }
     header {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
+      display: flex; align-items: center; gap: 2.5rem;
       padding: 3rem 2rem 1.5rem 2rem;
       background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
-      border-bottom: 2px solid #22232a;
-      box-shadow: 0 6px 24px #00000010;
+      border-bottom: 2px solid #22232a; box-shadow: 0 6px 24px #00000010;
     }
     header img {
       width: 120px; height: 120px; border-radius: 50%;
-      border: 3px solid #5e5add;
-      object-fit: cover;
+      border: 3px solid #5e5add; object-fit: cover; background: #fff;
       box-shadow: 0 4px 20px #8b8aad22;
-      background: #fff;
     }
     header .header-text { max-width: 600px; }
     header h1 { font-family: 'EB Garamond', serif; font-size: 2.7rem; color: #22232a; font-weight: 700; margin: 0 0 .35em 0; text-shadow: 0 2px 24px #5e5add10; letter-spacing: 1.5px; }
@@ -36,9 +31,20 @@
       background: #f9f8f6; border-bottom: 1.5px solid #393a3f; margin: 0 0 1.7rem 0; text-align: center;
       padding: 0.9rem 0 0.7rem 0; box-shadow: 0 2px 10px #1a1a1a08;
     }
-    nav a { display: inline-block; color: #22232a; border-bottom: 2.5px solid transparent;
-      text-decoration: none; margin: 0 1.2rem; font-size: 1.09rem; font-family: 'EB Garamond', serif; font-weight: 600;
-      padding: 0.25em 0.6em .07em 0.6em; letter-spacing: 0.09em; border-radius: 2px 2px 0 0; transition: border 0.23s, color 0.18s;}
+    nav a {
+      display: inline-block;
+      color: #22232a;
+      border-bottom: 2.5px solid transparent;
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-size: 1.09rem;
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      padding: 0.25em 0.6em .07em 0.6em;
+      letter-spacing: 0.09em;
+      border-radius: 2px 2px 0 0;
+      transition: border 0.23s, color 0.18s;
+    }
     nav a:hover { border-bottom: 2.5px solid #5e5add; color: #5e5add; background: #edeef0; }
     .container { max-width: 950px; margin: 2.4rem auto 0 auto; background: #fff;
       box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
@@ -49,34 +55,21 @@
       font-weight: 700; font-size: 1.56rem; color: #22232a;
       border-left: 6px solid #5e5add; padding-left: 0.55em; margin: 2.2em 0 0.6em 0;
       background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
-      border-radius: 7px; letter-spacing: 0.03em;
-      font-family: 'EB Garamond', serif;
+      border-radius: 7px; letter-spacing: 0.03em; font-family: 'EB Garamond', serif;
     }
-
     /* --- SOCIAL GRAPHICS --- */
     .reachout-graph-wrap { width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 3.2rem; margin-bottom: 2.1rem; }
     .reachout-graph { position: relative; width: 440px; height: 440px; max-width: 100vw; user-select: none; }
     .reachout-graph svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
     .reachout-node {
-      --circle-size: 82px;
-      position: absolute;
-      left: 50%; top: 50%;
-      width: var(--circle-size); height: var(--circle-size);
-      margin: calc(var(--circle-size) / -2);
-      border-radius: 50%;
-      border: 2.6px solid #393a3f;
+      --circle-size: 82px; position: absolute; left: 50%; top: 50%;
+      width: var(--circle-size); height: var(--circle-size); margin: calc(var(--circle-size) / -2);
+      border-radius: 50%; border: 2.6px solid #393a3f;
       background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      z-index: 3;
+      display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3;
       box-shadow: 0 5px 24px #83839322;
-      transition:
-        box-shadow 0.18s, 
-        transform 0.27s cubic-bezier(.3,1.7,.5,1),
-        background 0.14s, 
-        border 0.16s;
-      filter: grayscale(45%);
-      outline: none;
+      transition: box-shadow 0.18s, transform 0.27s cubic-bezier(.3,1.7,.5,1), background 0.14s, border 0.16s;
+      filter: grayscale(45%); outline: none;
     }
     .reachout-icon { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px;
       color: #5e5add; transition: color 0.16s, filter 0.18s, transform 0.13s; }
@@ -107,12 +100,8 @@
       z-index: 7; transform: scale(1.13) rotate(0deg);
     }
     .reachout-node:active { transform: scale(0.96);}
-    .huggingface-emoji {
-      font-size: 2.1rem;
-      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-      transition: color 0.26s, filter 0.22s;
-      color: #b0a4f6;
-    }
+    .huggingface-emoji { font-size: 2.1rem; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+      transition: color 0.26s, filter 0.22s; color: #b0a4f6;}
     .node-email        { --angle: 0deg; }
     .node-linkedin     { --angle: 40deg; }
     .node-github       { --angle: 80deg; }
@@ -123,11 +112,7 @@
     .node-substack     { --angle: 280deg; }
     .node-huggingface  { --angle: 320deg; }
     .reachout-node {
-      transform:
-        translate(-50%, -50%)
-        rotate(var(--angle, 0))
-        translateY(-165px)
-        rotate(calc(var(--angle, 0) * -1));
+      transform: translate(-50%, -50%) rotate(var(--angle, 0)) translateY(-165px) rotate(calc(var(--angle, 0) * -1));
     }
     .reachout-node.active {
       z-index: 999;
@@ -137,7 +122,6 @@
       box-shadow: 0 16px 32px 5px #7672d339;
       filter: none;
     }
-
     /* -- CENTER MESSAGE ANTI-FLICKER -- */
     .center-message-overlay {
       pointer-events: auto;
@@ -145,11 +129,10 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%,-50%);
-      width: 230px; height: 110px;
+      width: 260px; height: 130px; /* Large enough to hover center from icons */
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       z-index: 1000;
-      opacity: 0; transition: opacity 0.6s;
-      background: transparent;
+      opacity: 0; transition: opacity 0.6s; background: transparent;
     }
     .center-message-overlay.show { opacity: 1; }
     .center-header {
@@ -167,26 +150,16 @@
       opacity: 0; transform: translateY(10px);
       transition: opacity 0.6s cubic-bezier(.6,0.6,.2,1.25), transform 1.2s cubic-bezier(.25,.85,.38,1.1);
     }
-    .center-message-overlay.show .center-header {
-      opacity: 1; transform: translateY(0); transition-delay: 0.15s;
-    }
-    .center-desc {
-      font-size: 0.99em;
-      background: #fff;
-      color: #222;
-      border-radius: 6px;
-      padding: 0.50em 0.9em;
-      box-shadow: 0 2px 7px #2d2d2d12;
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 500;
-      opacity: 0;
-      margin-top: 3px;
+    .center-message-overlay.show .center-header { opacity: 1; transform: translateY(0); transition-delay: 0.15s;}
+    .center-desc { font-size: 0.99em; background: #fff;
+      color: #222; border-radius: 6px;
+      padding: 0.50em 0.9em; box-shadow: 0 2px 7px #2d2d2d12;
+      font-family: 'Roboto Mono', monospace; font-weight: 500;
+      opacity: 0; margin-top: 3px;
       transform: translateY(10px);
       transition: opacity 1.5s 0.18s, transform 1.2s cubic-bezier(.25,.90,0,.96) 0.19s;
     }
-    .center-message-overlay.show .center-desc {
-      opacity: 1; transform: translateY(0); transition-delay: 0.36s;
-    }
+    .center-message-overlay.show .center-desc { opacity: 1; transform: translateY(0); transition-delay: 0.36s;}
     @media (max-width: 600px) {
       .reachout-graph { width: 94vw; height:94vw; min-width:220px !important; min-height:220px;}
       .reachout-node { width:38px; height:38px;}
@@ -300,68 +273,69 @@
       substack:    { name: "Substack", desc: "Essays and research summaries on AI, ML, and open science." },
       huggingface: { name: "Hugging Face", desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" }
     };
-    // Logic for anti-flicker center overlay
     const graph = document.getElementById('reachout-graph');
     const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
     const overlay = document.getElementById('center-message-overlay');
-    let mouseOnNode = false;
-    let mouseOnOverlay = false;
-    let currentPlat = null;
     let lockActive = false;
+    let heldNode = null;
     let resetTO = null;
-
-    function updateOverlay(plat, hold=false) {
-      if (!plat) { overlay.classList.remove('show','lock'); currentPlat=null; return; }
+    // Show overlay for platform
+    function showMessage(plat, lock=false) {
+      if (!plat) { overlay.classList.remove('show','lock'); heldNode=null; return; }
       overlay.innerHTML = `<span class="center-header">${platforms[plat].name}</span><span class="center-desc">${platforms[plat].desc}</span>`;
       overlay.classList.add('show');
-      currentPlat = plat;
-      if (hold) overlay.classList.add('lock'); else overlay.classList.remove('lock');
+      if(lock) overlay.classList.add('lock');
+      else overlay.classList.remove('lock');
+      heldNode = lock ? plat : null;
     }
-
+    // Node hover: reveal and track current
     nodes.forEach(node=>{
       node.addEventListener('mouseenter', function() {
         if (lockActive) return;
-        mouseOnNode = true;
-        nodes.forEach(n=>n.classList.remove('hovered'));
-        node.classList.add('hovered');
-        updateOverlay(node.getAttribute('data-platform'));
+        showMessage(node.getAttribute('data-platform'), false);
+      });
+      node.addEventListener('focus', function() {
+        if (lockActive) return;
+        showMessage(node.getAttribute('data-platform'), false);
       });
       node.addEventListener('mouseleave', function() {
-        if (lockActive) return;
-        mouseOnNode = false;
-        setTimeout(()=>{
-          if(!mouseOnOverlay && !lockActive) {
-            overlay.classList.remove('show');
-          }
+        if (lockActive) return; // overlay stays if message overlay still hovered
+        setTimeout(()=> {
+          if(document.querySelector(':hover') !== overlay) { showMessage(null); }
         }, 10);
+      });
+      node.addEventListener('blur', function() {
+        if (lockActive) return;
+        showMessage(null);
       });
       node.addEventListener('click', function(e){
         e.preventDefault();
+        if (lockActive) return;
         lockActive = true;
-        nodes.forEach(n=>n.classList.remove('active','hovered'));
+        showMessage(node.getAttribute('data-platform'), true);
+        nodes.forEach(n=>n.classList.remove('active'));
         node.classList.add('active');
-        updateOverlay(node.getAttribute('data-platform'), true);
         if(resetTO) clearTimeout(resetTO);
         resetTO = setTimeout(()=>{
           lockActive = false;
           node.classList.remove('active');
-          overlay.classList.remove('show','lock');
-        }, 4000);
+          showMessage(null,false);
+        }, 4200);
       });
       node.addEventListener('keydown',function(e){
         if(e.key==='Enter'||e.key===' ') node.click();
       });
     });
     overlay.addEventListener('mouseenter', function(){
-      mouseOnOverlay=true;
+      if (lockActive) return;
+      if(heldNode) showMessage(heldNode, false);
     });
     overlay.addEventListener('mouseleave', function(){
-      mouseOnOverlay=false;
-      if(!mouseOnNode && !lockActive) overlay.classList.remove('show');
+      if (lockActive) return;
+      showMessage(null,false);
     });
-    graph.addEventListener('mouseleave', () => {
-      if(!lockActive) overlay.classList.remove('show');
-      nodes.forEach(n=>n.classList.remove('hovered'));
+    graph.addEventListener('mouseleave', function() {
+      if (!lockActive) showMessage(null,false);
     });
   </script>
 </body>

@@ -716,4 +716,8 @@ nodes.forEach(node => {
   // Keyboard events
   node.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
-      e.
+      e.preventDefault();
+      node.click();
+    }
+  });
+});

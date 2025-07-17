@@ -7,16 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   body {
-    background: #f9f8f6; color: #22232a;
+    background: #0a0a0a; color: #e8e8e8;
     font-family: 'EB Garamond', serif;
     margin: 0; padding: 0;
   }
   header {
     display: flex; align-items: center; gap: 2.5rem;
     padding: 3rem 2rem 1.5rem 2rem;
-    background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
-    border-bottom: 2px solid #22232a;
-    box-shadow: 0 6px 24px #00000010;
+    background: linear-gradient(101deg, #1a1a1a 70%, #252525 100%);
+    border-bottom: 2px solid #444;
+    box-shadow: 0 6px 24px #00000050;
   }
   header img {
     width: 120px; height: 120px;
@@ -24,7 +24,7 @@
     border: 3px solid #5e5add;
     object-fit: cover;
     background: #fff;
-    box-shadow: 0 4px 20px #8b8aad22;
+    box-shadow: 0 4px 20px #5e5add44;
   }
   header .header-text {
     max-width: 600px;
@@ -32,10 +32,10 @@
   header h1 {
     font-family: 'EB Garamond', serif;
     font-size: 2.7rem;
-    color: #22232a;
+    color: #ffffff;
     font-weight: 700;
     margin: 0 0 .35em 0;
-    text-shadow: 0 2px 24px #5e5add10;
+    text-shadow: 0 2px 24px #5e5add30;
     letter-spacing: 1.5px;
   }
   header h2 {
@@ -47,16 +47,16 @@
     font-weight: 400;
   }
   nav {
-    background: #f9f8f6;
-    border-bottom: 1.5px solid #393a3f;
+    background: #0a0a0a;
+    border-bottom: 1.5px solid #333;
     margin: 0 0 1.7rem 0;
     text-align: center;
     padding: 0.9rem 0 0.7rem 0;
-    box-shadow: 0 2px 10px #1a1a1a08;
+    box-shadow: 0 2px 10px #00000030;
   }
   nav a {
     display: inline-block;
-    color: #22232a;
+    color: #e8e8e8;
     border-bottom: 2.5px solid transparent;
     text-decoration: none;
     margin: 0 1.2rem;
@@ -66,30 +66,47 @@
     padding: 0.25em 0.6em .07em 0.6em;
     letter-spacing: 0.09em;
     border-radius: 2px 2px 0 0;
-    transition: border 0.23s, color 0.18s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(94, 90, 221, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  nav a:hover::before {
+    left: 100%;
   }
   nav a:hover {
     border-bottom: 2.5px solid #5e5add;
     color: #5e5add;
-    background: #edeef0;
+    background: rgba(94, 90, 221, 0.1);
+    box-shadow: 0 0 20px rgba(94, 90, 221, 0.3);
+    transform: translateY(-2px);
   }
   main.container {
     max-width: 950px;
     margin: 2.4rem auto 0 auto;
-    background: #fff;
-    box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
+    background: #1a1a1a;
+    box-shadow: 0 6px 42px -2px #00000060, 0 2px 7px 0 #00000030;
     border-radius: 18px;
-    border: 1.7px solid #393a3f;
+    border: 1.7px solid #333;
     padding: 2.7rem 2.5rem 2.2rem 2.5rem;
   }
   h2.section-title {
     font-weight: 700;
     font-size: 1.56rem;
-    color: #22232a;
+    color: #ffffff;
     border-left: 6px solid #5e5add;
     padding-left: 0.55em;
     margin: 2.2em 0 0.6em 0;
-    background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
+    background: linear-gradient(97deg, #2a2a2a 90%, #333 100%);
     border-radius: 7px;
     letter-spacing: 0.03em;
     font-family: 'EB Garamond', serif;
@@ -98,13 +115,14 @@
     font-size: 1rem;
     line-height: 1.5;
     font-family: 'EB Garamond', serif;
+    color: #e8e8e8;
   }
   ul {
     list-style: disc;
     margin-left: 1.4em;
   }
   
-  /* Social Media Circle Visualization - Stabilized */
+  /* Enhanced Social Media Circle */
   .reachout-graph-wrap {
     width: 100%;
     display: flex;
@@ -131,11 +149,11 @@
     position: absolute;
     width: 72px; height: 72px;
     border-radius: 50%;
-    border: 2.6px solid #393a3f;
-    background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
+    border: 2.6px solid #444;
+    background: linear-gradient(120deg, #2a2a2a 70%, #333 100%);
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    box-shadow: 0 5px 24px #83839322;
+    box-shadow: 0 5px 24px #00000040;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: grayscale(45%);
     z-index: 3;
@@ -144,9 +162,9 @@
   .reachout-node:hover,
   .reachout-node.active {
     filter: grayscale(0%);
-    background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
+    background: linear-gradient(122deg, #3a3a5a 70%, #4a4a6a 100%);
     border-color: #5e5add;
-    box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
+    box-shadow: 0 7px 34px #5e5add44, 0 1px 7px #5e5add20;
     z-index: 7;
     transform: scale(1.13);
   }
@@ -154,6 +172,11 @@
     width: 42px; height: 42px;
     object-fit: contain;
     pointer-events: none;
+    filter: brightness(0.9);
+  }
+  .reachout-node:hover img,
+  .reachout-node.active img {
+    filter: brightness(1.2);
   }
   .center-message-overlay {
     position: absolute;
@@ -189,55 +212,128 @@
   }
   .center-desc {
     font-size: 0.85em;
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
+    background: rgba(26, 26, 26, 0.95);
+    color: #e8e8e8;
     border-radius: 8px;
     padding: 0.6em 1em;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
     line-height: 1.4;
     max-width: 260px;
     backdrop-filter: blur(5px);
+    border: 1px solid #333;
   }
   
-  /* GitHub Statistics - Fixed */
-  .stats-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+  /* Enhanced GitHub Statistics */
+  .stats-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
     margin: 2.5rem 0;
+    border: 2px solid #333;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
-  .stats-container img {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px #31324420;
-    border: 1px solid #d6d6ee;
-    max-width: 100%;
-    height: auto;
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
   }
-  .activity-graph {
+  .stat-card {
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid #444;
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(94, 90, 221, 0.2);
+    border-color: #5e5add;
+  }
+  .stat-card h3 {
+    color: #5e5add;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
     text-align: center;
-    margin: 2.5rem auto 0 auto;
-    max-width: 700px;
   }
-  .activity-graph img {
+  .stat-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+  }
+  .stat-card:hover img {
+    box-shadow: 0 5px 20px rgba(94, 90, 221, 0.3);
+  }
+  .activity-section {
+    background: rgba(26, 26, 26, 0.6);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid #444;
+    margin-top: 2rem;
+  }
+  .activity-section h3 {
+    color: #5e5add;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .activity-section img {
     width: 100%;
     border-radius: 12px;
-    border: 1px solid #d6d6ee;
-    background: #fff;
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.05);
     height: auto;
+    transition: all 0.3s ease;
+  }
+  .activity-section:hover img {
+    box-shadow: 0 8px 25px rgba(94, 90, 221, 0.25);
+  }
+  .stats-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .info-card {
+    background: rgba(94, 90, 221, 0.1);
+    border: 1px solid rgba(94, 90, 221, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .info-card:hover {
+    background: rgba(94, 90, 221, 0.15);
+    transform: translateY(-3px);
+  }
+  .info-card h4 {
+    color: #5e5add;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .info-card p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin: 0;
   }
   
   /* GitHub Stats Fallback */
   .github-stats-fallback {
-    background: #f8f9fa;
-    border: 2px dashed #d6d6ee;
+    background: rgba(248, 249, 250, 0.1);
+    border: 2px dashed #444;
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
-    color: #666;
+    color: #888;
     font-family: 'Roboto Mono', monospace;
     margin: 1rem 0;
   }
@@ -245,11 +341,11 @@
   footer {
     text-align: center;
     padding: 1.6rem 0;
-    border-top: 1.8px solid #393a3f;
+    border-top: 1.8px solid #333;
     font-family: 'EB Garamond', serif;
     font-weight: 500;
     font-size: 0.92rem;
-    color: #555759;
+    color: #888;
     margin-top: 4rem;
   }
   
@@ -395,16 +491,90 @@
 
   <section id="statistics">
     <h2 class="section-title">GitHub Statistics</h2>
-    <div class="stats-container">
-      <img 
-        src="https://github-readme-stats.vercel.app/api?username=franzubaren&show_icons=true&theme=default&hide_title=true&count_private=true"
-        alt="GitHub stats" 
-        loading="lazy"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      />
-      <div class="github-stats-fallback" style="display: none;">
-        GitHub Stats: Replace 'franzubaren' with your actual GitHub username
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>📊 General Stats</h3>
+          <img 
+            src="https://github-readme-stats.vercel.app/api?username=franzubaren&show_icons=true&theme=dark&hide_title=true&count_private=true&bg_color=1a1a1a&title_color=5e5add&text_color=e8e8e8&icon_color=5e5add"
+            alt="GitHub stats" 
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          />
+          <div class="github-stats-fallback" style="display: none;">
+            GitHub Stats: Replace 'franzubaren' with your actual GitHub username
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>🔥 Top Languages</h3>
+          <img 
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=franzubaren&layout=compact&theme=dark&hide_title=true&bg_color=1a1a1a&title_color=5e5add&text_color=e8e8e8"
+            alt="Top Languages"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          />
+          <div class="github-stats-fallback" style="display: none;">
+            Top Languages: Replace 'franzubaren' with your actual GitHub username
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>🏆 GitHub Trophies</h3>
+          <img 
+            src="https://github-profile-trophy.vercel.app/?username=franzubaren&theme=darkhub&no-frame=true&column=3&margin-w=15&margin-h=15"
+            alt="GitHub Trophies"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          />
+          <div class="github-stats-fallback" style="display: none;">
+            GitHub Trophies: Replace 'franzubaren' with your actual GitHub username
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>⚡ Recent Activity</h3>
+          <img 
+            src="https://github-readme-streak-stats.herokuapp.com/?user=franzubaren&theme=dark&background=1a1a1a&stroke=5e5add&ring=5e5add&fire=5e5add&currStreakNum=e8e8e8&sideNums=e8e8e8&currStreakLabel=5e5add&sideLabels=5e5add&dates=e8e8e8"
+            alt="GitHub Streak Stats"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          />
+          <div class="github-stats-fallback" style="display: none;">
+            Streak Stats: Replace 'franzubaren' with your actual GitHub username
+          </div>
+        </div>
       </div>
+      
+      <div class="activity-section">
+        <h3>📈 Contribution Activity</h3>
+        <img 
+          src="https://github-readme-activity-graph.vercel.app/graph?username=franzubaren&theme=react-dark&bg_color=1a1a1a&color=e8e8e8&line=5e5add&point=5e5add&area=true&hide_border=true" 
+          alt="Contribution Graph"
+          loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <div class="github-stats-fallback" style="display: none;">
+          Activity Graph: Replace 'franzubaren' with your actual GitHub username
+        </div>
+      </div>
+      
+      <div class="stats-info">
+        <div class="info-card">
+          <h4>🔧 Development Focus</h4>
+          <p>Data Science, Machine Learning, and AI Research with emphasis on regulatory compliance and reproducible research.</p>
+        </div>
+        <div class="info-card">
+          <h4>📚 Open Source</h4>
+          <p>Contributing to the scientific computing ecosystem and sharing knowledge through documented, reproducible code.</p>
+        </div>
+        <div class="info-card">
+          <h4>🌟 Collaboration</h4>
+          <p>Always open to collaborating on projects related to AI ethics, regulatory ML, and scientific computing.</p>
+        </div>
+      </div>
+    </div>
+  </section>>
       
       <img 
         src="https://github-readme-stats.vercel.app/api/top-langs/?username=franzubaren&layout=compact&theme=default&hide_title=true"

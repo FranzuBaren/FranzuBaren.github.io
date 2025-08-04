@@ -3,24 +3,41 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Opening Text Animation with Bars</title>
+<title>FranzuBaren/Francesco Orsi's GitHub</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   body {
-    margin: 0; font-family: 'EB Garamond', serif; background: #fafafa; color: #222;
-    display: flex; justify-content: center; align-items: center; height: 100vh;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: 'EB Garamond', serif;
+    background: #fafafa;
+    color: #26243a;
+    min-height: 100vh;
+  }
+  /* Animated banner container */
+  .animated-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    background: #fafafa;
   }
   .animated-text-container {
-    position: relative;
     display: flex;
     align-items: center;
-    overflow: visible;
-    gap: 1.6rem;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2.8rem;
+    position: relative;
   }
-  /* Left and right bars */
+  /* Bars with two segments each */
   .bar {
-    width: 75px;
-    height: 5px;
-    background: #5e5add;
+    width: 82px;
+    height: 6px;
+    background: transparent;
     position: relative;
     overflow: visible;
   }
@@ -28,63 +45,142 @@
   .bar::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 5px;
-    background: #5e5add;
     left: 0;
+    width: 100%;
+    height: 6px;
+    background: #5e5add;
+    border-radius: 4px;
+    opacity: 1;
   }
-  /* For left bar, before and after are vertical steps */
   .bar.left::before {
     top: 0;
-    animation: barUpBack 1s ease forwards;
-    animation-delay: 0s;
+    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
+    animation-delay: 0.1s;
   }
   .bar.left::after {
-    top: 7px;
-    animation: barUpBack 1s ease forwards;
-    animation-delay: 0.5s;
+    top: 13px;
+    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
+    animation-delay: 0.45s;
   }
-  /* For right bar, before and after reversed in delay */
   .bar.right::before {
     top: 0;
-    animation: barUpBack 1s ease forwards;
+    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
     animation-delay: 0.25s;
   }
   .bar.right::after {
-    top: 7px;
-    animation: barUpBack 1s ease forwards;
-    animation-delay: 0.75s;
+    top: 13px;
+    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
+    animation-delay: 0.65s;
   }
-  /* Text styling */
-  .animated-text {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #22232a;
-    opacity: 0;
-    transform-origin: center bottom;
-    white-space: nowrap;
-    animation: textReveal 1.2s ease forwards;
-    animation-delay: 1.2s;
-  }
-
-  /* Keyframes */
+  /* Keyframes for bar sliding up/back */
   @keyframes barUpBack {
-    0% { transform: translateY(0) translateZ(0); opacity: 1; }
-    50% { transform: translateY(-18px) translateZ(-15px); opacity: 1; }
-    100% { transform: translateY(-18px) translateZ(-15px); opacity: 0; }
+    0% { transform: translateY(0) scaleX(1); opacity: 1; }
+    60% { transform: translateY(-30px) scaleX(.8); opacity: 1;}
+    100% { transform: translateY(-46px) scaleX(.7); opacity: 0;}
+  }
+  .animated-bio {
+    max-width: 540px;
+    text-align: center;
+    font-size: 1.42rem;
+    font-weight: 600;
+    color: #252659;
+    line-height: 1.45;
+    opacity: 0;
+    transform: scaleY(0.75);
+    animation: textReveal 1s cubic-bezier(.3,1.5,.5,1) forwards;
+    animation-delay: 1.2s;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 22px #3a347415;
+    padding: 2.2rem 2.1rem 1.35rem 2.1rem;
+    letter-spacing: .07px;
+    z-index: 1;
   }
   @keyframes textReveal {
-    0% { opacity: 0; transform: scaleY(0.6); }
-    100% { opacity: 1; transform: scaleY(1); }
+    0% {opacity: 0; transform: scaleY(0.72);}
+    100% {opacity: 1; transform: scaleY(1);}
+  }
+  /* Navigation menu styles */
+  nav.selection-menu {
+    display: flex;
+    gap: 1.7rem;
+    justify-content: center;
+    margin-top: 48px;
+    opacity: 0;
+    transform: translateY(32px);
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(.3,1.5,.5,1), transform 0.8s cubic-bezier(.3,1.5,.5,1);
+  }
+  nav.selection-menu.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  nav.selection-menu a {
+    font-family: 'EB Garamond', serif;
+    font-weight: 600;
+    font-size: 1.19rem;
+    color: #26243a;
+    background: linear-gradient(95deg, #edeef0 88%, #f8f8fd 102%);
+    padding: 0.57em 1.2em 0.45em 1.2em;
+    border-radius: 10px;
+    border-bottom: 3.5px solid transparent;
+    transition: background 0.2s, border 0.25s, color 0.25s;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+  nav.selection-menu a:hover, nav.selection-menu a:focus {
+    background: #e7e6fa;
+    color: #5e5add;
+    border-bottom-color: #5e5add;
+  }
+  /* Responsive */
+  @media (max-width: 680px) {
+    .animated-bio {
+      font-size: 1.12rem;
+      padding: 1.3rem .7rem 1.1rem .7rem;
+    }
+    .animated-text-container { gap: .7rem;}
+    .bar { width: 34vw; min-width: 46px;}
+    nav.selection-menu {
+      gap: .9rem;
+      flex-wrap: wrap;
+    }
+    nav.selection-menu a {
+      font-size: 1.02rem;
+      padding: 0.35em 0.5em 0.32em 0.5em;
+      border-radius: 7px;
+    }
   }
 </style>
 </head>
 <body>
-  <div class="animated-text-container" aria-label="Animated heading with side bars">
-    <div class="bar left"></div>
-    <div class="animated-text">Francesco Orsi</div>
-    <div class="bar right"></div>
+  <div class="animated-section">
+    <div class="animated-text-container" aria-label="Animated intro with opening bars">
+      <div class="bar left"></div>
+      <div class="animated-bio">
+        I am a <b>data science professional</b> with a strong quantitative background. I build, deploy and lead robust AI systems that align with both regulatory standards and business goals.
+      </div>
+      <div class="bar right"></div>
+    </div>
+    <nav class="selection-menu" id="mainMenu">
+      <a href="#about">About</a>
+      <a href="#detailed-cv">Detailed CV</a>
+      <a href="#interest">Interests</a>
+      <a href="#projects">Selected Projects</a>
+      <a href="#social">Reach Out &amp; Socials</a>
+      <a href="#statistics">GitHub Statistics</a>
+    </nav>
   </div>
+  <script>
+    // Wait for the bars and bio animation to finish, then reveal the menu
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('mainMenu').classList.add('visible');
+      }, 2000); // slightly longer than animation delays so menu fades in after bio reveal
+    });
+  </script>
 </body>
 </html>
+
 

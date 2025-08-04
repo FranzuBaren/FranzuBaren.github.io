@@ -1,655 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>FranzuBaren/Francesco Orsi's GitHub</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  body {
-    background: #f9f8f6; color: #22232a;
-    font-family: 'EB Garamond', serif;
-    margin: 0; padding: 0;
-  }
-  header {
-    display: flex; align-items: center; gap: 2.5rem;
-    padding: 3rem 2rem 1.5rem 2rem;
-    background: linear-gradient(101deg, #edeef0 70%, #f8f8fd 100%);
-    border-bottom: 2px solid #22232a;
-    box-shadow: 0 6px 24px #00000010;
-  }
-  header img {
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    border: 3px solid #5e5add;
-    object-fit: cover;
-    background: #fff;
-    box-shadow: 0 4px 20px #8b8aad22;
-  }
-  header .header-text {
-    max-width: 600px;
-  }
-  header h1 {
-    font-family: 'EB Garamond', serif;
-    font-size: 2.7rem;
-    color: #22232a;
-    font-weight: 700;
-    margin: 0 0 .35em 0;
-    text-shadow: 0 2px 24px #5e5add10;
-    letter-spacing: 1.5px;
-  }
-  header h2 {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.15rem;
-    color: #5e5add;
-    margin: 0;
-    letter-spacing: 0.7px;
-    font-weight: 400;
-  }
-  nav {
-    background: #f9f8f6;
-    border-bottom: 1.5px solid #393a3f;
-    margin: 0 0 1.7rem 0;
-    text-align: center;
-    padding: 0.9rem 0 0.7rem 0;
-    box-shadow: 0 2px 10px #1a1a1a08;
-  }
-  nav a {
-    display: inline-block;
-    color: #22232a;
-    border-bottom: 2.5px solid transparent;
-    text-decoration: none;
-    margin: 0 1.2rem;
-    font-size: 1.09rem;
-    font-family: 'EB Garamond', serif;
-    font-weight: 600;
-    padding: 0.25em 0.6em .07em 0.6em;
-    letter-spacing: 0.09em;
-    border-radius: 2px 2px 0 0;
-    transition: border 0.23s, color 0.18s;
-  }
-  nav a:hover {
-    border-bottom: 2.5px solid #5e5add;
-    color: #5e5add;
-    background: #edeef0;
-  }
-  main.container {
-    max-width: 950px;
-    margin: 2.4rem auto 0 auto;
-    background: #fff;
-    box-shadow: 0 6px 42px -2px #31324424, 0 2px 7px 0 #22211212;
-    border-radius: 18px;
-    border: 1.7px solid #393a3f;
-    padding: 2.7rem 2.5rem 2.2rem 2.5rem;
-  }
-  h2.section-title {
-    font-weight: 700;
-    font-size: 1.56rem;
-    color: #22232a;
-    border-left: 6px solid #5e5add;
-    padding-left: 0.55em;
-    margin: 2.2em 0 0.6em 0;
-    background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
-    border-radius: 7px;
-    letter-spacing: 0.03em;
-    font-family: 'EB Garamond', serif;
-  }
-  p, li {
-    font-size: 1rem;
-    line-height: 1.5;
-    font-family: 'EB Garamond', serif;
-  }
-  ul {
-    list-style: disc;
-    margin-left: 1.4em;
-  }
-  
-  /* Social Media Circle Visualization - Stabilized */
-  .reachout-graph-wrap {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-  .reachout-graph {
-    position: relative;
-    height: 440px;
-    width: 440px;
-    max-width: 95vw;
-    max-height: 95vw;
-    min-width: 320px;
-    min-height: 320px;
-  }
-  .reachout-graph svg.base {
-    position: absolute;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .reachout-node {
-    position: absolute;
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    border: 2.6px solid #393a3f;
-    background: linear-gradient(120deg, #fff 70%, #edeefe 100%);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 5px 24px #83839322;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    filter: grayscale(45%);
-    z-index: 3;
-    transform-origin: center;
-  }
-  .reachout-node:hover,
-  .reachout-node.active {
-    filter: grayscale(0%);
-    background: linear-gradient(122deg, #efeafe 70%, #e0dfff 100%);
-    border-color: #5e5add;
-    box-shadow: 0 7px 34px #4e4eaa44, 0 1px 7px #23234314;
-    z-index: 7;
-    transform: scale(1.13);
-  }
-  .reachout-node img {
-    width: 42px; height: 42px;
-    object-fit: contain;
-    pointer-events: none;
-  }
-  .center-message-overlay {
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    width: 280px; height: 120px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 1000; 
-    opacity: 0; 
-    transition: opacity 0.4s ease-in-out;
-    background: transparent; 
-    text-align: center; 
-    user-select: none;
-    pointer-events: none;
-  }
-  .center-message-overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .center-header {
-    background: linear-gradient(90deg, #5e5add 70%, #766afd 100%);
-    padding: 0.4em 1.2em 0.3em 1.2em;
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 700;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    font-family: 'EB Garamond', serif;
-    display: inline-block;
-    box-shadow: 0 4px 20px #5e5add55;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-  }
-  .center-desc {
-    font-size: 0.85em;
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
-    border-radius: 8px;
-    padding: 0.6em 1em;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    line-height: 1.4;
-    max-width: 260px;
-    backdrop-filter: blur(5px);
-  }
-  
-  /* GitHub Statistics - Fixed */
-  .stats-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin: 2.5rem 0;
-  }
-  .stats-container img {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px #31324420;
-    border: 1px solid #d6d6ee;
-    max-width: 100%;
-    height: auto;
-  }
-  .activity-graph {
-    text-align: center;
-    margin: 2.5rem auto 0 auto;
-    max-width: 700px;
-  }
-  .activity-graph img {
-    width: 100%;
-    border-radius: 12px;
-    border: 1px solid #d6d6ee;
-    background: #fff;
-    height: auto;
-  }
-  
-  /* GitHub Stats Fallback */
-  .github-stats-fallback {
-    background: #f8f9fa;
-    border: 2px dashed #d6d6ee;
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    color: #666;
-    font-family: 'Roboto Mono', monospace;
-    margin: 1rem 0;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 1.6rem 0;
-    border-top: 1.8px solid #393a3f;
-    font-family: 'EB Garamond', serif;
-    font-weight: 500;
-    font-size: 0.92rem;
-    color: #555759;
-    margin-top: 4rem;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 900px) {
-    .stats-container {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FranzuBaren/Francesco Orsi's GitHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sidebar-bg: #f2f2f8;
+      --sidebar-dark: #d8d8e8;
+      --accent: #5e5add;
+      --sidebar-width: 260px;
+      --sidebar-collapsed-width: 60px;
+    }
+    body {
+      margin: 0;
+      background: #f8f8fc;
+      color: #22232a;
+      font-family: 'EB Garamond', serif;
+      display: flex;
+      height: 100vh;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      background: var(--sidebar-bg);
+      border-right: 2px solid #e4e4ef;
+      display: flex;
       flex-direction: column;
       align-items: center;
+      padding-top: 2rem;
+      position: fixed;
+      height: 100vh;
+      box-shadow: 2px 0 18px #acadce14;
+      z-index: 100;
+      width: var(--sidebar-width);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
     }
-  }
-  @media (max-width: 600px) {
-    .reachout-graph {
-      width: 90vw;
-      height: 90vw;
-      min-width: 280px;
-      min-height: 280px;
+    .sidebar.collapsed {
+      width: var(--sidebar-collapsed-width);
+      padding-top: 2rem;
     }
-    .reachout-node {
-      width: 48px;
-      height: 48px;
+
+    /* Hide text in collapsed sidebar */
+    .sidebar.collapsed h1,
+    .sidebar.collapsed h2,
+    .sidebar.collapsed nav a {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
-    .reachout-node img {
-      width: 28px;
-      height: 28px;
+
+    .sidebar img {
+      margin-bottom: 1.1rem;
+      border-radius: 50%;
+      width: 102px;
+      height: 102px;
+      border: 3px solid var(--accent);
+      transition: width 0.4s, height 0.4s;
     }
-    .center-message-overlay {
-      width: 85vw;
-      height: 100px;
+    .sidebar.collapsed img {
+      width: 36px;
+      height: 36px;
+      border-width: 2px;
+      margin-bottom: 2.4rem;
     }
-    .center-header {
-      font-size: 0.95em;
-      padding: 0.3em 0.8em;
-    }
-    .center-desc {
-      font-size: 0.75em;
-      padding: 0.5em 0.8em;
-    }
-    .stats-container img {
-      width: 95vw !important;
-      min-width: 0 !important;
-      max-width: 95vw !important;
-    }
-    header {
-      flex-direction: column;
+
+    .sidebar h1 {
+      margin: 0 0 .2em 0;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #232247;
       text-align: center;
-      gap: 1.5rem;
+      letter-spacing: .5px;
+      user-select: none;
+      transition: opacity 0.4s ease;
     }
-    header img {
-      width: 100px;
-      height: 100px;
+    .sidebar h2 {
+      margin: .1em 0 2.3em 0;
+      font-family: 'Roboto Mono', monospace;
+      color: var(--accent);
+      font-size: .98rem;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: .1em;
+      user-select: none;
+      transition: opacity 0.4s ease;
+    }
+    nav {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      user-select: none;
     }
     nav a {
-      margin: 0 0.8rem;
-      font-size: 1rem;
+      padding: 1rem 2rem;
+      color: #232247;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: left;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.09rem;
+      transition: background 0.17s, color 0.15s;
+      border-left: 4px solid transparent;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
     }
+    nav a:hover, nav a.active {
+      background: var(--sidebar-dark);
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Toggle button for sidebar */
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      left: var(--sidebar-width);
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-size: 1.5rem;
+      line-height: 36px;
+      text-align: center;
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 200;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .toggle-btn.collapsed {
+      left: var(--sidebar-collapsed-width);
+    }
+
     main.container {
-      margin: 1rem auto;
-      padding: 1.5rem;
+      margin-left: var(--sidebar-width);
+      padding: 2.3rem 2.5rem 2.2rem 2.5rem;
+      max-width: 900px;
+      min-width: 0;
+      flex: 1;
+      transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-  }
-</style>
+    main.container.collapsed {
+      margin-left: var(--sidebar-collapsed-width);
+    }
+
+    h2.section-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #444055;
+      margin: 1.5em 0 0.7em 0;
+      padding-left: 0.4em;
+      border-left: 6px solid var(--accent);
+      background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
+      border-radius: 7px;
+      letter-spacing: 0.03em;
+      font-family: 'EB Garamond', serif;
+    }
+    p, li {
+      font-size: 1.03rem;
+      line-height: 1.5;
+      margin-bottom: 0.55em;
+    }
+    ul { list-style: disc; margin-left: 1.4em; }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 1.3rem 0 0.4rem 0;
+      color: #929295;
+      font-size: .98rem;
+      margin-top: 3.5rem; 
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --sidebar-width: 56vw;
+        --sidebar-collapsed-width: 60px;
+      }
+      .sidebar {
+        width: var(--sidebar-width);
+      }
+      main.container {
+        margin-left: var(--sidebar-width);
+      }
+      .toggle-btn {
+        left: var(--sidebar-width);
+      }
+      .sidebar.collapsed {
+        width: var(--sidebar-collapsed-width);
+      }
+      main.container.collapsed {
+        margin-left: var(--sidebar-collapsed-width);
+      }
+      .toggle-btn.collapsed {
+        left: var(--sidebar-collapsed-width);
+      }
+    }
+    @media (max-width: 600px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: var(--sidebar-width);
+        padding-top: 3rem;
+        z-index: 300;
+      }
+      .toggle-btn {
+        top: 1rem;
+        left: var(--sidebar-width);
+        z-index: 400;
+      }
+      .sidebar.collapsed {
+        width: var(--sidebar-collapsed-width);
+      }
+      main.container {
+        margin-left: 0;
+        padding: 1.5rem 1rem 1.3rem 1rem;
+        max-width: 100vw;
+      }
+      main.container.collapsed {
+        margin-left: 0;
+      }
+      /* In very small view, sidebar toggles as overlay */
+    }
+  </style>
 </head>
 <body>
-<header>
-  <img src="https://via.placeholder.com/120" alt="Francesco Orsi Photo" />
-  <div class="header-text">
+  <div class="sidebar" id="sidebar">
+    <img src="https://via.placeholder.com/102" alt="Francesco Orsi Photo" />
     <h1>Francesco Orsi</h1>
     <h2>Data Science Manager</h2>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#detailed-cv">Detailed CV</a>
+      <a href="#interest">Interests</a>
+      <a href="#projects">Selected Projects</a>
+      <a href="#social">Reach Out &amp; Socials</a>
+      <a href="#statistics">GitHub Statistics</a>
+    </nav>
   </div>
-</header>
-<nav>
-  <a href="#about">About</a>
-  <a href="#detailed-cv">Detailed CV</a>
-  <a href="#interest">Interests</a>
-  <a href="#projects">Selected Projects</a>
-  <a href="#social">Reach Out &amp; Socials</a>
-  <a href="#statistics">GitHub Statistics</a>
-</nav>
-<main class="container">
-  <section id="about">
-    <h2 class="section-title">About</h2>
-    <p>
-      I am a <b>data science professional</b> with a strong <b>quantitative background</b> rooted in theoretical physics and computational neuroscience. My career spans academic research and industry leadership, focusing on the development and deployment of robust AI systems that meet regulatory standards and business objectives.<br /><br />
-      With expertise in <b>mathematical modeling</b>, <b>statistical inference</b>, and <b>machine learning</b>, I specialize in building data-driven solutions that are both scientifically rigorous and commercially viable. My work emphasizes reproducible research methodologies, ethical AI practices, and the critical intersection of data science with regulatory compliance.<br /><br />
-      As a data science manager, I lead cross-functional teams in developing AI systems that undergo rigorous audit processes, ensuring they meet the highest standards of reliability, fairness, and regulatory adherence. My approach combines deep technical knowledge with strategic business acumen to deliver impactful, sustainable AI solutions.<br /><br />
-      For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.
-    </p>
-  </section>
 
-  <section id="interest">
-    <h2 class="section-title">Interests</h2>
-    <ul>
-      <li><b>Audit & Risk Management in AI:</b> Developing comprehensive frameworks for auditing AI systems, assessing model risks, and implementing governance structures that ensure ethical deployment. This includes establishing audit trails, conducting bias assessments, and creating risk mitigation strategies for high-stakes AI applications in regulated industries.</li>
-      <li><b>Regulatory ML & Compliance:</b> Navigating the complex landscape of AI regulation, from GDPR and algorithmic transparency requirements to emerging AI acts and sector-specific compliance standards. Expertise in building ML systems that meet regulatory requirements while maintaining performance, including documentation, explainability, and validation protocols.</li>
-      <li><b>Mathematical Foundations of ML:</b> Deep engagement with the theoretical underpinnings of machine learning, including probability theory, statistical inference, optimization theory, and linear algebra. Focus on understanding model behavior, convergence properties, generalization bounds, and the mathematical principles that govern algorithmic decision-making.</li>
-      <li><b>Reproducible Computational Research:</b> Championing open science principles through reproducible research practices, including version-controlled code, documented methodologies, and transparent reporting. Building infrastructure and workflows that enable independent verification, replication, and extension of research findings across academic and industrial contexts.</li>
-    </ul>
-  </section>
+  <button class="toggle-btn" id="toggleBtn" aria-label="Toggle Sidebar">&#9776;</button>
 
-  <section id="projects">
-    <h2 class="section-title">Selected Projects</h2>
-    <p>WIP</p>
-  </section>
+  <main class="container" id="mainContent">
+    <!-- Your existing sections here -->
+    <!-- Example section -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p>
+        I am a <b>data science professional</b> with a strong <b>quantitative background</b> rooted in theoretical physics and computational neuroscience.
+        <!-- More content -->
+      </p>
+    </section>
+    <!-- Add remaining content from your original code -->
+  </main>
 
-  <section id="social">
-    <h2 class="section-title">Reach Out &amp; Socials</h2>
-    <div class="reachout-graph-wrap">
-      <div class="reachout-graph" id="reachout-graph" aria-label="Social media and contact platforms">
-        <svg class="base" viewBox="0 0 440 440" aria-hidden="true" focusable="false">
-          <circle cx="220" cy="220" r="165" stroke="#c5c4de" stroke-width="2" fill="none"/>
-        </svg>
-        <button class="reachout-node" data-platform="email" title="Email" tabindex="0">
-          <img src="icons/gmail.svg" alt="Gmail" />
-        </button>
-        <button class="reachout-node" data-platform="linkedin" title="LinkedIn" tabindex="0">
-          <img src="icons/linkedin.svg" alt="LinkedIn" />
-        </button>
-        <button class="reachout-node" data-platform="github" title="GitHub" tabindex="0">
-          <img src="icons/github.svg" alt="GitHub" />
-        </button>
-        <button class="reachout-node" data-platform="kaggle" title="Kaggle" tabindex="0">
-          <img src="icons/kaggle.svg" alt="Kaggle" />
-        </button>
-        <button class="reachout-node" data-platform="substack" title="Substack" tabindex="0">
-          <img src="icons/substack.svg" alt="Substack" />
-        </button>
-        <button class="reachout-node" data-platform="streamlit" title="Streamlit" tabindex="0">
-          <img src="icons/streamlit.svg" alt="Streamlit" />
-        </button>
-        <button class="reachout-node" data-platform="overleaf" title="Overleaf" tabindex="0">
-          <img src="icons/overleaf.svg" alt="Overleaf" />
-        </button>
-        <button class="reachout-node" data-platform="huggingface" title="Hugging Face" tabindex="0">
-          <img src="icons/huggingface.svg" alt="Hugging Face" />
-        </button>
-        <button class="reachout-node" data-platform="openml" title="OpenML" tabindex="0">
-          <img src="icons/openml.svg" alt="OpenML" />
-        </button>
-        <div class="center-message-overlay" id="center-message-overlay"></div>
-      </div>
-    </div>
-  </section>
+  <footer>
+    &copy; 2025 Francesco Orsi | Data Science Manager
+  </footer>
 
-  <section id="statistics">
-    <h2 class="section-title">GitHub Statistics</h2>
-    <div class="stats-container">
-      <img 
-        src="https://github-readme-stats.vercel.app/api?username=franzubaren&show_icons=true&theme=default&hide_title=true&count_private=true"
-        alt="GitHub stats" 
-        loading="lazy"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      />
-      <div class="github-stats-fallback" style="display: none;">
-        GitHub Stats: Replace 'franzubaren' with your actual GitHub username
-      </div>
-      
-      <img 
-        src="https://github-readme-stats.vercel.app/api/top-langs/?username=franzubaren&layout=compact&theme=default&hide_title=true"
-        alt="Top Languages"
-        loading="lazy"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      />
-      <div class="github-stats-fallback" style="display: none;">
-        Top Languages: Replace 'franzubaren' with your actual GitHub username
-      </div>
-    </div>
-    <div class="activity-graph">
-      <img 
-        src="https://github-readme-activity-graph.vercel.app/graph?username=franzubaren&theme=github&area=true&hide_border=true" 
-        alt="Contribution Graph"
-        loading="lazy"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      />
-      <div class="github-stats-fallback" style="display: none;">
-        Activity Graph: Replace 'franzubaren' with your actual GitHub username
-      </div>
-    </div>
-  </section>
-</main>
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
 
-<footer>
-  &copy; 2025 Francesco Orsi | Data Science Manager
-</footer>
-
-<script>
-// Stabilized Social Media Circle Visualization
-const platforms = {
-  email: { 
-    name: "Email", 
-    desc: "Drop me a note if you'd like to collaborate or exchange ideas in AI, research, or data science." 
-  },
-  linkedin: { 
-    name: "LinkedIn", 
-    desc: "Connect on LinkedIn for professional network building and updates." 
-  },
-  github: { 
-    name: "GitHub", 
-    desc: "Explore my open source & code work. Feedback and PRs welcome!" 
-  },
-  kaggle: { 
-    name: "Kaggle", 
-    desc: "Discover my competition entries and data notebooks." 
-  },
-  streamlit: { 
-    name: "Streamlit", 
-    desc: "I create interactive ML apps and analytics demos in Streamlit." 
-  },
-  overleaf: { 
-    name: "Overleaf", 
-    desc: "Collaborative scientific writing — join me on Overleaf!" 
-  },
-  substack: { 
-    name: "Substack", 
-    desc: "Essays and research summaries on AI, ML, and open science." 
-  },
-  huggingface: { 
-    name: "Hugging Face", 
-    desc: "Explore & share ML models together on 🤗. Always open for NLP and AI model discussions!" 
-  },
-  openml: { 
-    name: "OpenML", 
-    desc: "Find datasets, benchmarks and transparent ML science on OpenML." 
-  }
-};
-
-// State management
-let currentState = {
-  hoveredNode: null,
-  activeNode: null,
-  isLocked: false,
-  resetTimeout: null
-};
-
-// DOM elements
-const graph = document.getElementById('reachout-graph');
-const overlay = document.getElementById('center-message-overlay');
-const nodes = Array.from(graph.querySelectorAll('.reachout-node'));
-
-// Position nodes in a circle
-function positionNodes() {
-  const rect = graph.getBoundingClientRect();
-  const W = graph.clientWidth;
-  const H = graph.clientHeight;
-  const cx = W / 2;
-  const cy = H / 2;
-  const R = Math.min(W, H) * 0.375;
-  const count = nodes.length;
-  
-  nodes.forEach((node, i) => {
-    const angle = ((-90 + (360 / count) * i) * Math.PI) / 180;
-    const x = cx + R * Math.cos(angle);
-    const y = cy + R * Math.sin(angle);
-    
-    // Center the node on the calculated position
-    node.style.left = (x - node.offsetWidth / 2) + 'px';
-    node.style.top = (y - node.offsetHeight / 2) + 'px';
-  });
-}
-
-// Show message in center
-function showMessage(platform, lock = false) {
-  if (!platform || !platforms[platform]) {
-    overlay.classList.remove('show');
-    overlay.innerHTML = '';
-    return;
-  }
-  
-  const { name, desc } = platforms[platform];
-  overlay.innerHTML = `
-    <div class="center-header">${name}</div>
-    <div class="center-desc">${desc}</div>
-  `;
-  overlay.classList.add('show');
-  
-  if (lock) {
-    currentState.isLocked = true;
-    currentState.activeNode = platform;
-  }
-}
-
-// Hide message
-function hideMessage() {
-  if (!currentState.isLocked) {
-    overlay.classList.remove('show');
-    currentState.hoveredNode = null;
-    nodes.forEach(node => node.classList.remove('active'));
-  }
-}
-
-// Clear any active state
-function clearActiveState() {
-  currentState.isLocked = false;
-  currentState.activeNode = null;
-  if (currentState.resetTimeout) {
-    clearTimeout(currentState.resetTimeout);
-    currentState.resetTimeout = null;
-  }
-  nodes.forEach(node => node.classList.remove('active'));
-  hideMessage();
-}
-
-// Event listeners for each node
-nodes.forEach(node => {
-  const platform = node.getAttribute('data-platform');
-  
-  // Mouse events
-  node.addEventListener('mouseenter', () => {
-    if (!currentState.isLocked) {
-      currentState.hoveredNode = platform;
-      showMessage(platform, false);
-    }
-  });
-  
-  node.addEventListener('mouseleave', () => {
-    if (!currentState.isLocked) {
-      currentState.hoveredNode = null;
-      setTimeout(hideMessage, 100);
-    }
-  });
-  
-  // Click events
-  node.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    if (currentState.isLocked && currentState.activeNode === platform) {
-      // If clicking the same active node, deactivate it
-      clearActiveState();
-      return;
-    }
-    
-    // Clear any existing timeout
-    if (currentState.resetTimeout) {
-      clearTimeout(currentState.resetTimeout);
-    }
-    
-    // Set new active state
-    nodes.forEach(n => n.classList.remove('active'));
-    node.classList.add('active');
-    showMessage(platform, true);
-    
-    // Auto-clear after 5 seconds
-    currentState.resetTimeout = setTimeout(() => {
-      clearActiveState();
-    }, 5000);
-  });
-  
-  // Keyboard events
-  node.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      node.click();
-    }
-  });
-  
-  // Focus events
-  node.addEventListener('focus', () => {
-    if (!currentState.isLocked) {
-      currentState.hoveredNode = platform;
-      showMessage(platform, false);
-    }
-  });
-  
-  node.addEventListener('blur', () => {
-    if (!currentState.isLocked) {
-      currentState.hoveredNode = null;
-      setTimeout(hideMessage, 100);
-    }
-  });
-});
-
-// Global click handler to clear active state when clicking outside
-document.addEventListener('click', (e) => {
-  if (!graph.contains(e.target) && currentState.isLocked) {
-    clearActiveState();
-  }
-});
-
-// Initialize and handle resize
-function init() {
-  // Wait for DOM to be ready
-  if (nodes.length > 0) {
-    positionNodes();
-  }
-}
-
-// Handle window resize
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    positionNodes();
-  }, 100);
-});
-
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
-</script>
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+      toggleBtn.classList.toggle('collapsed');
+    });
+  </script>
 </body>
 </html>

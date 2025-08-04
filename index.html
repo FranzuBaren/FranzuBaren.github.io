@@ -1,286 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FranzuBaren/Francesco Orsi's GitHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --sidebar-bg: #f2f2f8;
-      --sidebar-dark: #d8d8e8;
-      --accent: #5e5add;
-      --sidebar-width: 260px;
-      --sidebar-collapsed-width: 60px;
-    }
-    body {
-      margin: 0;
-      background: #f8f8fc;
-      color: #22232a;
-      font-family: 'EB Garamond', serif;
-      display: flex;
-      height: 100vh;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Opening Text Animation with Bars</title>
+<style>
+  body {
+    margin: 0; font-family: 'EB Garamond', serif; background: #fafafa; color: #222;
+    display: flex; justify-content: center; align-items: center; height: 100vh;
+  }
+  .animated-text-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    gap: 1.6rem;
+  }
+  /* Left and right bars */
+  .bar {
+    width: 75px;
+    height: 5px;
+    background: #5e5add;
+    position: relative;
+    overflow: visible;
+  }
+  .bar::before,
+  .bar::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: #5e5add;
+    left: 0;
+  }
+  /* For left bar, before and after are vertical steps */
+  .bar.left::before {
+    top: 0;
+    animation: barUpBack 1s ease forwards;
+    animation-delay: 0s;
+  }
+  .bar.left::after {
+    top: 7px;
+    animation: barUpBack 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+  /* For right bar, before and after reversed in delay */
+  .bar.right::before {
+    top: 0;
+    animation: barUpBack 1s ease forwards;
+    animation-delay: 0.25s;
+  }
+  .bar.right::after {
+    top: 7px;
+    animation: barUpBack 1s ease forwards;
+    animation-delay: 0.75s;
+  }
+  /* Text styling */
+  .animated-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #22232a;
+    opacity: 0;
+    transform-origin: center bottom;
+    white-space: nowrap;
+    animation: textReveal 1.2s ease forwards;
+    animation-delay: 1.2s;
+  }
 
-    /* Sidebar styles */
-    .sidebar {
-      background: var(--sidebar-bg);
-      border-right: 2px solid #e4e4ef;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 2rem;
-      position: fixed;
-      height: 100vh;
-      box-shadow: 2px 0 18px #acadce14;
-      z-index: 100;
-      width: var(--sidebar-width);
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: hidden;
-    }
-    .sidebar.collapsed {
-      width: var(--sidebar-collapsed-width);
-      padding-top: 2rem;
-    }
-
-    /* Hide text in collapsed sidebar */
-    .sidebar.collapsed h1,
-    .sidebar.collapsed h2,
-    .sidebar.collapsed nav a {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .sidebar img {
-      margin-bottom: 1.1rem;
-      border-radius: 50%;
-      width: 102px;
-      height: 102px;
-      border: 3px solid var(--accent);
-      transition: width 0.4s, height 0.4s;
-    }
-    .sidebar.collapsed img {
-      width: 36px;
-      height: 36px;
-      border-width: 2px;
-      margin-bottom: 2.4rem;
-    }
-
-    .sidebar h1 {
-      margin: 0 0 .2em 0;
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: #232247;
-      text-align: center;
-      letter-spacing: .5px;
-      user-select: none;
-      transition: opacity 0.4s ease;
-    }
-    .sidebar h2 {
-      margin: .1em 0 2.3em 0;
-      font-family: 'Roboto Mono', monospace;
-      color: var(--accent);
-      font-size: .98rem;
-      text-align: center;
-      font-weight: 400;
-      letter-spacing: .1em;
-      user-select: none;
-      transition: opacity 0.4s ease;
-    }
-    nav {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      user-select: none;
-    }
-    nav a {
-      padding: 1rem 2rem;
-      color: #232247;
-      text-decoration: none;
-      font-weight: 600;
-      text-align: left;
-      font-family: 'EB Garamond', serif;
-      font-size: 1.09rem;
-      transition: background 0.17s, color 0.15s;
-      border-left: 4px solid transparent;
-      white-space: nowrap;
-      cursor: pointer;
-      user-select: none;
-    }
-    nav a:hover, nav a.active {
-      background: var(--sidebar-dark);
-      color: var(--accent);
-      border-left: 4px solid var(--accent);
-    }
-
-    /* Toggle button for sidebar */
-    .toggle-btn {
-      position: fixed;
-      top: 1rem;
-      left: var(--sidebar-width);
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-      font-size: 1.5rem;
-      line-height: 36px;
-      text-align: center;
-      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 200;
-      user-select: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .toggle-btn.collapsed {
-      left: var(--sidebar-collapsed-width);
-    }
-
-    main.container {
-      margin-left: var(--sidebar-width);
-      padding: 2.3rem 2.5rem 2.2rem 2.5rem;
-      max-width: 900px;
-      min-width: 0;
-      flex: 1;
-      transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    main.container.collapsed {
-      margin-left: var(--sidebar-collapsed-width);
-    }
-
-    h2.section-title {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #444055;
-      margin: 1.5em 0 0.7em 0;
-      padding-left: 0.4em;
-      border-left: 6px solid var(--accent);
-      background: linear-gradient(97deg, #edeef0 90%, #f8f8fd 100%);
-      border-radius: 7px;
-      letter-spacing: 0.03em;
-      font-family: 'EB Garamond', serif;
-    }
-    p, li {
-      font-size: 1.03rem;
-      line-height: 1.5;
-      margin-bottom: 0.55em;
-    }
-    ul { list-style: disc; margin-left: 1.4em; }
-
-    footer {
-      width: 100%;
-      text-align: center;
-      padding: 1.3rem 0 0.4rem 0;
-      color: #929295;
-      font-size: .98rem;
-      margin-top: 3.5rem; 
-      user-select: none;
-    }
-
-    @media (max-width: 900px) {
-      :root {
-        --sidebar-width: 56vw;
-        --sidebar-collapsed-width: 60px;
-      }
-      .sidebar {
-        width: var(--sidebar-width);
-      }
-      main.container {
-        margin-left: var(--sidebar-width);
-      }
-      .toggle-btn {
-        left: var(--sidebar-width);
-      }
-      .sidebar.collapsed {
-        width: var(--sidebar-collapsed-width);
-      }
-      main.container.collapsed {
-        margin-left: var(--sidebar-collapsed-width);
-      }
-      .toggle-btn.collapsed {
-        left: var(--sidebar-collapsed-width);
-      }
-    }
-    @media (max-width: 600px) {
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: var(--sidebar-width);
-        padding-top: 3rem;
-        z-index: 300;
-      }
-      .toggle-btn {
-        top: 1rem;
-        left: var(--sidebar-width);
-        z-index: 400;
-      }
-      .sidebar.collapsed {
-        width: var(--sidebar-collapsed-width);
-      }
-      main.container {
-        margin-left: 0;
-        padding: 1.5rem 1rem 1.3rem 1rem;
-        max-width: 100vw;
-      }
-      main.container.collapsed {
-        margin-left: 0;
-      }
-      /* In very small view, sidebar toggles as overlay */
-    }
-  </style>
+  /* Keyframes */
+  @keyframes barUpBack {
+    0% { transform: translateY(0) translateZ(0); opacity: 1; }
+    50% { transform: translateY(-18px) translateZ(-15px); opacity: 1; }
+    100% { transform: translateY(-18px) translateZ(-15px); opacity: 0; }
+  }
+  @keyframes textReveal {
+    0% { opacity: 0; transform: scaleY(0.6); }
+    100% { opacity: 1; transform: scaleY(1); }
+  }
+</style>
 </head>
 <body>
-  <div class="sidebar" id="sidebar">
-    <img src="https://via.placeholder.com/102" alt="Francesco Orsi Photo" />
-    <h1>Francesco Orsi</h1>
-    <h2>Data Science Manager</h2>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#detailed-cv">Detailed CV</a>
-      <a href="#interest">Interests</a>
-      <a href="#projects">Selected Projects</a>
-      <a href="#social">Reach Out &amp; Socials</a>
-      <a href="#statistics">GitHub Statistics</a>
-    </nav>
+  <div class="animated-text-container" aria-label="Animated heading with side bars">
+    <div class="bar left"></div>
+    <div class="animated-text">Francesco Orsi</div>
+    <div class="bar right"></div>
   </div>
-
-  <button class="toggle-btn" id="toggleBtn" aria-label="Toggle Sidebar">&#9776;</button>
-
-  <main class="container" id="mainContent">
-    <!-- Your existing sections here -->
-    <!-- Example section -->
-    <section id="about">
-      <h2 class="section-title">About</h2>
-      <p>
-        I am a <b>data science professional</b> with a strong <b>quantitative background</b> rooted in theoretical physics and computational neuroscience.
-        <!-- More content -->
-      </p>
-    </section>
-    <!-- Add remaining content from your original code -->
-  </main>
-
-  <footer>
-    &copy; 2025 Francesco Orsi | Data Science Manager
-  </footer>
-
-  <script>
-    const toggleBtn = document.getElementById('toggleBtn');
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('mainContent');
-
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-      mainContent.classList.toggle('collapsed');
-      toggleBtn.classList.toggle('collapsed');
-    });
-  </script>
 </body>
 </html>
+

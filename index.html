@@ -3,43 +3,47 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FranzuBaren/Francesco Orsi's GitHub</title>
+<title>Francesco Orsi - Animated Intro</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
+  /* Basic reset */
+  * {
+    box-sizing: border-box;
+  }
   body {
     margin: 0; padding: 0;
-    box-sizing: border-box;
     font-family: 'EB Garamond', serif;
-    background: #fafafa;
-    color: #26243a;
-    min-height: 100vh;
-  }
-  /* Animated banner container */
-  .animated-section {
-    min-height: 100vh;
+    background-color: #fafafa;
+    color: #22232a;
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 10;
-    background: #fafafa;
+    overflow-x: hidden;
   }
-  .animated-text-container {
+
+  /* Container for animation */
+  .intro-container {
+    text-align: center;
+    max-width: 640px;
+    width: 90vw;
+  }
+  /* Bars container */
+  .bars-wrapper {
+    position: relative;
     display: flex;
-    align-items: center;
-    gap: 2rem;
     justify-content: center;
-    margin-bottom: 2.8rem;
-    position: relative;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
   }
-  /* Bars with two segments each */
+  /* The bars themselves */
   .bar {
-    width: 82px;
+    position: relative;
+    width: 70px;
     height: 6px;
     background: transparent;
-    position: relative;
-    overflow: visible;
   }
   .bar::before,
   .bar::after {
@@ -48,68 +52,88 @@
     left: 0;
     width: 100%;
     height: 6px;
-    background: #5e5add;
+    background-color: #5e5add;
     border-radius: 4px;
     opacity: 1;
   }
+  /* LEFT bar animations */
   .bar.left::before {
     top: 0;
-    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
+    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
     animation-delay: 0.1s;
   }
   .bar.left::after {
-    top: 13px;
-    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
-    animation-delay: 0.45s;
+    top: 15px;
+    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
+    animation-delay: 0.5s;
   }
+  /* RIGHT bar animations */
   .bar.right::before {
     top: 0;
-    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
-    animation-delay: 0.25s;
+    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
+    animation-delay: 0.3s;
   }
   .bar.right::after {
-    top: 13px;
-    animation: barUpBack 0.8s cubic-bezier(.75,0,.45,1) forwards;
-    animation-delay: 0.65s;
+    top: 15px;
+    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
+    animation-delay: 0.7s;
   }
-  /* Keyframes for bar sliding up/back */
+
+  /* Keyframes for bars going up and fading */
   @keyframes barUpBack {
-    0% { transform: translateY(0) scaleX(1); opacity: 1; }
-    60% { transform: translateY(-30px) scaleX(.8); opacity: 1;}
-    100% { transform: translateY(-46px) scaleX(.7); opacity: 0;}
+    0% {
+      transform: translateY(0px) scaleX(1);
+      opacity: 1;
+    }
+    60% {
+      transform: translateY(-30px) scaleX(0.9);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-45px) scaleX(0.8);
+      opacity: 0;
+    }
   }
-  .animated-bio {
-    max-width: 540px;
-    text-align: center;
-    font-size: 1.42rem;
+
+  /* Bio text with reveal animation */
+  .bio-text {
+    font-size: 1.5rem;
     font-weight: 600;
     color: #252659;
     line-height: 1.45;
+    max-width: 540px;
+    margin: 0 auto;
     opacity: 0;
-    transform: scaleY(0.75);
-    animation: textReveal 1s cubic-bezier(.3,1.5,.5,1) forwards;
-    animation-delay: 1.2s;
+    transform: scaleY(0.7);
+    animation: textReveal 1s cubic-bezier(0.3,1.5,0.5,1) forwards;
+    animation-delay: 1.6s;
     background: #fff;
     border-radius: 20px;
-    box-shadow: 0 5px 22px #3a347415;
-    padding: 2.2rem 2.1rem 1.35rem 2.1rem;
-    letter-spacing: .07px;
-    z-index: 1;
+    box-shadow: 0 5px 22px rgba(58,52,116,0.14);
+    padding: 2.2rem 2.2rem 1.3rem 2.2rem;
+    letter-spacing: 0.07px;
   }
   @keyframes textReveal {
-    0% {opacity: 0; transform: scaleY(0.72);}
-    100% {opacity: 1; transform: scaleY(1);}
+    0% {
+      opacity: 0;
+      transform: scaleY(0.7);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
   }
-  /* Navigation menu styles */
+
+  /* Navigation menu, initially hidden */
   nav.selection-menu {
+    margin-top: 3rem;
     display: flex;
-    gap: 1.7rem;
     justify-content: center;
-    margin-top: 48px;
+    gap: 1.8rem;
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(48px);
     pointer-events: none;
-    transition: opacity 0.7s cubic-bezier(.3,1.5,.5,1), transform 0.8s cubic-bezier(.3,1.5,.5,1);
+    transition: opacity 0.7s cubic-bezier(0.3,1.5,0.5,1), transform 0.7s cubic-bezier(0.3,1.5,0.5,1);
   }
   nav.selection-menu.visible {
     opacity: 1;
@@ -119,51 +143,61 @@
   nav.selection-menu a {
     font-family: 'EB Garamond', serif;
     font-weight: 600;
-    font-size: 1.19rem;
-    color: #26243a;
+    font-size: 1.13rem;
+    color: #252659;
     background: linear-gradient(95deg, #edeef0 88%, #f8f8fd 102%);
-    padding: 0.57em 1.2em 0.45em 1.2em;
+    padding: 0.55em 1.4em 0.4em 1.4em;
     border-radius: 10px;
     border-bottom: 3.5px solid transparent;
-    transition: background 0.2s, border 0.25s, color 0.25s;
+    transition: background 0.2s, border-bottom-color 0.25s, color 0.25s;
     text-decoration: none;
     letter-spacing: 0.08em;
   }
-  nav.selection-menu a:hover, nav.selection-menu a:focus {
+  nav.selection-menu a:hover,
+  nav.selection-menu a:focus {
     background: #e7e6fa;
     color: #5e5add;
     border-bottom-color: #5e5add;
   }
+
   /* Responsive */
-  @media (max-width: 680px) {
-    .animated-bio {
-      font-size: 1.12rem;
-      padding: 1.3rem .7rem 1.1rem .7rem;
+  @media (max-width: 640px) {
+    .bio-text {
+      font-size: 1.15rem;
+      padding: 1.4rem 1rem 1rem 1rem;
     }
-    .animated-text-container { gap: .7rem;}
-    .bar { width: 34vw; min-width: 46px;}
+    .bars-wrapper {
+      gap: 1.8rem;
+    }
+    .bar {
+      width: 38vw;
+      min-width: 50px;
+    }
     nav.selection-menu {
-      gap: .9rem;
       flex-wrap: wrap;
+      gap: 1rem;
     }
     nav.selection-menu a {
-      font-size: 1.02rem;
-      padding: 0.35em 0.5em 0.32em 0.5em;
+      font-size: 1rem;
+      padding: 0.4em 0.7em 0.3em 0.7em;
       border-radius: 7px;
     }
   }
 </style>
 </head>
 <body>
-  <div class="animated-section">
-    <div class="animated-text-container" aria-label="Animated intro with opening bars">
+  <div class="intro-container">
+
+    <div class="bars-wrapper" aria-hidden="true">
       <div class="bar left"></div>
-      <div class="animated-bio">
-        I am a <b>data science professional</b> with a strong quantitative background. I build, deploy and lead robust AI systems that align with both regulatory standards and business goals.
-      </div>
       <div class="bar right"></div>
     </div>
-    <nav class="selection-menu" id="mainMenu">
+
+    <div class="bio-text" role="main" aria-label="Short bio">
+      I am a <b>data science professional</b> with a strong quantitative background. I build, deploy and lead robust AI systems that align with both regulatory standards and business goals.
+    </div>
+
+    <nav class="selection-menu" id="mainMenu" aria-label="Main selection menu" tabindex="-1">
       <a href="#about">About</a>
       <a href="#detailed-cv">Detailed CV</a>
       <a href="#interest">Interests</a>
@@ -171,16 +205,20 @@
       <a href="#social">Reach Out &amp; Socials</a>
       <a href="#statistics">GitHub Statistics</a>
     </nav>
+
   </div>
+
   <script>
-    // Wait for the bars and bio animation to finish, then reveal the menu
+    // On page load, wait for bio animation to finish then show nav menu
     window.addEventListener('DOMContentLoaded', () => {
+      const menu = document.getElementById('mainMenu');
+      // Show menu after bar+text animation complete (roughly 2.6 seconds)
       setTimeout(() => {
-        document.getElementById('mainMenu').classList.add('visible');
-      }, 2000); // slightly longer than animation delays so menu fades in after bio reveal
+        menu.classList.add('visible');
+        menu.focus();
+      }, 2600);
     });
   </script>
 </body>
 </html>
-
 

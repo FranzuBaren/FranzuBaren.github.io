@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Francesco Orsi - Animated Intro</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<title>Francesco Orsi Animated Intro</title>
 <style>
-  /* Basic reset */
-  * {
+  /* Reset box-sizing */
+  *, *::before, *::after {
     box-sizing: border-box;
   }
   body {
-    margin: 0; padding: 0;
+    margin: 0; 
+    padding: 0;
     font-family: 'EB Garamond', serif;
     background-color: #fafafa;
     color: #22232a;
@@ -23,22 +23,23 @@
     overflow-x: hidden;
   }
 
-  /* Container for animation */
+  /* Container for the animation */
   .intro-container {
     text-align: center;
     max-width: 640px;
     width: 90vw;
   }
-  /* Bars container */
+
+  /* Container holding bars and text */
   .bars-wrapper {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 3rem;
     margin-bottom: 2.5rem;
   }
-  /* The bars themselves */
+
+  /* Bars - two lines on each side */
   .bar {
     position: relative;
     width: 70px;
@@ -78,11 +79,10 @@
     animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
     animation-delay: 0.7s;
   }
-
-  /* Keyframes for bars going up and fading */
+  /* Bars moving up and fading */
   @keyframes barUpBack {
     0% {
-      transform: translateY(0px) scaleX(1);
+      transform: translateY(0) scaleX(1);
       opacity: 1;
     }
     60% {
@@ -105,26 +105,21 @@
     margin: 0 auto;
     opacity: 0;
     transform: scaleY(0.7);
-    animation: textReveal 1s cubic-bezier(0.3,1.5,0.5,1) forwards;
-    animation-delay: 1.6s;
+    transform-origin: top center;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 5px 22px rgba(58,52,116,0.14);
     padding: 2.2rem 2.2rem 1.3rem 2.2rem;
     letter-spacing: 0.07px;
+    user-select: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  @keyframes textReveal {
-    0% {
-      opacity: 0;
-      transform: scaleY(0.7);
-    }
-    100% {
-      opacity: 1;
-      transform: scaleY(1);
-    }
+  .bio-text.visible {
+    opacity: 1;
+    transform: scaleY(1);
   }
 
-  /* Navigation menu, initially hidden */
+  /* Navigation menu hidden initially */
   nav.selection-menu {
     margin-top: 3rem;
     display: flex;
@@ -134,6 +129,7 @@
     transform: translateY(48px);
     pointer-events: none;
     transition: opacity 0.7s cubic-bezier(0.3,1.5,0.5,1), transform 0.7s cubic-bezier(0.3,1.5,0.5,1);
+    user-select: none;
   }
   nav.selection-menu.visible {
     opacity: 1;
@@ -160,7 +156,7 @@
     border-bottom-color: #5e5add;
   }
 
-  /* Responsive */
+  /* Responsive adjustments */
   @media (max-width: 640px) {
     .bio-text {
       font-size: 1.15rem;
@@ -186,14 +182,14 @@
 </style>
 </head>
 <body>
-  <div class="intro-container">
+  <div class="intro-container" role="main" aria-label="Animated introduction and navigation menu">
 
     <div class="bars-wrapper" aria-hidden="true">
       <div class="bar left"></div>
       <div class="bar right"></div>
     </div>
 
-    <div class="bio-text" role="main" aria-label="Short bio">
+    <div class="bio-text" id="bioText" aria-live="polite" aria-atomic="true">
       I am a <b>data science professional</b> with a strong quantitative background. I build, deploy and lead robust AI systems that align with both regulatory standards and business goals.
     </div>
 
@@ -209,10 +205,17 @@
   </div>
 
   <script>
-    // On page load, wait for bio animation to finish then show nav menu
+    // Helper to add 'visible' classes on correct timings
     window.addEventListener('DOMContentLoaded', () => {
+      const bioText = document.getElementById('bioText');
       const menu = document.getElementById('mainMenu');
-      // Show menu after bar+text animation complete (roughly 2.6 seconds)
+
+      // Show bio text after bar animation (~1.6s)
+      setTimeout(() => {
+        bioText.classList.add('visible');
+      }, 1600);
+
+      // Show the menu after bio is visible (~2.5s)
       setTimeout(() => {
         menu.classList.add('visible');
         menu.focus();
@@ -221,4 +224,3 @@
   </script>
 </body>
 </html>
-

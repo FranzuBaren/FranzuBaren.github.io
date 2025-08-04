@@ -3,224 +3,165 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Francesco Orsi Animated Intro</title>
+<title>FranzoBaren / Francesco Orsi's GitHub</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  /* Reset box-sizing */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
   body {
-    margin: 0; 
-    padding: 0;
+    margin: 0;
     font-family: 'EB Garamond', serif;
     background-color: #fafafa;
     color: #22232a;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    overflow-x: hidden;
-  }
-
-  /* Container for the animation */
-  .intro-container {
-    text-align: center;
-    max-width: 640px;
-    width: 90vw;
-  }
-
-  /* Container holding bars and text */
-  .bars-wrapper {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 3rem;
-    margin-bottom: 2.5rem;
   }
-
-  /* Bars - two lines on each side */
-  .bar {
-    position: relative;
-    width: 70px;
-    height: 6px;
-    background: transparent;
-  }
-  .bar::before,
-  .bar::after {
-    content: '';
-    position: absolute;
-    left: 0;
+  header {
     width: 100%;
-    height: 6px;
-    background-color: #5e5add;
-    border-radius: 4px;
-    opacity: 1;
+    max-width: 900px;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 1.5px solid #ddd;
   }
-  /* LEFT bar animations */
-  .bar.left::before {
-    top: 0;
-    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
-    animation-delay: 0.1s;
+  header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #5e5add;
+    object-fit: cover;
+    margin-bottom: 1rem;
   }
-  .bar.left::after {
-    top: 15px;
-    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
-    animation-delay: 0.5s;
+  header h1 {
+    margin: 0 0 0.25rem 0;
+    font-weight: 700;
+    font-size: 2rem;
   }
-  /* RIGHT bar animations */
-  .bar.right::before {
-    top: 0;
-    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
-    animation-delay: 0.3s;
+  header h2 {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    color: #5e5add;
+    font-weight: 400;
+    font-size: 1.1rem;
   }
-  .bar.right::after {
-    top: 15px;
-    animation: barUpBack 0.9s cubic-bezier(0.75,0,0.45,1) forwards;
-    animation-delay: 0.7s;
+  nav {
+    width: 100%;
+    max-width: 900px;
+    padding: 1rem 0 0.5rem 0;
+    border-bottom: 1.5px solid #ddd;
+    text-align: center;
   }
-  /* Bars moving up and fading */
-  @keyframes barUpBack {
-    0% {
-      transform: translateY(0) scaleX(1);
-      opacity: 1;
-    }
-    60% {
-      transform: translateY(-30px) scaleX(0.9);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-45px) scaleX(0.8);
-      opacity: 0;
-    }
-  }
-
-  /* Bio text with reveal animation */
-  .bio-text {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #252659;
-    line-height: 1.45;
-    max-width: 540px;
-    margin: 0 auto;
-    opacity: 0;
-    transform: scaleY(0.7);
-    transform-origin: top center;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 5px 22px rgba(58,52,116,0.14);
-    padding: 2.2rem 2.2rem 1.3rem 2.2rem;
-    letter-spacing: 0.07px;
-    user-select: none;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .bio-text.visible {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-
-  /* Navigation menu hidden initially */
-  nav.selection-menu {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.8rem;
-    opacity: 0;
-    transform: translateY(48px);
-    pointer-events: none;
-    transition: opacity 0.7s cubic-bezier(0.3,1.5,0.5,1), transform 0.7s cubic-bezier(0.3,1.5,0.5,1);
-    user-select: none;
-  }
-  nav.selection-menu.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  nav.selection-menu a {
+  nav a {
+    text-decoration: none;
+    color: #22232a;
     font-family: 'EB Garamond', serif;
     font-weight: 600;
-    font-size: 1.13rem;
-    color: #252659;
-    background: linear-gradient(95deg, #edeef0 88%, #f8f8fd 102%);
-    padding: 0.55em 1.4em 0.4em 1.4em;
-    border-radius: 10px;
-    border-bottom: 3.5px solid transparent;
-    transition: background 0.2s, border-bottom-color 0.25s, color 0.25s;
-    text-decoration: none;
-    letter-spacing: 0.08em;
+    font-size: 1.1rem;
+    margin: 0 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom-color 0.2s;
   }
-  nav.selection-menu a:hover,
-  nav.selection-menu a:focus {
-    background: #e7e6fa;
-    color: #5e5add;
+  nav a:hover {
     border-bottom-color: #5e5add;
+    color: #5e5add;
+  }
+  main {
+    max-width: 900px;
+    margin: 3rem 1rem;
+    padding: 0 1rem;
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  h2 {
+    border-left: 6px solid #5e5add;
+    padding-left: 0.5em;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  p, li {
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  ul {
+    margin-left: 1.5em;
+    list-style: disc;
+  }
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: #555759;
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1.5px solid #ddd;
+    width: 100%;
+    max-width: 900px;
   }
 
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .bio-text {
-      font-size: 1.15rem;
-      padding: 1.4rem 1rem 1rem 1rem;
+  @media (max-width: 600px) {
+    header img {
+      width: 80px;
+      height: 80px;
     }
-    .bars-wrapper {
-      gap: 1.8rem;
-    }
-    .bar {
-      width: 38vw;
-      min-width: 50px;
-    }
-    nav.selection-menu {
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    nav.selection-menu a {
+    nav a {
+      margin: 0 0.7rem;
       font-size: 1rem;
-      padding: 0.4em 0.7em 0.3em 0.7em;
-      border-radius: 7px;
+    }
+    main {
+      margin: 2rem 0.5rem;
     }
   }
 </style>
 </head>
 <body>
-  <div class="intro-container" role="main" aria-label="Animated introduction and navigation menu">
-
-    <div class="bars-wrapper" aria-hidden="true">
-      <div class="bar left"></div>
-      <div class="bar right"></div>
-    </div>
-
-    <div class="bio-text" id="bioText" aria-live="polite" aria-atomic="true">
-      I am a <b>data science professional</b> with a strong quantitative background. I build, deploy and lead robust AI systems that align with both regulatory standards and business goals.
-    </div>
-
-    <nav class="selection-menu" id="mainMenu" aria-label="Main selection menu" tabindex="-1">
-      <a href="#about">About</a>
-      <a href="#detailed-cv">Detailed CV</a>
-      <a href="#interest">Interests</a>
-      <a href="#projects">Selected Projects</a>
-      <a href="#social">Reach Out &amp; Socials</a>
-      <a href="#statistics">GitHub Statistics</a>
-    </nav>
-
-  </div>
-
-  <script>
-    // Helper to add 'visible' classes on correct timings
-    window.addEventListener('DOMContentLoaded', () => {
-      const bioText = document.getElementById('bioText');
-      const menu = document.getElementById('mainMenu');
-
-      // Show bio text after bar animation (~1.6s)
-      setTimeout(() => {
-        bioText.classList.add('visible');
-      }, 1600);
-
-      // Show the menu after bio is visible (~2.5s)
-      setTimeout(() => {
-        menu.classList.add('visible');
-        menu.focus();
-      }, 2600);
-    });
-  </script>
+  <header>
+    <img src="https://via.placeholder.com/100" alt="Francesco Orsi Photo" />
+    <h1>Francesco Orsi</h1>
+    <h2>Data Science Manager</h2>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#detailed-cv">Detailed CV</a>
+    <a href="#interest">Interests</a>
+    <a href="#projects">Selected Projects</a>
+    <a href="#social">Reach Out &amp; Socials</a>
+    <a href="#statistics">GitHub Statistics</a>
+  </nav>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>I am a <b>data science professional</b> with a strong <b>quantitative background</b> rooted in theoretical physics and computational neuroscience. My career spans academic research and industry leadership, focusing on the development and deployment of robust AI systems that meet regulatory standards and business objectives.</p>
+      <p>With expertise in <b>mathematical modeling</b>, <b>statistical inference</b>, and <b>machine learning</b>, I specialize in building data-driven solutions that are both scientifically rigorous and commercially viable. My work emphasizes reproducible research methodologies, ethical AI practices, and the critical intersection of data science with regulatory compliance.</p>
+      <p>As a data science manager, I lead cross-functional teams in developing AI systems that undergo rigorous audit processes, ensuring they meet the highest standards of reliability, fairness, and regulatory adherence. My approach combines deep technical knowledge with strategic business acumen to deliver impactful, sustainable AI solutions.</p>
+      <p>For more, see my <a href="#detailed-cv"><u>Detailed CV</u></a>.</p>
+    </section>
+    <section id="interest">
+      <h2>Interests</h2>
+      <ul>
+        <li><b>Audit & Risk Management in AI:</b> Developing comprehensive frameworks for auditing AI systems, assessing model risks, and implementing governance structures that ensure ethical deployment.</li>
+        <li><b>Regulatory ML & Compliance:</b> Navigating AI regulation, including GDPR and sector standards, building ML systems that meet these requirements while maintaining performance.</li>
+        <li><b>Mathematical Foundations of ML:</b> Deep engagement with theoretical underpinnings of machine learning, focusing on model behavior, convergence, and algorithmic decision-making principles.</li>
+        <li><b>Reproducible Computational Research:</b> Championing open science through reproducible workflows, version-controlled code, and transparent reporting to enable independent verification.</li>
+      </ul>
+    </section>
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <p>Work in progress.</p>
+    </section>
+    <section id="social">
+      <h2>Reach Out &amp; Socials</h2>
+      <p>Contact and social media links here.</p>
+    </section>
+    <section id="statistics">
+      <h2>GitHub Statistics</h2>
+      <p>GitHub stats and activity graphs can be placed here.</p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Francesco Orsi | Data Science Manager
+  </footer>
 </body>
 </html>
